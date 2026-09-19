@@ -67,10 +67,19 @@ static void skip_whitespace(TSLexer *lexer) {
     }
 }
 
-static void skip_newline(TSLexer *lexer) {
-    while (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
+static bool skip_newline(TSLexer *lexer) {
+    if (lexer->lookahead == '\n') {
         lexer->advance(lexer, false);
+        return true;
     }
+    if (lexer->lookahead == '\r') {
+        lexer->advance(lexer, false);
+        if (lexer->lookahead == '\n') {
+            lexer->advance(lexer, false);
+            return true;
+        }
+    }
+    return false;
 }
 
 static bool check_keyword(
@@ -116,7 +125,7 @@ static bool check_start_tokens(TSLexer *lexer, const bool *valid_symbols) {
             (lexer->lookahead == '\n' || lexer->lookahead == '\r' || lexer->eof(lexer))
         ) {
             lexer->result_symbol = EMPTY_LINE;
-            skip_newline(lexer);
+            if (!lexer->eof(lexer) && !skip_newline(lexer)) return false;
             lexer->mark_end(lexer);
             return true;
         }
@@ -192,7 +201,7 @@ static bool check_line_end(TSLexer *lexer, const bool *valid_symbols) {
         )
     ) {
         lexer->result_symbol = LINE_END;
-        skip_newline(lexer);
+        if (!lexer->eof(lexer) && !skip_newline(lexer)) return false;
         return true;
     }
     return false;

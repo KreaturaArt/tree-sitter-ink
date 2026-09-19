@@ -609,6 +609,7 @@ VAR time = 0
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -627,6 +628,8 @@ VAR time = 0
         (tag
           (tag_text)))
       (line_end))
+    (empty_line)
+    (empty_line)
     (var_line
       (var_start)
       (identifier)
@@ -648,6 +651,7 @@ VAR time = 0
       (expression
         (number))
       (line_end))
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -657,13 +661,15 @@ VAR time = 0
               (arrow)
               (identifier_path
                 (identifier))))))
-      (line_end)))
+      (line_end))
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
       (identifier)
       (line_end))
     (weave_body
+      (empty_line)
       (weave_body_line
         (line_start)
         (code_text
@@ -677,6 +683,7 @@ VAR time = 0
           (text
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -685,12 +692,15 @@ VAR time = 0
               (divert
                 (arrow)
                 (done_destination)))))
-        (line_end))))
+        (line_end))
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
       (identifier)
       (line_end))
+    (weave_body
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -750,10 +760,12 @@ VAR time = 0
                 (choice_text_other))
               (hide_end)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -772,6 +784,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -795,6 +808,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -815,6 +829,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -835,6 +850,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -854,6 +870,7 @@ VAR time = 0
               (shared_choice_text
                 (shared_choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -865,6 +882,7 @@ VAR time = 0
               (shared_choice_text
                 (shared_choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -880,6 +898,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -907,10 +926,12 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -977,7 +998,9 @@ VAR time = 0
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -1038,7 +1061,8 @@ VAR time = 0
               (divert_chain
                 (divert_return
                   (double_arrow)))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -1077,6 +1101,7 @@ VAR time = 0
                 (line_end)
                 (line_start))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -1101,10 +1126,12 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -1205,6 +1232,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -1228,10 +1256,12 @@ VAR time = 0
                 (divert_continue
                   (arrow)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -1303,6 +1333,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -1326,10 +1357,12 @@ VAR time = 0
                 (divert_continue
                   (arrow)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -1431,6 +1464,7 @@ VAR time = 0
             (default_option_mark
               (arrow)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -1565,6 +1599,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -1575,6 +1610,7 @@ VAR time = 0
             (default_option_mark
               (arrow)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -1604,6 +1640,8 @@ VAR time = 0
                 (identifier_path
                   (identifier)))))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -1615,7 +1653,8 @@ VAR time = 0
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -1719,6 +1758,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -1747,6 +1787,7 @@ VAR time = 0
             (default_option_mark
               (arrow)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -1756,7 +1797,8 @@ VAR time = 0
                 (divert_chain
                   (divert_return
                     (double_arrow))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -2027,6 +2069,7 @@ VAR time = 0
                 (identifier_path
                   (identifier)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -2036,19 +2079,23 @@ VAR time = 0
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
       (identifier)
       (line_end))
-    (weave_body)
+    (weave_body
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
         (identifier)
         (line_end))
       (weave_body
+        (empty_line)
         (var_line
           (var_start)
           (identifier)
@@ -2056,6 +2103,7 @@ VAR time = 0
           (expression
             (boolean))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2114,6 +2162,7 @@ VAR time = 0
                 (line_end)
                 (line_start))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -2132,6 +2181,7 @@ VAR time = 0
                 (line_end)
                 (line_start))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -2150,6 +2200,7 @@ VAR time = 0
                 (line_end)
                 (line_start))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2187,6 +2238,7 @@ VAR time = 0
             (default_option_mark
               (arrow)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2211,10 +2263,12 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
           (line_end))
+        (empty_line)
         (var_line
           (var_start)
           (identifier)
@@ -2229,6 +2283,7 @@ VAR time = 0
           (expression
             (number))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2243,6 +2298,7 @@ VAR time = 0
               (identifier)
               (mutation_operator)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2273,6 +2329,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2329,6 +2386,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2420,6 +2478,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2582,6 +2641,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2605,6 +2665,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2675,6 +2736,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -2706,11 +2768,13 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
             (gather_mark))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -2720,7 +2784,8 @@ VAR time = 0
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -2814,6 +2879,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2823,7 +2889,8 @@ VAR time = 0
                 (divert_chain
                   (divert_return
                     (double_arrow))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -2843,6 +2910,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2896,6 +2964,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2944,6 +3013,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2968,6 +3038,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -2995,6 +3066,7 @@ VAR time = 0
           (expression
             (boolean))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3029,6 +3101,7 @@ VAR time = 0
                 (divert_continue
                   (arrow)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3074,6 +3147,7 @@ VAR time = 0
                 (divert_continue
                   (arrow)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3097,6 +3171,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3137,6 +3212,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3161,6 +3237,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3188,6 +3265,7 @@ VAR time = 0
                 (divert_continue
                   (arrow)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3201,6 +3279,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -3208,6 +3287,7 @@ VAR time = 0
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -3219,7 +3299,8 @@ VAR time = 0
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -3232,6 +3313,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3268,6 +3350,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3306,6 +3389,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3357,6 +3441,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3388,6 +3473,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3431,6 +3517,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3460,6 +3547,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3493,6 +3581,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3518,6 +3607,8 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3538,6 +3629,7 @@ VAR time = 0
                 (identifier_path
                   (identifier)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3588,6 +3680,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3627,6 +3720,7 @@ VAR time = 0
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3651,6 +3745,7 @@ VAR time = 0
               (expression
                 (boolean))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3675,6 +3770,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3686,6 +3782,8 @@ VAR time = 0
                 (choice_text_other))
               (hide_end)))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3731,6 +3829,8 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3791,6 +3891,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3891,6 +3992,7 @@ VAR time = 0
                     (dot)
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3933,6 +4035,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -3945,6 +4048,8 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3966,6 +4071,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -3978,6 +4084,7 @@ VAR time = 0
                     (identifier_path
                       (identifier)))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4004,7 +4111,8 @@ VAR time = 0
               (divert_chain
                 (divert_return
                   (double_arrow)))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -4039,6 +4147,7 @@ VAR time = 0
               (expression
                 (boolean))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4048,7 +4157,8 @@ VAR time = 0
                 (divert_chain
                   (divert_return
                     (double_arrow))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -4083,6 +4193,7 @@ VAR time = 0
               (expression
                 (boolean))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4092,13 +4203,15 @@ VAR time = 0
                 (divert_chain
                   (divert_return
                     (double_arrow))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
         (identifier)
         (line_end))
       (weave_body
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -4120,6 +4233,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4156,6 +4270,7 @@ VAR time = 0
                 (inline_block
                   (block_remainder)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4188,6 +4303,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4215,6 +4331,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4250,6 +4367,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4263,6 +4381,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4290,6 +4409,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4309,6 +4429,7 @@ VAR time = 0
                 (inline_block
                   (block_remainder)))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4317,6 +4438,7 @@ VAR time = 0
             (default_option_mark
               (arrow)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -4326,6 +4448,7 @@ VAR time = 0
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4347,6 +4470,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4359,6 +4483,7 @@ VAR time = 0
                     (identifier_path
                       (identifier)))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4385,7 +4510,8 @@ VAR time = 0
               (divert_chain
                 (divert_return
                   (double_arrow)))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -4424,6 +4550,7 @@ VAR time = 0
             (text
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4442,6 +4569,7 @@ VAR time = 0
               (choice_text
                 (choice_text_other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4532,6 +4660,8 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4594,6 +4724,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4614,6 +4745,7 @@ VAR time = 0
                 (choice_text_other))
               (hide_end)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -4702,6 +4834,7 @@ VAR time = 0
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4714,6 +4847,7 @@ VAR time = 0
                     (identifier_path
                       (identifier)))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4741,6 +4875,7 @@ VAR time = 0
               (inline_block
                 (block_remainder))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -4752,17 +4887,20 @@ VAR time = 0
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end)))))
+          (line_end))
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
       (identifier)
       (line_end))
     (weave_body
+      (empty_line)
       (weave_body_line
         (line_start)
         (line_comment)
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4839,6 +4977,7 @@ VAR time = 0
           (text
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4862,6 +5001,7 @@ VAR time = 0
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4909,6 +5049,7 @@ VAR time = 0
           (text
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4922,6 +5063,7 @@ VAR time = 0
             (choice_text
               (choice_text_other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4951,6 +5093,7 @@ VAR time = 0
           (default_option_mark
             (arrow)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -4984,6 +5127,7 @@ VAR time = 0
           (default_option_mark
             (arrow)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -5035,6 +5179,7 @@ VAR time = 0
             (choice_text
               (choice_text_other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5073,6 +5218,7 @@ VAR time = 0
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5142,6 +5288,7 @@ VAR time = 0
               (choice_text_other))
             (hide_end)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text

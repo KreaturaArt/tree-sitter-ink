@@ -12,23 +12,6 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "empty_line"
-                },
-                "named": false,
-                "value": ""
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
                 "type": "SYMBOL",
                 "name": "weave_body"
               },
@@ -284,13 +267,8 @@
               "name": "todo_line"
             },
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "empty_line"
-              },
-              "named": false,
-              "value": ""
+              "type": "SYMBOL",
+              "name": "empty_line"
             }
           ]
         }

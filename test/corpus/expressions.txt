@@ -15,6 +15,7 @@ VAR list = (Origin.one, Other.two)
 
 (program
   (weave_body
+    (empty_line)
     (var_line
       (var_start)
       name: (identifier)
@@ -143,6 +144,7 @@ Operator associativity
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (code_text

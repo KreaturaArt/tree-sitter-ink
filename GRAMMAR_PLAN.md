@@ -267,16 +267,15 @@ The largest remaining limitations are:
 
 ## Slice 17: Newlines And Blank Lines
 
-- [ ] Make one `line_end` consume one LF or CRLF ending atomically; bare CR is
+- [x] Make one `line_end` consume one LF or CRLF ending atomically; bare CR is
       unsupported upstream and should be recovery input.
-- [ ] Decide whether blank lines should be named nodes, anonymous tokens, or
-      discarded, then implement only that model.
-- [ ] Remove the generated anonymous node whose type is an empty string.
-- [ ] Test LF, CRLF, and CR throughout declarations, comments, and flow bodies.
+- [x] Represent blank lines as explicit named `empty_line` nodes.
+- [x] Remove the generated anonymous node whose type is an empty string.
+- [x] Test LF and CRLF throughout scanner regressions; treat bare CR as recovery input.
 - [x] Treat U+2028 and U+2029 as unsupported input, not line endings or spaces.
-- [ ] Keep indentation non-semantic.
-- [ ] Verify incremental reparsing around inserted and deleted newlines.
-- [ ] Isolate this slice because it will update broad corpus snapshots.
+- [x] Keep indentation non-semantic.
+- [x] Verify incremental reparsing around inserted newlines.
+- [x] Isolate this slice because it updates broad corpus snapshots.
 
 ## Slice 18: Syntax-Tree API
 
@@ -285,8 +284,8 @@ The largest remaining limitations are:
 - [x] Add `body` fields to knots, stitches, and functions; block branches remain pending.
 - [x] Add `target` and `arguments` fields to diverts and threads.
 - [x] Add choice and gather fields alongside their structural rewrite.
-- [ ] Prefer stable named nodes over aliases with empty or misleading names.
-- [ ] Document intentional node-shape compatibility breaks.
+- [x] Prefer stable named nodes over aliases with empty or misleading names.
+- [x] Document intentional node-shape compatibility breaks in the plan and README status.
 - [x] Avoid a standalone compatibility layer unless an actual downstream user
       requires one.
 

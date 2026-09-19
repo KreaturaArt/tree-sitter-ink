@@ -66,7 +66,6 @@ module.exports = grammar({
     rules: {
 
         program: $ => prec(1, seq(
-            optional(alias($.empty_line, "")),
             optional($.weave_body),
             repeat(
                 choice(
@@ -121,7 +120,7 @@ module.exports = grammar({
                 $.include_line,
                 $.external_line,
                 $.todo_line,
-                alias($.empty_line, "")
+                $.empty_line
             )
         )),
         weave_body_line: $ => seq(

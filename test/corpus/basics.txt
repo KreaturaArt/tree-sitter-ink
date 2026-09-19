@@ -7,6 +7,8 @@ Single knot
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
@@ -23,6 +25,8 @@ Next knot
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
@@ -48,6 +52,8 @@ asd
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
@@ -94,6 +100,8 @@ body
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
@@ -124,6 +132,7 @@ test -> test.bla
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -168,6 +177,7 @@ asdsdf -> test.bla asdf
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -201,6 +211,7 @@ asdsdf ->
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -225,11 +236,15 @@ End newline
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
       (identifier)
-      (line_end))))
+      (line_end))
+    (weave_body
+      (empty_line))))
 
 =========
 End space
@@ -241,12 +256,15 @@ End space
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
       (identifier)
       (line_end))
-    (weave_body)))
+    (weave_body
+      (empty_line))))
 
 ==========
 Empty line
@@ -260,6 +278,8 @@ b
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (knot
     (knot_header
       (knot_start)
@@ -272,6 +292,7 @@ b
           (text
             (vocabulary)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -308,6 +329,8 @@ a
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (function
     (function_header
       (function_start)
@@ -321,6 +344,8 @@ a
           (text
             (vocabulary)))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -338,6 +363,8 @@ a
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (function
     (function_header
       (function_start)
@@ -366,6 +393,8 @@ a
 --------------------------------------------------------------------------------
 
 (program
+  (weave_body
+    (empty_line))
   (function
     (function_header
       (function_start)
@@ -397,6 +426,7 @@ Numbers
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -427,6 +457,7 @@ Colons
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -462,6 +493,7 @@ asdf
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -489,6 +521,7 @@ asdf
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -520,6 +553,7 @@ Condition text nest (TODO)
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -557,6 +591,7 @@ Condition text nest inline (TODO)
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -588,6 +623,7 @@ Multidivert
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -687,6 +723,7 @@ VAR huhu = 1
 
 (program
   (weave_body
+    (empty_line)
     (var_line
       (var_start)
       (identifier)
@@ -751,6 +788,7 @@ CONST huhu = 1
 
 (program
   (weave_body
+    (empty_line)
     (const_line
       (const_start)
       (identifier)
@@ -810,6 +848,7 @@ test /* asdf */ bla
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -835,6 +874,7 @@ test /* asdf /* test */ */ bla
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -856,6 +896,7 @@ CONST test = 1
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -880,6 +921,7 @@ LIST HuHu = HuHa, (HuHe)
 
 (program
   (weave_body
+    (empty_line)
     (list_line
       (list_start)
       (identifier)
@@ -903,6 +945,7 @@ asdf {teer} asdf
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -923,6 +966,7 @@ asdf {teer:{test:asdf|asdf}|asd} asdf
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -946,6 +990,7 @@ Hide
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (option_text
@@ -970,6 +1015,7 @@ Hide problem
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (option_text
@@ -1012,6 +1058,7 @@ Default option
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (option_text
@@ -1043,6 +1090,7 @@ Option bug
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (option_text
@@ -1072,6 +1120,7 @@ Tags
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text
@@ -1091,6 +1140,7 @@ asdf <> asdf
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (dialog_text

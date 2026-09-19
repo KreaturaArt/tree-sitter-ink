@@ -1807,10 +1807,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "const_line",
+          "named": true
+        },
+        {
+          "type": "empty_line",
           "named": true
         },
         {
@@ -1876,10 +1880,6 @@
     }
   },
   {
-    "type": "",
-    "named": false
-  },
-  {
     "type": "\"",
     "named": false
   },
@@ -1929,6 +1929,10 @@
   },
   {
     "type": "double_arrow",
+    "named": true
+  },
+  {
+    "type": "empty_line",
     "named": true
   },
   {

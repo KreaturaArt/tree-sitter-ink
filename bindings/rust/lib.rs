@@ -80,6 +80,32 @@ mod tests {
     }
 
     #[test]
+    fn test_incremental_newline_edits() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = "first\nsecond";
+        let mut tree = parser.parse(source, None).unwrap();
+        tree.edit(&tree_sitter::InputEdit {
+            start_byte: 6,
+            old_end_byte: 6,
+            new_end_byte: 7,
+            start_position: tree_sitter::Point::new(1, 0),
+            old_end_position: tree_sitter::Point::new(1, 0),
+            new_end_position: tree_sitter::Point::new(2, 0),
+        });
+
+        let edited = "first\n\nsecond";
+        let reparsed = parser.parse(edited, Some(&tree)).unwrap();
+        let sexp = reparsed.root_node().to_sexp();
+
+        assert!(!reparsed.root_node().has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(empty_line)").count(), 1);
+    }
+
+    #[test]
     fn test_block_comments_are_not_nested() {
         let mut parser = tree_sitter::Parser::new();
         parser

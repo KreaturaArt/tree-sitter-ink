@@ -1693,6 +1693,7 @@ It's time I tackled a problem I can solve.
 
 (program
   (weave_body
+    (empty_line)
     (weave_body_line
       (line_start)
       (line_comment)
@@ -1711,6 +1712,8 @@ It's time I tackled a problem I can solve.
       (expression
         (number))
       (line_end))
+    (empty_line)
+    (empty_line)
     (weave_body_line
       (line_start)
       (line_comment)
@@ -1729,6 +1732,8 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
+    (empty_line)
     (weave_body_line
       (line_start)
       (line_comment)
@@ -1747,6 +1752,7 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
     (var_line
       (var_start)
       (identifier)
@@ -1761,6 +1767,7 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
     (weave_body_line
       (line_start)
       (line_comment)
@@ -1802,6 +1809,7 @@ It's time I tackled a problem I can solve.
           (identifier_path
             (identifier))))
       (line_end))
+    (empty_line)
     (var_line
       (var_start)
       (identifier)
@@ -1809,6 +1817,7 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
     (const_line
       (const_start)
       (identifier)
@@ -1832,6 +1841,7 @@ It's time I tackled a problem I can solve.
           (identifier_path
             (identifier))))
       (line_end))
+    (empty_line)
     (var_line
       (var_start)
       (identifier)
@@ -1860,6 +1870,7 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
     (var_line
       (var_start)
       (identifier)
@@ -1867,6 +1878,7 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
     (weave_body_line
       (line_start)
       (line_comment)
@@ -1899,6 +1911,8 @@ It's time I tackled a problem I can solve.
       (expression
         (boolean))
       (line_end))
+    (empty_line)
+    (empty_line)
     (weave_body_line
       (line_start)
       (line_comment)
@@ -1947,36 +1961,13 @@ It's time I tackled a problem I can solve.
             (line_end)
             (line_start))))
       (line_end))
+    (empty_line)
     (weave_body_line
       (line_start)
       (block_comment)
-      (line_end)))
-  (function
-    (function_header
-      (function_start)
-      (identifier)
-      (parameter_list
-        (parameters
-          (parameter
-            (ref)
-            (identifier))))
       (line_end))
-    (weave_body
-      (weave_body_line
-        (line_start)
-        (code_text
-          (assignment_statement
-            (identifier)
-            (assignment)
-            (expression
-              (binary_expression
-                (expression
-                  (reference
-                    (identifier_path
-                      (identifier))))
-                (expression
-                  (number))))))
-        (line_end))))
+    (empty_line)
+    (empty_line))
   (function
     (function_header
       (function_start)
@@ -2003,16 +1994,46 @@ It's time I tackled a problem I can solve.
                 (expression
                   (number))))))
         (line_end))
+      (empty_line)))
+  (function
+    (function_header
+      (function_start)
+      (identifier)
+      (parameter_list
+        (parameters
+          (parameter
+            (ref)
+            (identifier))))
+      (line_end))
+    (weave_body
+      (weave_body_line
+        (line_start)
+        (code_text
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (binary_expression
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (expression
+                  (number))))))
+        (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (block_comment)
-        (line_end))))
+        (line_end))
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
       (identifier)
       (line_end))
     (weave_body
+      (empty_line)
       (weave_body_line
         (line_start)
         (line_comment)
@@ -2115,6 +2136,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -2500,7 +2522,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier)))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -3019,6 +3042,7 @@ It's time I tackled a problem I can solve.
                         (identifier_path
                           (identifier)))))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3056,6 +3080,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3087,6 +3112,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -3296,6 +3322,7 @@ It's time I tackled a problem I can solve.
               (glue)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -3355,6 +3382,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3381,6 +3409,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3429,6 +3458,7 @@ It's time I tackled a problem I can solve.
                         (identifier_path
                           (identifier)))))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (line_comment)
@@ -3452,6 +3482,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -3562,6 +3593,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -3619,7 +3651,8 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end)))))
+          (line_end))
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -3741,6 +3774,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -3934,7 +3968,9 @@ It's time I tackled a problem I can solve.
               (divert_chain
                 (divert_return
                   (double_arrow))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -4022,6 +4058,7 @@ It's time I tackled a problem I can solve.
               (block_remainder))
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4101,6 +4138,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4126,6 +4164,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (choice_text_other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4550,6 +4589,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -4713,6 +4753,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4856,6 +4897,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4913,6 +4955,8 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -4948,6 +4992,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -4961,7 +5006,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier)))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -5143,6 +5190,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -5215,6 +5263,7 @@ It's time I tackled a problem I can solve.
                 (block_remainder))
               (choice_text_other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5243,6 +5292,7 @@ It's time I tackled a problem I can solve.
               (vocabulary))
             (hide_end)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -5267,6 +5317,7 @@ It's time I tackled a problem I can solve.
               (block_remainder))
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -5314,6 +5365,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -5334,6 +5386,7 @@ It's time I tackled a problem I can solve.
                 (inline_block
                   (block_remainder))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (line_comment)
@@ -5445,6 +5498,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5583,6 +5637,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -5642,6 +5697,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5707,6 +5763,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5756,6 +5813,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5823,6 +5881,7 @@ It's time I tackled a problem I can solve.
                   (dot)
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5892,6 +5951,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -5976,7 +6036,10 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -6123,6 +6186,8 @@ It's time I tackled a problem I can solve.
                       (identifier_path
                         (identifier)))))))))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -6251,6 +6316,8 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -6366,6 +6433,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -6388,7 +6456,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier)))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -6516,7 +6585,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -6723,6 +6794,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -6768,6 +6840,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -6847,6 +6920,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -6984,7 +7058,8 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -7059,7 +7134,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -7122,7 +7199,11 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line)
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -7239,7 +7320,8 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -7366,6 +7448,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -7441,6 +7524,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -7691,6 +7775,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -7757,6 +7842,7 @@ It's time I tackled a problem I can solve.
                         (identifier_path
                           (identifier)))))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -7809,6 +7895,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -7868,7 +7955,11 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line)
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -7944,6 +8035,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -8012,6 +8104,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -8115,6 +8208,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -8215,6 +8309,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -8291,6 +8386,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -8326,7 +8422,11 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -8397,6 +8497,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -8474,6 +8575,7 @@ It's time I tackled a problem I can solve.
             (inline_block
               (block_remainder))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (code_text
@@ -8498,7 +8600,11 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier)))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -8822,6 +8928,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -8982,6 +9089,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9096,6 +9204,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9168,6 +9277,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -9270,6 +9380,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (code_text
@@ -9281,6 +9392,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -9303,6 +9415,7 @@ It's time I tackled a problem I can solve.
               (line_end)
               (line_start))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9493,6 +9606,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9553,6 +9667,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9770,6 +9885,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9981,6 +10097,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -9998,6 +10115,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -10033,7 +10151,8 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -10250,6 +10369,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -10393,6 +10513,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -10404,7 +10525,8 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -10611,6 +10733,7 @@ It's time I tackled a problem I can solve.
                     (dot)
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -10630,6 +10753,7 @@ It's time I tackled a problem I can solve.
                     (dot)
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -10739,6 +10863,7 @@ It's time I tackled a problem I can solve.
                     (dot)
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -10797,6 +10922,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -10809,10 +10935,14 @@ It's time I tackled a problem I can solve.
                     (dot)
                     (identifier))))))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (block_comment)
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -10989,6 +11119,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -11052,6 +11183,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -11084,6 +11216,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -11254,6 +11387,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -11371,6 +11505,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -11524,6 +11659,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -11658,6 +11794,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -11713,6 +11850,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -12559,6 +12697,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -12608,6 +12747,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -12659,6 +12799,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -12679,6 +12820,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -12695,7 +12837,9 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line)
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -12917,6 +13061,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -12947,7 +13092,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -13048,7 +13194,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -13119,7 +13267,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -13214,7 +13364,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -13334,6 +13485,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -13492,7 +13644,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -13827,6 +13981,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -13839,10 +13994,13 @@ It's time I tackled a problem I can solve.
                     (identifier_path
                       (identifier)))))))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (block_comment)
-          (line_end)))))
+          (line_end))
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -14193,6 +14351,8 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14256,6 +14416,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14314,6 +14475,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14414,6 +14576,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14458,6 +14621,8 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14526,6 +14691,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -14803,6 +14969,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14854,6 +15021,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -14922,6 +15090,7 @@ It's time I tackled a problem I can solve.
             (other)
             (glue)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -15009,7 +15178,11 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -15215,6 +15388,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -15310,6 +15484,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -15352,6 +15527,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -15431,6 +15607,8 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier)))))))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -15676,6 +15854,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -15774,6 +15953,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -15803,6 +15983,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier)))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -16040,6 +16221,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -16095,6 +16277,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -16129,6 +16312,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -16180,7 +16364,8 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16281,7 +16466,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16340,7 +16526,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16411,10 +16598,15 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (block_comment)
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -16458,6 +16650,8 @@ It's time I tackled a problem I can solve.
                 (block_remainder))
               (line_end)
               (line_start)
+              (line_end)
+              (line_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -16477,6 +16671,7 @@ It's time I tackled a problem I can solve.
               (line_end)
               (line_start))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -16493,7 +16688,9 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line)
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16527,7 +16724,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16627,6 +16825,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -16773,7 +16972,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16853,7 +17053,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -16925,6 +17127,7 @@ It's time I tackled a problem I can solve.
               (other)
               (glue)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -17277,7 +17480,9 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -17508,6 +17713,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -17759,6 +17965,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -17808,6 +18015,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -17892,6 +18100,7 @@ It's time I tackled a problem I can solve.
                 (vocabulary)
                 (other))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -17984,6 +18193,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -18041,6 +18251,8 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -18171,6 +18383,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -18271,6 +18484,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -18288,7 +18502,8 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -18560,6 +18775,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -18587,6 +18803,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -18698,7 +18915,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -19253,6 +19472,7 @@ It's time I tackled a problem I can solve.
             (expression
               (boolean))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -19432,6 +19652,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -19567,10 +19788,14 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (block_comment)
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -20222,6 +20447,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -20492,6 +20718,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -20599,7 +20826,9 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line)
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -20696,6 +20925,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (dialog_text
@@ -20793,7 +21023,9 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -20867,10 +21099,13 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (block_comment)
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -20984,10 +21219,13 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (end_destination)))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (block_comment)
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -21100,10 +21338,13 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (block_comment)
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -21176,6 +21417,7 @@ It's time I tackled a problem I can solve.
             (inline_block
               (block_remainder))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -21252,6 +21494,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -21397,6 +21640,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -21454,6 +21698,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -21533,6 +21778,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -21557,7 +21803,8 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -21653,6 +21900,7 @@ It's time I tackled a problem I can solve.
               (other)
               (glue)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -21721,6 +21969,7 @@ It's time I tackled a problem I can solve.
                 (other)
                 (glue))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -21775,6 +22024,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -21884,6 +22134,7 @@ It's time I tackled a problem I can solve.
                 (other)
                 (glue))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -21927,6 +22178,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -21977,6 +22229,7 @@ It's time I tackled a problem I can solve.
               (other)
               (glue)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -22093,7 +22346,10 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -22417,7 +22673,9 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -22480,6 +22738,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -22548,6 +22807,7 @@ It's time I tackled a problem I can solve.
                     (dot)
                     (identifier))))))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -22599,6 +22859,7 @@ It's time I tackled a problem I can solve.
               (other)
               (glue)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -22662,7 +22923,9 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end))))
+          (line_end))
+        (empty_line)
+        (empty_line)))
     (stitch
       (stitch_header
         (stitch_start)
@@ -23006,6 +23269,7 @@ It's time I tackled a problem I can solve.
               (other)
               (glue)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (option_text
@@ -23090,7 +23354,9 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -23372,6 +23638,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (choice_text_other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -23399,6 +23666,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -23849,6 +24117,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -23911,6 +24180,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -24768,6 +25038,7 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -24795,7 +25066,8 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end)))
+        (line_end))
+      (empty_line))
     (stitch
       (stitch_header
         (stitch_start)
@@ -24983,6 +25255,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)))
           (line_end))
+        (empty_line)
         (weave_body_line
           (line_start)
           (gather_text
@@ -24994,7 +25267,9 @@ It's time I tackled a problem I can solve.
                     (arrow)
                     (identifier_path
                       (identifier)))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -25123,10 +25398,16 @@ It's time I tackled a problem I can solve.
                 (identifier_path
                   (identifier))))))
         (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (block_comment)
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -25311,6 +25592,7 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -25322,6 +25604,7 @@ It's time I tackled a problem I can solve.
               (vocabulary))
             (hide_end)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (dialog_text
@@ -25498,6 +25781,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -25773,7 +26057,11 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -25894,6 +26182,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -25972,6 +26261,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -26107,7 +26397,9 @@ It's time I tackled a problem I can solve.
               (divert
                 (arrow)
                 (end_destination)))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -26444,6 +26736,7 @@ It's time I tackled a problem I can solve.
               (vocabulary))
             (hide_end)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -26558,6 +26851,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -26695,6 +26989,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -26881,6 +27176,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -26968,6 +27264,7 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -27039,6 +27336,7 @@ It's time I tackled a problem I can solve.
                 (block_remainder))
               (other))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (gather_text
@@ -27087,10 +27385,13 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (end_destination)))))
         (line_end))
+      (empty_line)
+      (empty_line)
       (weave_body_line
         (line_start)
         (block_comment)
-        (line_end))))
+        (line_end))
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -27590,6 +27891,7 @@ It's time I tackled a problem I can solve.
                   (identifier_path
                     (identifier)))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -27682,6 +27984,7 @@ It's time I tackled a problem I can solve.
                   (dot)
                   (identifier))))))
         (line_end))
+      (empty_line)
       (weave_body_line
         (line_start)
         (option_text
@@ -27854,7 +28157,10 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -27990,7 +28296,10 @@ It's time I tackled a problem I can solve.
                   (arrow)
                   (identifier_path
                     (identifier))))))
-          (line_end)))))
+          (line_end))
+        (empty_line)
+        (empty_line)
+        (empty_line))))
   (knot
     (knot_header
       (knot_start)
@@ -28209,7 +28518,11 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -28309,7 +28622,10 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
@@ -28357,7 +28673,9 @@ It's time I tackled a problem I can solve.
                 (arrow)
                 (identifier_path
                   (identifier))))))
-        (line_end))))
+        (line_end))
+      (empty_line)
+      (empty_line)))
   (knot
     (knot_header
       (knot_start)
