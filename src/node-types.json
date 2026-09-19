@@ -1,24 +1,5 @@
 [
   {
-    "type": "block_comment",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "block_comment_end",
-          "named": true
-        },
-        {
-          "type": "block_comment_start",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "call_argument",
     "named": true,
     "fields": {},
@@ -1084,11 +1065,7 @@
     "named": true
   },
   {
-    "type": "block_comment_end",
-    "named": true
-  },
-  {
-    "type": "block_comment_start",
+    "type": "block_comment",
     "named": true
   },
   {

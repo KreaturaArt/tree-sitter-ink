@@ -180,9 +180,9 @@ asdsdf -> test.bla asdf
               (identifier_path
                 (identifier)
                 (dot)
-                (ERROR
-                  (identifier))
                 (identifier))))))
+      (ERROR
+        (identifier))
       (line_end)))
   (knot
     (knot_header
@@ -851,17 +851,13 @@ test /* asdf */ bla
       (dialog_text
         (text
           (vocabulary)
-          (block_comment
-            (block_comment_start)
-            (block_comment_end))
+          (block_comment)
           (vocabulary)))
       (line_end)))
   (knot
     (knot_header
       (knot_start)
-      (block_comment
-        (block_comment_start)
-        (block_comment_end))
+      (block_comment)
       (identifier)
       (line_end))))
 
@@ -880,12 +876,8 @@ test /* asdf /* test */ */ bla
       (dialog_text
         (text
           (vocabulary)
-          (block_comment
-            (block_comment_start)
-            (block_comment
-              (block_comment_start)
-              (block_comment_end))
-            (block_comment_end))
+          (block_comment)
+          (other)
           (vocabulary)))
       (line_end))))
 

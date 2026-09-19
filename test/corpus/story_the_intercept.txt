@@ -1945,9 +1945,7 @@ It's time I tackled a problem I can solve.
       (line_end))
     (weave_body_line
       (line_start)
-      (block_comment
-        (block_comment_start)
-        (block_comment_end))
+      (block_comment)
       (line_end)))
   (function
     (function_header
@@ -1993,9 +1991,7 @@ It's time I tackled a problem I can solve.
         (line_end))
       (weave_body_line
         (line_start)
-        (block_comment
-          (block_comment_start)
-          (block_comment_end))
+        (block_comment)
         (line_end))))
   (knot
     (knot_header
@@ -10340,9 +10336,7 @@ It's time I tackled a problem I can solve.
           (line_end))
         (weave_body_line
           (line_start)
-          (block_comment
-            (block_comment_start)
-            (block_comment_end))
+          (block_comment)
           (line_end)))))
   (knot
     (knot_header
@@ -13319,9 +13313,7 @@ It's time I tackled a problem I can solve.
           (line_end))
         (weave_body_line
           (line_start)
-          (block_comment
-            (block_comment_start)
-            (block_comment_end))
+          (block_comment)
           (line_end)))))
   (knot
     (knot_header
@@ -15866,9 +15858,7 @@ It's time I tackled a problem I can solve.
           (line_end))
         (weave_body_line
           (line_start)
-          (block_comment
-            (block_comment_start)
-            (block_comment_end))
+          (block_comment)
           (line_end)))))
   (knot
     (knot_header
@@ -18915,9 +18905,7 @@ It's time I tackled a problem I can solve.
         (line_end))
       (weave_body_line
         (line_start)
-        (block_comment
-          (block_comment_start)
-          (block_comment_end))
+        (block_comment)
         (line_end))))
   (knot
     (knot_header
@@ -20218,9 +20206,7 @@ It's time I tackled a problem I can solve.
           (line_end))
         (weave_body_line
           (line_start)
-          (block_comment
-            (block_comment_start)
-            (block_comment_end))
+          (block_comment)
           (line_end)))))
   (knot
     (knot_header
@@ -20338,9 +20324,7 @@ It's time I tackled a problem I can solve.
         (line_end))
       (weave_body_line
         (line_start)
-        (block_comment
-          (block_comment_start)
-          (block_comment_end))
+        (block_comment)
         (line_end))))
   (knot
     (knot_header
@@ -20455,9 +20439,7 @@ It's time I tackled a problem I can solve.
         (line_end))
       (weave_body_line
         (line_start)
-        (block_comment
-          (block_comment_start)
-          (block_comment_end))
+        (block_comment)
         (line_end))))
   (knot
     (knot_header
@@ -24409,9 +24391,7 @@ It's time I tackled a problem I can solve.
         (line_end))
       (weave_body_line
         (line_start)
-        (block_comment
-          (block_comment_start)
-          (block_comment_end))
+        (block_comment)
         (line_end))))
   (knot
     (knot_header
@@ -26344,9 +26324,7 @@ It's time I tackled a problem I can solve.
         (line_end))
       (weave_body_line
         (line_start)
-        (block_comment
-          (block_comment_start)
-          (block_comment_end))
+        (block_comment)
         (line_end))))
   (knot
     (knot_header

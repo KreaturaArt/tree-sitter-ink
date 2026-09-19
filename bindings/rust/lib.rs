@@ -66,6 +66,35 @@ mod tests {
     }
 
     #[test]
+    fn test_line_comment_boundaries() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        for source in ["//", "// comment\ntext", "// comment\r\ntext"] {
+            let tree = parser.parse(source, None).unwrap();
+            assert!(!tree.root_node().has_error(), "accepted boundary: {source:?}");
+            assert!(tree.root_node().to_sexp().contains("(line_comment)"));
+        }
+    }
+
+    #[test]
+    fn test_block_comments_are_not_nested() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let tree = parser.parse("text /* outer /* inner */ remainder", None).unwrap();
+        let sexp = tree.root_node().to_sexp();
+
+        assert!(!tree.root_node().has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(block_comment)").count(), 1);
+        assert!(sexp.contains("(vocabulary)"));
+    }
+
+    #[test]
     fn test_unpaired_function_parentheses_are_errors() {
         let mut parser = tree_sitter::Parser::new();
         parser

@@ -35,14 +35,15 @@ The largest remaining limitations are:
 
 - [x] Stop line-comment scanning at EOF.
 - [x] Test a non-empty line comment at EOF with no final newline.
-- [ ] Test an empty line comment at EOF with no final newline.
-- [ ] Test comments before LF, CRLF, and CR line endings.
-- [ ] Match upstream non-nesting block comments, which end at the first `*/`.
-- [ ] Keep newlines inside block comments observable enough for correct source
+- [x] Test an empty line comment at EOF with no final newline.
+- [x] Test comments before LF and CRLF line endings.
+- [x] Treat bare CR as unsupported recovery input, matching upstream.
+- [x] Match upstream non-nesting block comments, which end at the first `*/`.
+- [x] Keep newlines inside block comments observable enough for correct source
       positions.
-- [ ] Rename misspelled scanner helpers such as `check_commment_start`.
-- [ ] Remove unused scanner helpers and includes.
-- [ ] Ensure failed scanner probes never consume input in a way that impairs
+- [x] Rename misspelled scanner helpers such as `check_commment_start`.
+- [x] Remove unused scanner helpers and includes.
+- [x] Ensure failed scanner probes never consume input in a way that impairs
       recovery.
 
 ## Slice 2: Paired Delimiters And Recovery
@@ -274,7 +275,7 @@ The largest remaining limitations are:
       discarded, then implement only that model.
 - [ ] Remove the generated anonymous node whose type is an empty string.
 - [ ] Test LF, CRLF, and CR throughout declarations, comments, and flow bodies.
-- [ ] Treat U+2028 and U+2029 as unsupported input, not line endings or spaces.
+- [x] Treat U+2028 and U+2029 as unsupported input, not line endings or spaces.
 - [ ] Keep indentation non-semantic.
 - [ ] Verify incremental reparsing around inserted and deleted newlines.
 - [ ] Isolate this slice because it will update broad corpus snapshots.

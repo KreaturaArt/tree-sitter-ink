@@ -1,5 +1,4 @@
 #include "tree_sitter/parser.h"
-#include <stdio.h>
 
 /* Notes
 - There is no need to lex single characters. Only multi-character symbols and
@@ -19,8 +18,6 @@ enum TokenType {
     ARROW,
     DOUBLE_ARROW,
     BACK_ARROW,
-    BLOCK_COMMENT_START,
-    BLOCK_COMMENT_END,
     LINE_COMMENT,
     GLUE,
     LINE_START,
@@ -44,37 +41,8 @@ static const char *KW_LIST = "LIST";
 static const char *KW_INCLUDE = "INCLUDE";
 static const char *KW_EXTERNAL = "EXTERNAL";
 static const char *KW_TODO = "TODO";
-static const char *PAIR_BLOCK_COMMENT_END = "*/";
-
-static int is_unicode_whitespace(int32_t wc) {
-    // Does not contain \n and \r since this is handled by LINE_END
-    switch (wc) {
-        case L' ':   // Space (U+0020)
-        case L'\t':  // Tab (U+0009)
-        case L'\v':  // Vertical Tab (U+000B)
-        case L'\f':  // Form Feed (U+000C)
-        case L'\u00A0': // No-Break Space (U+00A0)
-        case L'\u1680': // Ogham Space Mark (U+1680)
-        case L'\u2000': // En Quad (U+2000)
-        case L'\u2001': // Em Quad (U+2001)
-        case L'\u2002': // En Space (U+2002)
-        case L'\u2003': // Em Space (U+2003)
-        case L'\u2004': // Three-Per-Em Space (U+2004)
-        case L'\u2005': // Four-Per-Em Space (U+2005)
-        case L'\u2006': // Six-Per-Em Space (U+2006)
-        case L'\u2007': // Figure Space (U+2007)
-        case L'\u2008': // Punctuation Space (U+2008)
-        case L'\u2009': // Thin Space (U+2009)
-        case L'\u200A': // Hair Space (U+200A)
-        case L'\u2028': // Line Separator (U+2028)
-        case L'\u2029': // Paragraph Separator (U+2029)
-        case L'\u202F': // Narrow No-Break Space (U+202F)
-        case L'\u205F': // Medium Mathematical Space (U+205F)
-        case L'\u3000': // Ideographic Space (U+3000)
-            return 1;
-        default:
-            return 0;
-    }
+static bool is_inline_whitespace(int32_t wc) {
+    return wc == ' ' || wc == '\t';
 }
 
 static bool lex_keyword(TSLexer *lexer, const char *keyword) {
@@ -88,23 +56,13 @@ static bool lex_keyword(TSLexer *lexer, const char *keyword) {
 }
 
 static void skip_function_spacing(TSLexer *lexer) {
-    while (lexer->lookahead == '=' || is_unicode_whitespace(lexer->lookahead)) {
+    while (lexer->lookahead == '=' || is_inline_whitespace(lexer->lookahead)) {
         lexer->advance(lexer, false);
     }
 }
 
 static void skip_whitespace(TSLexer *lexer) {
-    while (is_unicode_whitespace(lexer->lookahead)) {
-        lexer->advance(lexer, false);
-    }
-}
-
-static void skip_whitespace_and_newline(TSLexer *lexer) {
-    while (
-        is_unicode_whitespace(lexer->lookahead) ||
-        lexer->lookahead == '\n' ||
-        lexer->lookahead == '\r'
-    ) {
+    while (is_inline_whitespace(lexer->lookahead)) {
         lexer->advance(lexer, false);
     }
 }
@@ -123,28 +81,11 @@ static bool check_keyword(
 ) {
     if (lexer->lookahead == keyword[0] && valid_symbols[token]) {
         if (lex_keyword(lexer, keyword)) {
-            if (is_unicode_whitespace(lexer->lookahead)) {
+            if (is_inline_whitespace(lexer->lookahead)) {
                 lexer->mark_end(lexer);
                 lexer->result_symbol = token;
                 return true;
             }
-        }
-    }
-    return false;
-}
-
-static bool check_pair(
-    TSLexer *lexer,
-    const bool *valid_symbols,
-    const enum TokenType token,
-    const char* pair
-) {
-    if (valid_symbols[token] && lexer->lookahead == pair[0]) {
-        lexer->advance(lexer, false);
-        if (lexer->lookahead == pair[1]) {
-            lexer->advance(lexer, false);
-            lexer->result_symbol = token;
-            return true;
         }
     }
     return false;
@@ -199,7 +140,7 @@ static bool check_start_tokens(TSLexer *lexer, const bool *valid_symbols) {
                         lexer->mark_end(lexer);
                         if (
                             lexer->lookahead == '(' ||
-                            is_unicode_whitespace(lexer->lookahead)
+                            is_inline_whitespace(lexer->lookahead)
                         ) {
                             lexer->result_symbol = FUNCTION_START;
                         }
@@ -225,7 +166,7 @@ static bool check_start_tokens(TSLexer *lexer, const bool *valid_symbols) {
         }
         if (lexer->lookahead == 'T' && valid_symbols[TODO_START]) {
             if (lex_keyword(lexer, KW_TODO)) {
-                if (lexer->lookahead == ':' || is_unicode_whitespace(lexer->lookahead)) {
+                if (lexer->lookahead == ':' || is_inline_whitespace(lexer->lookahead)) {
                     lexer->mark_end(lexer);
                     lexer->result_symbol = TODO_START;
                     return true;
@@ -285,20 +226,13 @@ static bool check_arrows(TSLexer *lexer, const bool *valid_symbols) {
     return false;
 }
 
-static bool check_commment_start(TSLexer *lexer, const bool *valid_symbols) {
+static bool check_comment_start(TSLexer *lexer, const bool *valid_symbols) {
     if (
-        (
-            valid_symbols[BLOCK_COMMENT_START] ||
-            valid_symbols[LINE_COMMENT]
-        )
+        valid_symbols[LINE_COMMENT]
         && lexer->lookahead == '/'
     ) {
         lexer->advance(lexer, false);
-        if (lexer->lookahead == '*') {
-            lexer->advance(lexer, false);
-            lexer->result_symbol = BLOCK_COMMENT_START;
-            return true;
-        } else if (lexer->lookahead == '/') {
+        if (lexer->lookahead == '/') {
             lexer->advance(lexer, false);
             lexer->result_symbol = LINE_COMMENT;
             while (
@@ -336,7 +270,7 @@ static bool check_glue_back_arrow(TSLexer *lexer, const bool *valid_symbols) {
     return false;
 }
 
-static bool scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
+static bool scan(TSLexer *lexer, const bool *valid_symbols) {
     // Position dependant lexes (whitespaces may not be consumed)
     if (check_start_tokens(lexer, valid_symbols)) return true;
 
@@ -345,17 +279,13 @@ static bool scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
     if (check_glue_back_arrow(lexer, valid_symbols)) return true;
     if (check_line_end(lexer, valid_symbols)) return true;
     if (check_arrows(lexer, valid_symbols)) return true;
-    if (check_commment_start(lexer, valid_symbols)) return true;
-    if (check_pair(lexer, valid_symbols, BLOCK_COMMENT_END, PAIR_BLOCK_COMMENT_END)) {
-        return true;
-    }
+    if (check_comment_start(lexer, valid_symbols)) return true;
     return false;
 }
 
 bool tree_sitter_ink_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
-    bool result = scan(payload, lexer, valid_symbols);
-    //fprintf(stderr, "Scan: %d %d\n", result, lexer->result_symbol);
-    return result;
+    (void)payload;
+    return scan(lexer, valid_symbols);
 }
 
 void *tree_sitter_ink_external_scanner_create() {
@@ -363,11 +293,17 @@ void *tree_sitter_ink_external_scanner_create() {
 }
 
 void tree_sitter_ink_external_scanner_destroy(void *payload) {
+    (void)payload;
 }
 
 unsigned tree_sitter_ink_external_scanner_serialize(void *payload, char *buffer) {
+    (void)payload;
+    (void)buffer;
     return 0;
 }
 
 void tree_sitter_ink_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {
+    (void)payload;
+    (void)buffer;
+    (void)length;
 }

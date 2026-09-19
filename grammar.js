@@ -1,4 +1,4 @@
-const WS = /[ \t\v\f\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u2028\u2029\u202F\u205F\u3000]/;
+const WS = /[ \t]/;
 
 /* Note
 - PLEASE remember that repeat($.line_start, $.catch_all, $.line_end) can also
@@ -28,8 +28,6 @@ module.exports = grammar({
         $.arrow,
         $.double_arrow,
         $.back_arrow,
-        $.block_comment_start,
-        $.block_comment_end,
         $.line_comment,
         $.glue,
         $.line_start,
@@ -59,14 +57,14 @@ module.exports = grammar({
             )
         )),
 
-        block_comment: $ => seq(
-            $.block_comment_start,
+        block_comment: $ => token(seq(
+            /\/\*/,
             repeat(choice(
                 /[^*]/,
                 /\*[^/]/
             )),
-            $.block_comment_end
-        ),
+            /\*\//,
+        )),
 
         knot: $ => seq(
             $.knot_header,
