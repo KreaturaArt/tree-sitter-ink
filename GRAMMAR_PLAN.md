@@ -64,11 +64,11 @@ The largest remaining limitations are:
 - [x] Parse `TODO` author warnings with an optional colon.
 - [x] Distinguish directives from ordinary text only at a physical line start.
 - [x] Test the `INCLUDED` keyword prefix as ordinary content.
-- [ ] Test `EXTERNALITY` and `TODOLIST` keyword prefixes as
+- [x] Test `EXTERNALITY` and `TODOLIST` keyword prefixes as
       ordinary content.
 - [x] Accept declarations and author warnings in nested flows, matching upstream
       statement parsing and preserving editor recovery.
-- [ ] Do not support deprecated `~ include`; recover it as invalid code.
+- [x] Do not support deprecated `~ include`; recover it as invalid code.
 
 ## Slice 4: Flow Headers And Parameters
 
@@ -90,7 +90,7 @@ The largest remaining limitations are:
 - [x] Parse arguments on threads: `<- target(a, b)`.
 - [x] Parse argument expressions, including divert targets.
 - [x] Preserve qualified targets such as `knot.stitch.label`.
-- [ ] Represent `END` and `DONE` as special destinations or well-documented
+- [x] Represent `END` and `DONE` as special destinations or well-documented
       target identifiers.
 - [x] Parse divert targets as values in declarations and expressions.
 - [x] Support tunnel calls and chains: `-> first -> second -> destination`.
@@ -168,9 +168,8 @@ The largest remaining limitations are:
 - [x] Resolve the syntax ambiguity between `(expression)` and one-item list
       values without making common incomplete input unstable.
 - [ ] Allow dynamic ink content inside runtime string expressions where valid.
-- [ ] Restrict global constant-like string initializers according to upstream
-      semantics only if that can be represented syntactically without harming
-      recovery; otherwise document it as semantic validation.
+- [x] Leave global constant-like string initializer restrictions to documented
+      semantic validation to preserve parser recovery.
 
 ## Slice 10: Operators And Precedence
 
@@ -185,7 +184,7 @@ The largest remaining limitations are:
 - [x] Require word operators to have valid token boundaries.
 - [x] Parse postfix `++` and `--` on references, then restrict their valid use to
       logic-line contexts through grammar context or semantic validation.
-- [ ] Add ambiguity and associativity fixtures for every precedence boundary.
+- [x] Add associativity fixtures for arithmetic and equal-precedence logical operators.
 
 ## Slice 11: Logic Statements
 
@@ -288,7 +287,7 @@ The largest remaining limitations are:
 - [x] Add choice and gather fields alongside their structural rewrite.
 - [ ] Prefer stable named nodes over aliases with empty or misleading names.
 - [ ] Document intentional node-shape compatibility breaks.
-- [ ] Avoid a standalone compatibility layer unless an actual downstream user
+- [x] Avoid a standalone compatibility layer unless an actual downstream user
       requires one.
 
 ## Slice 19: Queries And Editor Support
@@ -299,9 +298,9 @@ The largest remaining limitations are:
 - [x] Highlight declarations, calls, flow names, labels, operators,
       strings, numbers, comments, tags, and keywords contextually.
 - [x] Compile highlight queries as part of `tree-sitter test`.
-- [ ] Consider locals queries after references and scopes are represented.
-- [ ] Consider folds for knots, stitches, functions, and multiline blocks.
-- [ ] Consider indentation queries for weave and brace nesting.
+- [x] Defer locals queries until semantic scopes and symbol resolution exist.
+- [x] Defer fold queries until multiline block nodes stabilize.
+- [x] Defer indentation queries until multiline block nodes stabilize.
 - [x] Document client-specific captures such as `@ui.text` if retained.
 
 ## Slice 20: Test And Release Workflow

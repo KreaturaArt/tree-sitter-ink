@@ -184,7 +184,9 @@ mod tests {
             "EXTERNAL playSound(name)\n",
             "EXTERNAL currentScore()\n",
             "TODO: Rewrite this scene\n",
-            "INCLUDED is ordinary text",
+            "INCLUDED is ordinary text\n",
+            "EXTERNALITY is ordinary text\n",
+            "TODOLIST is ordinary text",
         );
         let tree = parser.parse(source, None).unwrap();
         let root = tree.root_node();
@@ -194,7 +196,10 @@ mod tests {
         assert_eq!(sexp.matches("(include_line").count(), 1);
         assert_eq!(sexp.matches("(external_line").count(), 2);
         assert_eq!(sexp.matches("(todo_line").count(), 1);
-        assert!(sexp.contains("(dialog_text"));
+        assert_eq!(sexp.matches("(dialog_text").count(), 3);
+
+        let deprecated = parser.parse("~ include old.ink", None).unwrap();
+        assert!(deprecated.root_node().has_error());
     }
 
     #[test]
@@ -269,6 +274,22 @@ mod tests {
             assert!(!tree.root_node().has_error(), "rejected {source:?}");
             assert!(tree.root_node().to_sexp().contains("(divert_return"));
         }
+    }
+
+    #[test]
+    fn test_special_divert_destinations() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let tree = parser.parse("-> END\n-> DONE", None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert!(sexp.contains("(end_destination)"));
+        assert!(sexp.contains("(done_destination)"));
     }
 
     #[test]

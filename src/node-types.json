@@ -507,6 +507,14 @@
         "required": true,
         "types": [
           {
+            "type": "done_destination",
+            "named": true
+          },
+          {
+            "type": "end_destination",
+            "named": true
+          },
+          {
             "type": "identifier_path",
             "named": true
           }
@@ -625,6 +633,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "done_destination",
+            "named": true
+          },
+          {
+            "type": "end_destination",
+            "named": true
+          },
           {
             "type": "identifier_path",
             "named": true
@@ -1904,11 +1920,19 @@
     "named": true
   },
   {
+    "type": "done_destination",
+    "named": true
+  },
+  {
     "type": "dot",
     "named": true
   },
   {
     "type": "double_arrow",
+    "named": true
+  },
+  {
+    "type": "end_destination",
     "named": true
   },
   {

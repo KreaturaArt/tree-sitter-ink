@@ -20982,8 +20982,7 @@ It's time I tackled a problem I can solve.
             (divert_chain
               (divert
                 (arrow)
-                (identifier_path
-                  (identifier))))))
+                (end_destination)))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -26107,8 +26106,7 @@ It's time I tackled a problem I can solve.
             (divert_chain
               (divert
                 (arrow)
-                (identifier_path
-                  (identifier))))))
+                (end_destination)))))
         (line_end))))
   (knot
     (knot_header
@@ -27087,8 +27085,7 @@ It's time I tackled a problem I can solve.
             (divert_chain
               (divert
                 (arrow)
-                (identifier_path
-                  (identifier))))))
+                (end_destination)))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -29178,6 +29175,5 @@ It's time I tackled a problem I can solve.
             (divert_chain
               (divert
                 (arrow)
-                (identifier_path
-                  (identifier))))))
+                (end_destination)))))
         (line_end)))))

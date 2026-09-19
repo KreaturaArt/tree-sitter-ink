@@ -684,8 +684,7 @@ VAR time = 0
             (divert_chain
               (divert
                 (arrow)
-                (identifier_path
-                  (identifier))))))
+                (done_destination)))))
         (line_end))))
   (knot
     (knot_header
@@ -5200,6 +5199,5 @@ VAR time = 0
               (divert_chain
                 (divert
                   (arrow)
-                  (identifier_path
-                    (identifier)))))))
+                  (end_destination))))))
         (line_end)))))

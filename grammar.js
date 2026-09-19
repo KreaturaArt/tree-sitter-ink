@@ -333,7 +333,7 @@ module.exports = grammar({
         ),
         divert: $ => seq(
             $.arrow,
-            field("target", $.identifier_path),
+            field("target", choice($.end_destination, $.done_destination, $.identifier_path)),
             optional(field("arguments", $.call_arguments)),
         ),
         divert_continue: $ => $.arrow,
@@ -517,8 +517,10 @@ module.exports = grammar({
         )),
         divert_target_value: $ => seq(
             $.arrow,
-            field("target", $.identifier_path),
+            field("target", choice($.end_destination, $.done_destination, $.identifier_path)),
         ),
+        end_destination: $ => /END/,
+        done_destination: $ => /DONE/,
         reference: $ => $.identifier_path,
         parenthesized_expression: $ => seq(
             /\(/,

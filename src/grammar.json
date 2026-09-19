@@ -1345,8 +1345,21 @@
           "type": "FIELD",
           "name": "target",
           "content": {
-            "type": "SYMBOL",
-            "name": "identifier_path"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "end_destination"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "done_destination"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier_path"
+              }
+            ]
           }
         },
         {
@@ -2529,11 +2542,32 @@
           "type": "FIELD",
           "name": "target",
           "content": {
-            "type": "SYMBOL",
-            "name": "identifier_path"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "end_destination"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "done_destination"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier_path"
+              }
+            ]
           }
         }
       ]
+    },
+    "end_destination": {
+      "type": "PATTERN",
+      "value": "END"
+    },
+    "done_destination": {
+      "type": "PATTERN",
+      "value": "DONE"
     },
     "reference": {
       "type": "SYMBOL",
