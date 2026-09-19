@@ -24,6 +24,8 @@ enum TokenType {
     INLINE_CONDITIONAL_START,
     INLINE_SEQUENCE_START,
     BLOCK_BRACE_START,
+    CHOICE_LABEL_CONTINUATION,
+    CHOICE_CONDITION_CONTINUATION,
     LINE_START,
     STITCH_START,
     KNOT_START,
@@ -197,7 +199,11 @@ static bool check_start_tokens(TSLexer *lexer, const bool *valid_symbols) {
 
 static bool check_line_end(TSLexer *lexer, const bool *valid_symbols) {
     if (
-        valid_symbols[LINE_END] &&
+        (
+            valid_symbols[LINE_END] ||
+            valid_symbols[CHOICE_LABEL_CONTINUATION] ||
+            valid_symbols[CHOICE_CONDITION_CONTINUATION]
+        ) &&
         (
             lexer->lookahead == '\n' ||
             lexer->lookahead == '\r' ||
@@ -205,7 +211,25 @@ static bool check_line_end(TSLexer *lexer, const bool *valid_symbols) {
         )
     ) {
         lexer->result_symbol = LINE_END;
-        if (!lexer->eof(lexer) && !skip_newline(lexer)) return false;
+        if (lexer->eof(lexer)) return valid_symbols[LINE_END];
+        if (!skip_newline(lexer)) return false;
+        lexer->mark_end(lexer);
+
+        if (
+            valid_symbols[CHOICE_LABEL_CONTINUATION] ||
+            valid_symbols[CHOICE_CONDITION_CONTINUATION]
+        ) {
+            skip_whitespace(lexer);
+            if (lexer->lookahead == '{' || lexer->lookahead == '[') {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = valid_symbols[CHOICE_CONDITION_CONTINUATION]
+                    ? CHOICE_CONDITION_CONTINUATION
+                    : CHOICE_LABEL_CONTINUATION;
+                return true;
+            }
+        }
+
+        if (!valid_symbols[LINE_END]) return false;
         return true;
     }
     return false;

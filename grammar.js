@@ -60,6 +60,8 @@ module.exports = grammar({
         $.inline_conditional_start,
         $.inline_sequence_start,
         $.block_brace_start,
+        $.choice_label_continuation,
+        $.choice_condition_continuation,
         $.line_start,
         $.stitch_start,
         $.knot_start,
@@ -161,8 +163,20 @@ module.exports = grammar({
 
         option_text: $ => seq(
             field("marker", $.choice_marker),
-            optional(field("label", $.label)),
-            repeat(field("condition", $.choice_condition)),
+            optional(choice(
+                seq(
+                    field("label", $.label),
+                    optional($.choice_label_continuation),
+                    repeat(seq(
+                        field("condition", $.choice_condition),
+                        optional($.choice_condition_continuation),
+                    )),
+                ),
+                repeat1(seq(
+                    field("condition", $.choice_condition),
+                    optional($.choice_condition_continuation),
+                )),
+            )),
             optional(field("content", $.choice_content)),
             optional(field("target", choice($.divert_or_thread, $.default_option_mark))),
         ),

@@ -1833,6 +1833,20 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "choice_condition_continuation",
+          "named": true
+        },
+        {
+          "type": "choice_label_continuation",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2603,6 +2617,14 @@
   },
   {
     "type": "boolean",
+    "named": true
+  },
+  {
+    "type": "choice_condition_continuation",
+    "named": true
+  },
+  {
+    "type": "choice_label_continuation",
     "named": true
   },
   {

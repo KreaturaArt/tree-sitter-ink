@@ -380,6 +380,29 @@ mod tests {
     }
 
     #[test]
+    fn test_choice_prefix_continuation_lines() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "* (return)\n",
+            "  {visited}\n",
+            "  {not bored}\n",
+            "  [Return]",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert_eq!(sexp.matches("_continuation)").count(), 3);
+        assert!(sexp.matches("(choice_condition").count() >= 2);
+        assert!(sexp.contains("label: (label"));
+    }
+
+    #[test]
     fn test_repeated_tags_with_freeform_text() {
         let mut parser = tree_sitter::Parser::new();
         parser

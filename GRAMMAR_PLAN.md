@@ -53,7 +53,7 @@ The largest remaining limitations are:
 - [x] Add malformed-input binding cases for missing opening and closing tokens.
 - [x] Keep incomplete editor input recoverable with explicit `ERROR` or missing
       tokens rather than silently accepting malformed declarations.
-- [ ] Apply the same paired-delimiter policy to labels, list values, calls, and
+- [x] Apply the same paired-delimiter policy to labels, list values, calls, and
       parameter lists as those constructs are added.
 
 ## Slice 3: Source Directives
@@ -107,9 +107,9 @@ The largest remaining limitations are:
 - [x] Preserve structural depth for compact and spaced markers (`***`, `* * *`).
 - [x] Reject or recover mixed marker kinds at one choice depth.
 - [x] Parse choice labels before conditions.
-- [ ] Support a newline between a choice label and its text, added in ink 1.2.0.
+- [x] Support a newline between a choice label and its text, added in ink 1.2.0.
 - [x] Parse multiple adjacent choice conditions on a physical choice line.
-- [ ] Support conditions and choice content split across lines.
+- [x] Support conditions and choice content split across lines.
 - [x] Represent choice text partitions before, inside, and after `[...]`.
 - [x] Support empty hidden text `[]`.
 - [x] Support fallback choices and fallback choices with bodies.
@@ -309,8 +309,8 @@ The largest remaining limitations are:
 - [x] Add focused corpus files by feature instead of extending one large file
       indefinitely.
 - [x] Keep real-story fixtures as non-error integration tests.
-- [ ] Add scanner regression tests for EOF and incremental edits.
-- [ ] Add malformed syntax fixtures where recovery behavior is part of the API.
+- [x] Add scanner regression tests for EOF and incremental edits.
+- [x] Add malformed syntax tests where recovery behavior is part of the API.
 - [x] Run `tree-sitter generate` after every grammar shape change completed so far.
 - [x] Verify `tree-sitter test` after every completed slice so far.
 - [ ] Verify all available language bindings before release.
