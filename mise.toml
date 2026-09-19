@@ -1,0 +1,63 @@
+[tools]
+cmake = "3.31.12"
+go = "1.22.12"
+node = "22.14.0"
+python = "3.12.14"
+rust = "1.85.0"
+swift = "6.4.0"
+
+[tasks.install-node]
+hide = true
+run = '''
+npm install --no-package-lock
+npm rebuild
+'''
+
+[tasks.test-corpus]
+description = "Run the Tree-sitter corpus tests"
+depends = ["install-node"]
+run = "npm run test:corpus"
+
+[tasks.test-c]
+description = "Build the C binding"
+run = '''
+cmake -S . -B target/cmake -DBUILD_SHARED_LIBS=ON
+cmake --build target/cmake
+'''
+
+[tasks.test-go]
+description = "Test the Go binding"
+run = "go test ./bindings/go"
+
+[tasks.test-node]
+description = "Test the Node binding"
+depends = ["install-node"]
+run = "npm run test:bindings"
+
+[tasks.test-python]
+description = "Test the Python binding"
+run = '''
+python -m venv .venv
+.venv/bin/python -m pip install '.[core]' pytest
+.venv/bin/python -m pytest bindings/python/tests
+'''
+
+[tasks.test-rust]
+description = "Test the Rust binding"
+run = "cargo test --locked"
+
+[tasks.test-swift]
+description = "Test the Swift binding"
+run = "swift test"
+
+[tasks.ci]
+description = "Run the corpus and all binding checks"
+depends = [
+  "test-corpus",
+  "test-c",
+  "test-go",
+  "test-node",
+  "test-python",
+  "test-rust",
+  "test-swift",
+]
