@@ -137,21 +137,21 @@ The largest remaining limitations are:
 
 ## Slice 8: Identifiers, Paths, And Escapes
 
-- [ ] Match upstream's explicit supported Unicode ranges instead of accepting
+- [x] Match upstream's explicit supported Unicode ranges instead of accepting
       arbitrary Unicode letters and numbers.
-- [ ] Add CJK, Hiragana, Katakana, Hangul, Arabic, Hebrew, Armenian, Cyrillic,
+- [x] Add CJK, Hiragana, Katakana, Hangul, Arabic, Hebrew, Armenian, Cyrillic,
       Greek, and Latin range fixtures.
 - [x] Permit identifiers beginning with digits.
-- [ ] Reject identifiers made entirely of digits.
+- [x] Reject identifiers made entirely of digits.
 - [x] Reject hyphens in identifiers while continuing to permit them in prose.
-- [ ] Test combining marks and document whether upstream accepts them.
+- [x] Test and reject generic combining marks outside upstream's explicit ranges.
 - [x] Parse qualified identifier paths of arbitrary depth.
 - [ ] Distinguish declarations, references, calls, list items, and flow paths in
       the syntax tree.
-- [ ] Parse backslash as an escape of the immediately following character.
-- [ ] Support escapes in prose, choices, tags, and strings.
-- [ ] Cover escaped whitespace before a choice-leading alternative.
-- [ ] Do not interpret escapes as C-style sequences such as newline escapes.
+- [x] Parse backslash as an escape of the immediately following character.
+- [x] Support escapes in prose, choices, tags, and strings.
+- [x] Cover escaped whitespace before a choice-leading alternative.
+- [x] Do not interpret escapes as C-style sequences such as newline escapes.
 
 ## Slice 9: Literals And Expression Foundation
 

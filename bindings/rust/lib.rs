@@ -95,6 +95,58 @@ mod tests {
     }
 
     #[test]
+    fn test_identifier_ranges_and_numeric_rejection() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let valid = [
+            "=== 2tests ===",
+            "=== café ===",
+            "=== Ελληνικά ===",
+            "=== Кириллица ===",
+            "=== Հայերեն ===",
+            "=== עברית ===",
+            "=== العربية ===",
+            "=== ひらがな ===",
+            "=== カタカナ ===",
+            "=== 漢字 ===",
+            "=== 한글 ===",
+        ];
+        for source in valid {
+            let tree = parser.parse(source, None).unwrap();
+            assert!(!tree.root_node().has_error(), "rejected {source:?}");
+        }
+
+        for source in ["=== 123 ===", "=== cafe\u{301} ==="] {
+            let tree = parser.parse(source, None).unwrap();
+            assert!(tree.root_node().has_error(), "accepted {source:?}");
+        }
+    }
+
+    #[test]
+    fn test_escaped_structural_characters() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "Literal \\# \\{ \\[ \\\\ \\n.\n",
+            "+\\ {&one|two}\n",
+            "# tag with \\# hash",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(escaped_character").count(), 7);
+        assert_eq!(sexp.matches("(tag ").count(), 1);
+    }
+
+    #[test]
     fn test_unpaired_function_parentheses_are_errors() {
         let mut parser = tree_sitter::Parser::new();
         parser

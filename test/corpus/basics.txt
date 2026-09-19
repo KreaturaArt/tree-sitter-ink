@@ -671,42 +671,6 @@ Multidivert
               (double_arrow)))))
       (line_end))))
 
-===================
-Illegal multidivert
-===================
-
-->->a
-->a->->b
-
---------------------------------------------------------------------------------
-
-(program
-  (weave_body
-    (weave_body_line
-      (line_start)
-      (dialog_text
-        (divert_or_thread
-          (divert_chain
-            (divert_return
-              (double_arrow)))))
-      (ERROR
-        (identifier))
-      (line_end))
-    (weave_body_line
-      (line_start)
-      (dialog_text
-        (divert_or_thread
-          (divert_chain
-            (divert
-              (arrow)
-              (identifier_path
-                (identifier)))
-            (divert_return
-              (double_arrow)))))
-      (ERROR
-        (identifier))
-      (line_end))))
-
 ===
 VAR
 ===

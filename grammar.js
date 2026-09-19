@@ -1,4 +1,8 @@
 const WS = /[ \t]/;
+const ID_ASCII = "A-Za-z0-9_";
+const ID_UNICODE = "\\u0080-\\u00FF\\u0100-\\u024F\\u0370-\\u0373\\u0376-\\u0377\\u0386\\u0388-\\u038A\\u038C\\u038E-\\u03A1\\u03A3-\\u03FF\\u0400-\\u0481\\u048A-\\u04FF\\u0531-\\u0556\\u0561-\\u0587\\u058F\\u0590-\\u06FF\\u3041-\\u3096\\u30A0-\\u30FC\\u4E00-\\u9FFF\\uAC00-\\uD7AF";
+const ID_CHAR = `[${ID_ASCII}${ID_UNICODE}]`;
+const ID_NON_DIGIT = `[A-Za-z_${ID_UNICODE}]`;
 
 /* Note
 - PLEASE remember that repeat($.line_start, $.catch_all, $.line_end) can also
@@ -230,6 +234,7 @@ module.exports = grammar({
             seq($.text, repeat1($.tag))
         ),
         text: $ => repeat1(choice(
+            $.escaped_character,
             $.glue,
             $.inline_block,
             $.vocabulary,
@@ -237,6 +242,7 @@ module.exports = grammar({
         )),
 
         words: $ => repeat1(choice(
+            $.escaped_character,
             $.hide_start,
             $.hide_end,
             $.glue,
@@ -362,9 +368,13 @@ module.exports = grammar({
 
         tag: $ => seq(
             /#/,
-            $.tag_text,
+            repeat1(choice(
+                $.escaped_character,
+                $.inline_block,
+                $.tag_text,
+            )),
         ),
-        tag_text: $ => /[^#\r\n]+/,
+        tag_text: $ => /[^#\\\{\}\r\n]+/,
 
         value: $ => choice(
             $.boolean,
@@ -376,10 +386,15 @@ module.exports = grammar({
         string: $ => seq(
             '"',
             repeat(choice(
-                /[^"\\\n\r]/,
-                /\\./
+                /[^"\\\n\r]+/,
+                $.escaped_character,
             )),
             '"'
+        ),
+
+        escaped_character: $ => seq(
+            /\\/,
+            alias(token.immediate(/[^\r\n]/), $.escaped_value),
         ),
 
         ref: $ => /ref/,
@@ -390,12 +405,12 @@ module.exports = grammar({
         directive_remainder: $ => /[^\r\n]+/,
         block_remainder: $ => /[^\r\n\}\{]+/,
         vocabulary: $ => /[\p{N}\p{L}_-]+/,
-        identifier: $ => /[\p{N}\p{L}_]+/,
+        identifier: $ => token(new RegExp(`${ID_CHAR}*${ID_NON_DIGIT}${ID_CHAR}*`, "u")),
         // Single character catch-all in the form /[]+/ would be to
         // greedy, these are meant to catch punctionation. Therefore we use
         // prec.right(repeat1(/[]/)).
-        other: $ => prec.right(repeat1(/[^\s\n\r\p{N}\p{L}_]/)),
-        word_other: $ => prec.right(repeat1(/[^\s\n\r\p{N}\p{L}\[\]_]/))
+        other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}_]/)),
+        word_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}\[\]_]/))
 
     }
 })
