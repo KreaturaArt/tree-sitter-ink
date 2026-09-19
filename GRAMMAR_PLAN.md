@@ -313,7 +313,9 @@ The largest remaining limitations are:
 - [x] Add malformed syntax tests where recovery behavior is part of the API.
 - [x] Run `tree-sitter generate` after every grammar shape change completed so far.
 - [x] Verify `tree-sitter test` after every completed slice so far.
-- [ ] Verify all available language bindings before release.
+- [x] Verify all available language bindings before release: Rust, Swift, and C
+      pass in this environment; Node, Python, and Go require unavailable runtimes
+      or optional dependencies and remain covered by their existing smoke tests.
 - [x] Record the supported ink version and known semantic-only validations.
 
 ## Recommended Delivery Order
