@@ -9,6 +9,11 @@ node_modules/
 # Swift artifacts
 .build/
 
+# Zig artifacts
+.zig-cache/
+zig-out/
+zig-pkg/
+
 # Go artifacts
 _obj/
 
