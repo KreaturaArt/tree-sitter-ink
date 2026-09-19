@@ -949,12 +949,14 @@ Hide
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_words
-          (words
-            (hide_start)
-            (vocabulary)
-            (hide_end)
+        (choice_marker
+          (once_choice_marker))
+        (choice_content
+          (hide_start)
+          (choice_text
+            (vocabulary))
+          (hide_end)
+          (choice_text
             (vocabulary))))
       (line_end))))
 
@@ -971,31 +973,32 @@ Hide problem
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_words
-          (words
-            (hide_start)
-            (word_other)
+        (choice_marker
+          (sticky_choice_marker))
+        (choice_content
+          (hide_start)
+          (choice_text
+            (choice_text_other)
             (vocabulary)
-            (word_other)
+            (choice_text_other)
             (vocabulary)
-            (word_other)
-            (vocabulary)
-            (hide_end))
-          (divert_or_thread
-            (divert_chain
-              (divert
-                (arrow)
-                (identifier_path
-                  (identifier)))
-              (divert
-                (arrow)
-                (identifier_path
-                  (identifier)))
-              (divert
-                (arrow)
-                (identifier_path
-                  (identifier)))))))
+            (choice_text_other)
+            (vocabulary))
+          (hide_end))
+        (divert_or_thread
+          (divert_chain
+            (divert
+              (arrow)
+              (identifier_path
+                (identifier)))
+            (divert
+              (arrow)
+              (identifier_path
+                (identifier)))
+            (divert
+              (arrow)
+              (identifier_path
+                (identifier))))))
       (line_end))))
 
 ==============
@@ -1012,20 +1015,21 @@ Default option
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_words
-          (default_option_mark
-            (arrow))))
+        (choice_marker
+          (once_choice_marker))
+        (default_option_mark
+          (arrow)))
       (line_end))
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_words
-          (words
-            (vocabulary))
-          (default_option_mark
-            (arrow))))
+        (choice_marker
+          (once_choice_marker))
+        (choice_content
+          (shared_choice_text
+            (vocabulary)))
+        (default_option_mark
+          (arrow)))
       (line_end))))
 
 ==========
@@ -1042,19 +1046,19 @@ Option bug
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_mark)
-        (option_words
-          (words
+        (choice_marker
+          (once_choice_marker))
+        (choice_content
+          (shared_choice_text
             (vocabulary))))
       (line_end))
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_mark)
-        (option_words
-          (words
+        (choice_marker
+          (once_choice_marker))
+        (choice_content
+          (shared_choice_text
             (vocabulary))))
       (line_end))))
 
@@ -1105,9 +1109,10 @@ asdf <> asdf
     (weave_body_line
       (line_start)
       (option_text
-        (option_mark)
-        (option_words
-          (words
+        (choice_marker
+          (once_choice_marker))
+        (choice_content
+          (shared_choice_text
             (vocabulary)
             (glue)
             (vocabulary))))

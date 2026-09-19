@@ -14,7 +14,8 @@
 (function_header) @keyword
 
 ; marks (ink)
-(option_mark) @keyword.directive
+(once_choice_marker) @keyword.directive
+(sticky_choice_marker) @keyword.directive
 (gather_mark) @type.builtin
 (glue) @type.builtin
 

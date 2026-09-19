@@ -41,6 +41,7 @@ module.exports = grammar({
     ],
     conflicts: $ => [
         [$.list_value, $.reference],
+        [$.tag],
     ],
     externals: $ => [
         $.arrow,
@@ -149,18 +150,56 @@ module.exports = grammar({
         ),
 
         option_text: $ => seq(
-            repeat1($.option_mark),
-            optional($.label),
-            optional($.option_words)
+            field("marker", $.choice_marker),
+            optional(field("label", $.label)),
+            repeat(field("condition", $.choice_condition)),
+            optional(field("content", $.choice_content)),
+            optional(field("target", choice($.divert_or_thread, $.default_option_mark))),
         ),
-        option_mark: $ => /[\+\*]/,
-        option_words: $ => choice(
-            $.words,
-            $.divert_or_thread,
-            $.default_option_mark,
-            seq($.words, $.divert_or_thread),
-            seq($.words, $.default_option_mark)
+        choice_marker: $ => choice(
+            $.once_choice_marker,
+            $.sticky_choice_marker,
         ),
+        once_choice_marker: $ => repeat1(/\*/),
+        sticky_choice_marker: $ => repeat1(/\+/),
+        choice_condition: $ => prec.dynamic(3, seq(/\{/, field("condition", $.expression), /\}/)),
+        choice_content: $ => choice(
+            field("shared", $.shared_choice_text),
+            seq(
+                optional(field("shared", $.shared_choice_text)),
+                $.hide_start,
+                optional(field("choice_only", $.choice_text)),
+                $.hide_end,
+                optional(field("output_only", $.choice_text)),
+            ),
+        ),
+        shared_choice_text: $ => seq(
+            choice(
+                $.escaped_character,
+                $.glue,
+                $.tag,
+                $.vocabulary,
+                $.shared_choice_text_other,
+            ),
+            repeat(choice(
+                $.escaped_character,
+                $.glue,
+                $.inline_block,
+                $.tag,
+                $.vocabulary,
+                $.choice_text_other,
+            )),
+        ),
+        shared_choice_text_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}\[\]_#\(\{\+\*]/)),
+        choice_text: $ => repeat1(choice(
+            $.escaped_character,
+            $.glue,
+            $.inline_block,
+            $.tag,
+            $.vocabulary,
+            $.choice_text_other,
+        )),
+        choice_text_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}\[\]_#]/)),
         default_option_mark: $ => $.arrow,
 
         divert_or_thread: $ => choice(
@@ -168,11 +207,11 @@ module.exports = grammar({
             $.thread
         ),
 
-        label: $ => seq(
+        label: $ => prec.dynamic(3, seq(
             /\(/,
             $.identifier,
             /\)/
-        ),
+        )),
 
         code_text: $ => seq(
             /~/,
@@ -279,15 +318,6 @@ module.exports = grammar({
             $.other,
         )),
 
-        words: $ => repeat1(choice(
-            $.escaped_character,
-            $.hide_start,
-            $.hide_end,
-            $.glue,
-            $.inline_block,
-            $.vocabulary,
-            $.word_other,
-        )),
         hide_start: $ => /\[/,
         hide_end: $ => /\]/,
 
@@ -441,7 +471,7 @@ module.exports = grammar({
                 $.tag_text,
             )),
         ),
-        tag_text: $ => /[^#\\\{\}\r\n]+/,
+        tag_text: $ => /[^#\\\{\}\[\]\r\n]+/,
 
         expression: $ => choice(
             $.binary_expression,
@@ -543,7 +573,6 @@ module.exports = grammar({
         // greedy, these are meant to catch punctionation. Therefore we use
         // prec.right(repeat1(/[]/)).
         other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}_]/)),
-        word_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}\[\]_]/))
 
     }
 })

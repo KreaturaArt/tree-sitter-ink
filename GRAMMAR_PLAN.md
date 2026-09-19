@@ -102,21 +102,21 @@ The largest remaining limitations are:
 
 ## Slice 6: Choices And Weaves
 
-- [ ] Preserve once-only `*` and sticky `+` choice kinds as distinct nodes or a
+- [x] Preserve once-only `*` and sticky `+` choice kinds as distinct nodes or a
       named marker value.
 - [x] Preserve structural depth for compact and spaced markers (`***`, `* * *`).
-- [ ] Reject or recover mixed marker kinds at one choice depth.
-- [ ] Parse choice labels before conditions.
+- [x] Reject or recover mixed marker kinds at one choice depth.
+- [x] Parse choice labels before conditions.
 - [ ] Support a newline between a choice label and its text, added in ink 1.2.0.
-- [ ] Parse multiple adjacent choice conditions.
+- [x] Parse multiple adjacent choice conditions on a physical choice line.
 - [ ] Support conditions and choice content split across lines.
-- [ ] Represent choice text partitions before, inside, and after `[...]`.
+- [x] Represent choice text partitions before, inside, and after `[...]`.
 - [x] Support empty hidden text `[]`.
 - [x] Support fallback choices and fallback choices with bodies.
-- [ ] Support tags in shared, choice-only, and output-only partitions.
+- [x] Support tags in shared, choice-only, and output-only partitions.
 - [x] Parse diverts at the end of choice text.
-- [ ] Add fields for marker, depth, label, conditions, displayed text, output
-      text, and target where practical.
+- [x] Add fields for marker, label, conditions, shared/choice-only/output-only
+      content, and target; marker child count represents depth.
 - [x] Preserve gather depth for compact and spaced `-` markers.
 - [x] Parse gather labels and divert-only gathers.
 - [ ] Distinguish weave gathers from branch dashes inside brace blocks.

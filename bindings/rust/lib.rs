@@ -305,6 +305,34 @@ mod tests {
     }
 
     #[test]
+    fn test_choice_structure_and_partitions() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "* (leave) {door_open} Hello #shared [Leave #choice] goodbye #output -> outside\n",
+            "+ + sticky\n",
+            "* [] output only\n",
+            "* ->",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert!(sexp.contains("(once_choice_marker"));
+        assert!(sexp.contains("(sticky_choice_marker"));
+        assert!(sexp.contains("(choice_condition"));
+        assert_eq!(sexp.matches("(choice_text").count(), 3);
+        assert_eq!(sexp.matches("(tag ").count(), 3);
+
+        let mixed = parser.parse("* + mixed", None).unwrap();
+        assert!(mixed.root_node().has_error());
+    }
+
+    #[test]
     fn test_repeated_tags_with_freeform_text() {
         let mut parser = tree_sitter::Parser::new();
         parser
