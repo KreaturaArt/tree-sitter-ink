@@ -79,7 +79,12 @@
 (inline_expression) @embedded
 (inline_conditional) @embedded
 (inline_sequence) @embedded
-(condition_block) @embedded
+[
+  (multiline_if)
+  (multiline_conditional)
+  (multiline_switch)
+  (multiline_sequence)
+] @embedded
 
 ; Helix uses this client-specific capture to retain prose rendering.
 (program) @ui.text

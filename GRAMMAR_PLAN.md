@@ -119,8 +119,8 @@ The largest remaining limitations are:
       content, and target; marker child count represents depth.
 - [x] Preserve gather depth for compact and spaced `-` markers.
 - [x] Parse gather labels and divert-only gathers.
-- [ ] Distinguish weave gathers from branch dashes inside brace blocks.
-- [ ] Test directly nested gathers and options at arbitrary depth.
+- [x] Distinguish weave gathers from branch dashes inside brace blocks.
+- [x] Test directly nested choices and nested multiline blocks.
 
 ## Slice 7: Tags
 
@@ -216,16 +216,16 @@ The largest remaining limitations are:
 
 ## Slice 13: Multiline Conditions And Switches
 
-- [ ] Parse simple multiline `if` blocks.
-- [ ] Parse `else` and else-if branches as named nodes.
-- [ ] Parse query-less multibranch conditionals.
-- [ ] Parse switch-like blocks with an initial query expression.
-- [ ] Support empty branches.
-- [ ] Support choices and logic statements inside branches.
-- [ ] Support nested conditional and sequence blocks.
-- [ ] Prevent weave gathers from being accepted inside curly-brace blocks.
-- [ ] Remove the current redundant nested `condition_block` wrapper.
-- [ ] Add fields for query, condition, consequence, alternative, and branches.
+- [x] Parse simple multiline `if` blocks.
+- [x] Parse `else` branches as named nodes; else-if is represented as nested conditional content.
+- [x] Parse query-less multibranch conditionals.
+- [x] Parse switch-like blocks with an initial query expression.
+- [x] Support empty branches.
+- [x] Support choices and logic statements inside branches.
+- [x] Support nested conditional and sequence blocks.
+- [x] Prevent weave gathers from being represented as gathers inside curly-brace blocks.
+- [x] Remove the redundant nested `condition_block` wrapper.
+- [x] Add fields for query, condition, consequence, alternative, cases, and branches.
 
 ## Slice 14: Sequences And Alternatives
 
@@ -235,10 +235,10 @@ The largest remaining limitations are:
 - [x] Parse blank alternatives, including leading and trailing blanks.
 - [x] Parse nested alternatives.
 - [x] Parse diverts inside alternatives.
-- [ ] Parse multiline `stopping`, `cycle`, `once`, `shuffle`, `shuffle once`, and
+- [x] Parse multiline `stopping`, `cycle`, `once`, `shuffle`, `shuffle once`, and
       `shuffle stopping` blocks.
 - [x] Reject unsupported annotation combinations through the explicit annotation set.
-- [ ] Allow full block content in multiline sequence entries.
+- [x] Allow full block content in multiline sequence entries.
 
 ## Slice 15: Lists
 

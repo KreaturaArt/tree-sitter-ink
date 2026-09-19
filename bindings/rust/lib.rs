@@ -425,4 +425,47 @@ mod tests {
         assert!(sexp.contains("(sequence_annotation"));
         assert_eq!(sexp.matches("(sequence_separator").count(), 3);
     }
+
+    #[test]
+    fn test_structured_multiline_blocks() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "{x > 0:\n",
+            "  ~ y = 1\n",
+            "- else:\n",
+            "  * [Retry]\n",
+            "}\n",
+            "{\n",
+            "- x < 0: negative\n",
+            "- else: positive\n",
+            "}\n",
+            "{room:\n",
+            "- 1: kitchen\n",
+            "- else: elsewhere\n",
+            "}\n",
+            "{shuffle once:\n",
+            "- red\n",
+            "- blue\n",
+            "}",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert!(sexp.contains("(multiline_if"));
+        assert!(sexp.contains("(multiline_conditional"));
+        assert!(sexp.contains("(multiline_switch"));
+        assert!(sexp.contains("(multiline_sequence"));
+        assert!(sexp.contains("(else_branch"));
+        assert!(sexp.contains("(option_text"));
+        assert!(sexp.contains("(assignment_statement"));
+
+        let gather = parser.parse("{x:\n-- invalid gather\n}", None).unwrap();
+        assert!(!gather.root_node().to_sexp().contains("(gather_text"));
+    }
 }

@@ -92,6 +92,114 @@
     }
   },
   {
+    "type": "block_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_line_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_text",
+          "named": true
+        },
+        {
+          "type": "dialog_text",
+          "named": true
+        },
+        {
+          "type": "option_text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block_statement_line",
+          "named": true
+        },
+        {
+          "type": "const_line",
+          "named": true
+        },
+        {
+          "type": "empty_line",
+          "named": true
+        },
+        {
+          "type": "external_line",
+          "named": true
+        },
+        {
+          "type": "include_line",
+          "named": true
+        },
+        {
+          "type": "list_line",
+          "named": true
+        },
+        {
+          "type": "nested_block_statement",
+          "named": true
+        },
+        {
+          "type": "todo_line",
+          "named": true
+        },
+        {
+          "type": "var_line",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_statement_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_line_content",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "call_argument",
     "named": true,
     "fields": {},
@@ -327,50 +435,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "block_brace_start",
+          "type": "multiline_conditional",
           "named": true
         },
         {
-          "type": "condition_block",
+          "type": "multiline_if",
           "named": true
         },
         {
-          "type": "condition_block_content",
+          "type": "multiline_sequence",
           "named": true
         },
         {
-          "type": "line_end",
-          "named": true
-        },
-        {
-          "type": "line_start",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "condition_block_content",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "block_remainder",
-          "named": true
-        },
-        {
-          "type": "condition_block",
-          "named": true
-        },
-        {
-          "type": "inline_block",
+          "type": "multiline_switch",
           "named": true
         }
       ]
@@ -390,6 +471,56 @@
         },
         {
           "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "conditional_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_line_content",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
           "named": true
         }
       ]
@@ -658,6 +789,46 @@
       "types": [
         {
           "type": "arrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      },
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_line_content",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
           "named": true
         }
       ]
@@ -1350,6 +1521,207 @@
     "fields": {}
   },
   {
+    "type": "multiline_conditional",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_branch",
+            "named": true
+          }
+        ]
+      },
+      "branch": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "conditional_branch",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_brace_start",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multiline_if",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_branch",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_brace_start",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multiline_sequence",
+    "named": true,
+    "fields": {
+      "annotation": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "multiline_sequence_annotation",
+            "named": true
+          }
+        ]
+      },
+      "entry": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "sequence_entry",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_brace_start",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multiline_sequence_annotation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "multiline_switch",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_branch",
+            "named": true
+          }
+        ]
+      },
+      "case": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "switch_case",
+            "named": true
+          }
+        ]
+      },
+      "query": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_brace_start",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "mutation_statement",
     "named": true,
     "fields": {
@@ -1373,6 +1745,29 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "nested_block_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "condition_block",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1636,6 +2031,46 @@
     }
   },
   {
+    "type": "sequence_entry",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      },
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_line_content",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "sequence_separator",
     "named": true,
     "fields": {}
@@ -1780,6 +2215,56 @@
       "types": [
         {
           "type": "escaped_character",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_case",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      },
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_line_content",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
           "named": true
         }
       ]
@@ -2114,10 +2599,6 @@
   },
   {
     "type": "block_comment",
-    "named": true
-  },
-  {
-    "type": "block_remainder",
     "named": true
   },
   {

@@ -1163,17 +1163,30 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (line_end)
-                (line_start))))
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)
+                        (dot)
+                        (identifier))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (code_text
+                            (assignment_statement
+                              (identifier)
+                              (assignment)
+                              (expression
+                                (boolean)))))
+                        (line_end)))
+                    (block_statement
+                      (empty_line)))
+                  (line_start)))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -1754,19 +1767,36 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start))))
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (code_text
+                            (mutation_statement
+                              (identifier)
+                              (mutation_operator))))
+                        (line_end)))
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (text
+                              (glue)
+                              (other))))
+                        (line_end))))
+                  (line_start)))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -2220,37 +2250,73 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start))))
+                (multiline_conditional
+                  (block_brace_start)
+                  (line_end)
+                  (conditional_branch
+                    (line_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (line_end)
+                    (block_body
+                      (block_statement
+                        (block_statement_line
+                          (line_start)
+                          (block_line_content
+                            (dialog_text
+                              (text
+                                (other))))
+                          (line_end)))))
+                  (conditional_branch
+                    (line_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (line_end)
+                    (block_body
+                      (block_statement
+                        (block_statement_line
+                          (line_start)
+                          (block_line_content
+                            (dialog_text
+                              (text
+                                (other))))
+                          (line_end)))))
+                  (else_branch
+                    (line_start)
+                    (line_end)
+                    (block_body
+                      (block_statement
+                        (block_statement_line
+                          (line_start)
+                          (block_line_content
+                            (dialog_text
+                              (text
+                                (other))))
+                          (line_end)))
+                      (block_statement
+                        (block_statement_line
+                          (line_start)
+                          (block_line_content
+                            (code_text
+                              (assignment_statement
+                                (identifier)
+                                (assignment)
+                                (expression
+                                  (boolean)))))
+                          (line_end)))))
+                  (line_start)))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -2258,19 +2324,41 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start))))
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier)
+                            (dot)
+                            (identifier)
+                            (dot)
+                            (identifier))))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (text
+                              (other))))
+                        (line_end)))
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (code_text
+                            (assignment_statement
+                              (identifier)
+                              (assignment)
+                              (expression
+                                (boolean)))))
+                        (line_end))))
+                  (line_start)))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -2278,19 +2366,41 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start))))
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier)
+                            (dot)
+                            (identifier)
+                            (dot)
+                            (identifier))))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (text
+                              (other))))
+                        (line_end)))
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (code_text
+                            (assignment_statement
+                              (identifier)
+                              (assignment)
+                              (expression
+                                (boolean)))))
+                        (line_end))))
+                  (line_start)))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -2807,27 +2917,61 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start))))
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (text
+                              (other))))
+                        (line_end)))
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (divert_or_thread
+                              (thread
+                                (back_arrow)
+                                (identifier_path
+                                  (identifier))))))
+                        (line_end)))
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (code_text
+                            (assignment_statement
+                              (identifier)
+                              (assignment)
+                              (expression
+                                (boolean)))))
+                        (line_end)))
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (divert_or_thread
+                              (divert_chain
+                                (divert
+                                  (arrow)
+                                  (identifier_path
+                                    (identifier)))))))
+                        (line_end))))
+                  (line_start)))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -4928,27 +5072,39 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (inline_block
-                    (inline_conditional
-                      (inline_conditional_start)
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (binary_expression
                       (expression
                         (reference
                           (identifier_path
                             (identifier))))
-                      (inline_content
-                        (inline_text_other)
-                        (glue))
-                      (inline_content
-                        (inline_text_other)
-                        (glue)))))
-                (line_end)
-                (line_start))))
+                      (expression
+                        (number))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (text
+                              (inline_block
+                                (inline_conditional
+                                  (inline_conditional_start)
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))
+                                  (inline_content
+                                    (inline_text_other)
+                                    (glue))
+                                  (inline_content
+                                    (inline_text_other)
+                                    (glue)))))))
+                        (line_end))))
+                  (line_start)))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -4961,27 +5117,39 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
-                (block_brace_start)
-                (condition_block_content
-                  (block_remainder))
-                (line_end)
-                (line_start)
-                (condition_block_content
-                  (inline_block
-                    (inline_conditional
-                      (inline_conditional_start)
+                (multiline_if
+                  (block_brace_start)
+                  (expression
+                    (binary_expression
                       (expression
                         (reference
                           (identifier_path
                             (identifier))))
-                      (inline_content
-                        (glue)
-                        (inline_text_other))
-                      (inline_content
-                        (glue)
-                        (inline_text_other)))))
-                (line_end)
-                (line_start))))
+                      (expression
+                        (number))))
+                  (line_end)
+                  (block_body
+                    (block_statement
+                      (block_statement_line
+                        (line_start)
+                        (block_line_content
+                          (dialog_text
+                            (text
+                              (inline_block
+                                (inline_conditional
+                                  (inline_conditional_start)
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))
+                                  (inline_content
+                                    (glue)
+                                    (inline_text_other))
+                                  (inline_content
+                                    (glue)
+                                    (inline_text_other)))))))
+                        (line_end))))
+                  (line_start)))))
           (line_end))
         (weave_body_line
           (line_start)
