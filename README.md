@@ -7,9 +7,27 @@ unicode support.
 
 ## State
 
-It currently does not parse code and conditions further, but I plan to implement
-this. First I am working on a language-server based on tree-sitter-ink with the
-goal of having an IDE with full unicode support.
+The grammar targets ink 1.2.1. It structurally parses flow declarations,
+directives, choices, navigation, declarations, lists, expressions, and logic
+statements. Inline and multiline conditional/sequence content remains the main
+area represented by balanced recovery nodes.
+
+Validation that depends on symbol resolution or runtime types is intentionally
+left to semantic tooling. This includes reserved-name errors, declaration
+initializer restrictions, built-in arity, function-body restrictions, and list
+origin/type checks.
+
+Run the corpus and Node binding checks with:
+
+```shell
+npm test
+```
+
+Run Rust binding and parser regressions with:
+
+```shell
+cargo test
+```
 
 ## Install for helix
 

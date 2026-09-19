@@ -306,9 +306,9 @@ The largest remaining limitations are:
 
 ## Slice 20: Test And Release Workflow
 
-- [ ] Make `npm test` run corpus and binding tests.
+- [x] Make `npm test` run corpus and binding tests.
 - [x] Add binding smoke tests that parse representative ink features.
-- [ ] Add focused corpus files by feature instead of extending one large file
+- [x] Add focused corpus files by feature instead of extending one large file
       indefinitely.
 - [x] Keep real-story fixtures as non-error integration tests.
 - [ ] Add scanner regression tests for EOF and incremental edits.
@@ -316,7 +316,7 @@ The largest remaining limitations are:
 - [x] Run `tree-sitter generate` after every grammar shape change completed so far.
 - [x] Verify `tree-sitter test` after every completed slice so far.
 - [ ] Verify all available language bindings before release.
-- [ ] Record the supported ink version and known semantic-only validations.
+- [x] Record the supported ink version and known semantic-only validations.
 
 ## Recommended Delivery Order
 

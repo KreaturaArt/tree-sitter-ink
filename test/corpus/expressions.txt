@@ -1,0 +1,130 @@
+============================
+Expressions and logic lines
+============================
+
+VAR decimal = 12.5
+VAR target = -> knot.stitch
+VAR list = (Origin.one, Other.two)
+~ temp roll = RANDOM(1, 6)
+~ value = a + b - c
+~ value += 2
+~ value--
+~ return not ready or count >= 2
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (var_line
+      (var_start)
+      name: (identifier)
+      operator: (assignment)
+      value: (expression
+        (float))
+      (line_end))
+    (var_line
+      (var_start)
+      name: (identifier)
+      operator: (assignment)
+      value: (expression
+        (divert_target_value
+          (arrow)
+          target: (identifier_path
+            (identifier)
+            (dot)
+            (identifier))))
+      (line_end))
+    (var_line
+      (var_start)
+      name: (identifier)
+      operator: (assignment)
+      value: (expression
+        (list_value
+          item: (identifier_path
+            (identifier)
+            (dot)
+            (identifier))
+          item: (identifier_path
+            (identifier)
+            (dot)
+            (identifier))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          name: (identifier)
+          operator: (assignment)
+          value: (expression
+            (call_expression
+              function: (identifier)
+              arguments: (call_arguments
+                (call_argument
+                  (expression
+                    (number)))
+                (call_argument
+                  (expression
+                    (number))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              right: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (compound_assignment)
+          value: (expression
+            (number))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (mutation_statement
+          target: (identifier)
+          operator: (mutation_operator)))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (return_statement
+          value: (expression
+            (binary_expression
+                  left: (expression
+                    (unary_expression
+                      operator: (not_operator)
+                      argument: (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+              operator: (or_operator)
+              right: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  right: (expression
+                    (number))))))))
+      (line_end))))
