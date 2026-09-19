@@ -115,4 +115,28 @@ mod tests {
         assert_eq!(sexp.matches("(todo_line").count(), 1);
         assert!(sexp.contains("(dialog_text"));
     }
+
+    #[test]
+    fn test_flow_parameters_and_call_arguments() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "=== sleep(-> waking, ref fatigue, ref -> fallback) ===\n",
+            "= response(mood)\n",
+            "-> sleep(-> wake_in_hut, fatigue, true, 2, \"north\")\n",
+            "<- shared_choices(room, -> return_here)",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(parameter_list").count(), 2);
+        assert_eq!(sexp.matches("(parameter ").count(), 4);
+        assert_eq!(sexp.matches("(call_arguments").count(), 2);
+        assert_eq!(sexp.matches("(call_argument ").count(), 7);
+    }
 }

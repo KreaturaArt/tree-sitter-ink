@@ -15,13 +15,6 @@ const WS = /[ \t\v\f\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007
         - Function and stitch bodies are optional
 */
 
-/* TODO
-- === knot(name) knot arguments
-- = stitch(name) stitch arguments
-- = knit(-> name) knot divert arguments
-- = stitch(-> name) stitch divert arguments
-*/
-
 module.exports = grammar({
     name: "ink",
     extras: $ => [
@@ -86,6 +79,7 @@ module.exports = grammar({
             $.knot_start,
             optional(/=+/),
             $.identifier,
+            optional($.parameter_list),
             optional(/=+/),
             $.line_end
         ),
@@ -97,6 +91,7 @@ module.exports = grammar({
         stitch_header: $ => seq(
             $.stitch_start,
             $.identifier,
+            optional($.parameter_list),
             $.line_end,
         ),
 
@@ -197,9 +192,7 @@ module.exports = grammar({
         external_line: $ => seq(
             $.external_start,
             $.identifier,
-            /\(/,
-            optional($.arguments),
-            /\)/,
+            $.parameter_list,
             $.line_end,
         ),
         todo_line: $ => seq(
@@ -269,40 +262,60 @@ module.exports = grammar({
         divert: $ => seq(
             $.arrow,
             $.identifier_path,
+            optional($.call_arguments),
         ),
         divert_continue: $ => $.arrow,
         divert_return: $ => $.double_arrow,
         thread: $ => seq(
             $.back_arrow,
-            $.identifier_path
+            $.identifier_path,
+            optional($.call_arguments),
         ),
 
         function_header: $ => seq(
             $.function_start,
             optional(/=+/),
             $.identifier,
-            optional(seq(
-                /\(/,
-                optional($.arguments),
-                /\)/,
-            )),
+            optional($.parameter_list),
             optional(/=+/),
             $.line_end
         ),
 
-        arguments: $ => seq(
-            $.argument,
+        parameter_list: $ => seq(
+            /\(/,
+            optional($.parameters),
+            /\)/,
+        ),
+        parameters: $ => seq(
+            $.parameter,
             repeat(
                 seq(
                     /,/,
-                    $.argument
+                    $.parameter
                 )
             ),
             optional(/,/),
         ),
-        argument: $ => seq(
+        parameter: $ => seq(
             optional($.ref),
+            optional($.arrow),
             $.identifier
+        ),
+        call_arguments: $ => seq(
+            /\(/,
+            optional(seq(
+                $.call_argument,
+                repeat(seq(
+                    /,/,
+                    $.call_argument,
+                )),
+                optional(/,/),
+            )),
+            /\)/,
+        ),
+        call_argument: $ => choice(
+            $.value,
+            seq($.arrow, $.identifier_path),
         ),
 
         condition_text: $ => seq(

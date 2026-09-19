@@ -312,6 +312,7 @@ a
     (function_header
       (function_start)
       (identifier)
+      (parameter_list)
       (line_end))
     (weave_body
       (weave_body_line
@@ -341,11 +342,12 @@ a
     (function_header
       (function_start)
       (identifier)
-      (arguments
-        (argument
-          (identifier))
-        (argument
-          (identifier)))
+      (parameter_list
+        (parameters
+          (parameter
+            (identifier))
+          (parameter
+            (identifier))))
       (line_end))
     (weave_body
       (weave_body_line
@@ -368,11 +370,12 @@ a
     (function_header
       (function_start)
       (identifier)
-      (arguments
-        (argument
-          (identifier))
-        (argument
-          (identifier)))
+      (parameter_list
+        (parameters
+          (parameter
+            (identifier))
+          (parameter
+            (identifier))))
       (line_end))
     (weave_body
       (weave_body_line
@@ -757,6 +760,7 @@ VAR huhu = 1
     (function_header
       (function_start)
       (identifier)
+      (parameter_list)
       (line_end))
     (weave_body
       (var_line
@@ -820,6 +824,7 @@ CONST huhu = 1
     (function_header
       (function_start)
       (identifier)
+      (parameter_list)
       (line_end))
     (weave_body
       (const_line

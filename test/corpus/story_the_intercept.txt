@@ -1953,10 +1953,11 @@ It's time I tackled a problem I can solve.
     (function_header
       (function_start)
       (identifier)
-      (arguments
-        (argument
-          (ref)
-          (identifier)))
+      (parameter_list
+        (parameters
+          (parameter
+            (ref)
+            (identifier))))
       (line_end))
     (weave_body
       (weave_body_line
@@ -1973,10 +1974,11 @@ It's time I tackled a problem I can solve.
     (function_header
       (function_start)
       (identifier)
-      (arguments
-        (argument
-          (ref)
-          (identifier)))
+      (parameter_list
+        (parameters
+          (parameter
+            (ref)
+            (identifier))))
       (line_end))
     (weave_body
       (weave_body_line

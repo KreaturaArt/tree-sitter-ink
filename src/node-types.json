@@ -1,39 +1,5 @@
 [
   {
-    "type": "argument",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "ref",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "arguments",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "argument",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "block_comment",
     "named": true,
     "fields": {},
@@ -47,6 +13,44 @@
         },
         {
           "type": "block_comment_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "call_argument",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow",
+          "named": true
+        },
+        {
+          "type": "identifier_path",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "call_arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "call_argument",
           "named": true
         }
       ]
@@ -227,6 +231,10 @@
           "named": true
         },
         {
+          "type": "call_arguments",
+          "named": true
+        },
+        {
           "type": "identifier_path",
           "named": true
         }
@@ -314,10 +322,6 @@
       "required": true,
       "types": [
         {
-          "type": "arguments",
-          "named": true
-        },
-        {
           "type": "external_start",
           "named": true
         },
@@ -327,6 +331,10 @@
         },
         {
           "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -360,10 +368,6 @@
       "required": true,
       "types": [
         {
-          "type": "arguments",
-          "named": true
-        },
-        {
           "type": "function_start",
           "named": true
         },
@@ -373,6 +377,10 @@
         },
         {
           "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -513,6 +521,10 @@
         },
         {
           "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -664,6 +676,59 @@
     "fields": {}
   },
   {
+    "type": "parameter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "ref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "parameters",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "program",
     "named": true,
     "root": true,
@@ -720,6 +785,10 @@
         },
         {
           "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         },
         {
@@ -790,6 +859,10 @@
       "types": [
         {
           "type": "back_arrow",
+          "named": true
+        },
+        {
+          "type": "call_arguments",
           "named": true
         },
         {
