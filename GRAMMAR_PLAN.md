@@ -128,12 +128,12 @@ The largest remaining limitations are:
 - [x] Support standalone tag-only lines.
 - [x] Accept arbitrary tag text rather than only `identifier[: remainder]`.
 - [x] Preserve spaces, punctuation, slashes, and additional colons in tag text.
-- [ ] Parse dynamic inline expressions inside tags.
+- [x] Parse dynamic inline expressions inside tags.
 - [x] Stop one tag at the next `#` or physical line boundary.
-- [ ] Stop one tag at escaped hashes and choice/content boundaries correctly.
-- [ ] Respect escaped hashes as literal text.
-- [ ] Reject or recover tags inside string expressions, where ink forbids them.
-- [ ] Cover global tags, knot tags, choice tags, and multiple dynamic tags.
+- [x] Stop one tag at escaped hashes and choice/content boundaries correctly.
+- [x] Respect escaped hashes as literal text.
+- [x] Reject or recover tags inside string expressions, where ink forbids them.
+- [x] Cover global tags, knot tags, choice tags, and multiple dynamic tags.
 
 ## Slice 8: Identifiers, Paths, And Escapes
 
@@ -167,7 +167,7 @@ The largest remaining limitations are:
 - [x] Parse empty, single-item, and multi-item list values.
 - [x] Resolve the syntax ambiguity between `(expression)` and one-item list
       values without making common incomplete input unstable.
-- [ ] Allow dynamic ink content inside runtime string expressions where valid.
+- [x] Allow dynamic ink content inside runtime string expressions where valid.
 - [x] Leave global constant-like string initializer restrictions to documented
       semantic validation to preserve parser recovery.
 
@@ -203,15 +203,16 @@ The largest remaining limitations are:
 
 ## Slice 12: Inline Output And Conditional Text
 
-- [ ] Parse `{expression}` inline output.
-- [ ] Parse `{condition:true text}`.
-- [ ] Parse `{condition:true text|false text}`.
-- [ ] Support nested inline conditions.
-- [ ] Support inline logic within ordinary prose, choices, tags, and strings in
+- [x] Parse `{expression}` inline output.
+- [x] Parse `{condition:true text}`.
+- [x] Parse `{condition:true text|false text}`.
+- [x] Support nested inline conditions.
+- [x] Support inline logic within ordinary prose, choices, tags, and strings in
       contexts where upstream permits it.
-- [ ] Distinguish a choice condition from an alternative that starts choice text.
-- [ ] Preserve escaped whitespace as the documented disambiguation mechanism.
-- [ ] Remove opaque `inline_block` fallbacks once equivalent recovery exists.
+- [x] Distinguish a choice condition from an alternative that starts choice text.
+- [x] Preserve escaped whitespace as the documented disambiguation mechanism.
+- [x] Replace opaque inline content with concrete variants and an explicit invalid
+      recovery node.
 
 ## Slice 13: Multiline Conditions And Switches
 
@@ -228,16 +229,15 @@ The largest remaining limitations are:
 
 ## Slice 14: Sequences And Alternatives
 
-- [ ] Parse stopping sequences, including the unmarked default form.
-- [ ] Parse cycle `&`, once-only `!`, shuffle `~`, and explicit stopping `$`.
-- [ ] Parse combined shuffle-once `~!` and shuffle-stopping `~$` forms.
-- [ ] Parse blank alternatives, including leading and trailing blanks.
-- [ ] Parse nested alternatives.
-- [ ] Parse diverts inside alternatives.
+- [x] Parse stopping sequences, including the unmarked default form.
+- [x] Parse cycle `&`, once-only `!`, shuffle `~`, and explicit stopping `$`.
+- [x] Parse combined shuffle-once `~!` and shuffle-stopping `~$` forms.
+- [x] Parse blank alternatives, including leading and trailing blanks.
+- [x] Parse nested alternatives.
+- [x] Parse diverts inside alternatives.
 - [ ] Parse multiline `stopping`, `cycle`, `once`, `shuffle`, `shuffle once`, and
       `shuffle stopping` blocks.
-- [ ] Reject unsupported annotation combinations through syntax or documented
-      semantic validation.
+- [x] Reject unsupported annotation combinations through the explicit annotation set.
 - [ ] Allow full block content in multiline sequence entries.
 
 ## Slice 15: Lists

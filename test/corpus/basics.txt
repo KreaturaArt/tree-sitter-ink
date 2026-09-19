@@ -499,6 +499,7 @@ asdf
       (dialog_text
         (condition_text
           (condition_block
+            (block_brace_start)
             (condition_block_content
               (block_remainder))
             (line_end)
@@ -527,6 +528,7 @@ asdf
       (dialog_text
         (condition_text
           (condition_block
+            (block_brace_start)
             (condition_block_content
               (block_remainder))
             (line_end)
@@ -559,6 +561,7 @@ Condition text nest (TODO)
       (dialog_text
         (condition_text
           (condition_block
+            (block_brace_start)
             (condition_block_content
               (block_remainder))
             (line_end)
@@ -567,6 +570,7 @@ Condition text nest (TODO)
               (block_remainder)
               (condition_block
                 (condition_block
+                  (block_brace_start)
                   (condition_block_content
                     (block_remainder))
                   (line_end)
@@ -597,13 +601,21 @@ Condition text nest inline (TODO)
       (dialog_text
         (condition_text
           (condition_block
+            (block_brace_start)
             (condition_block_content
               (block_remainder))
             (line_end)
             (line_start)
             (condition_block_content
               (inline_block
-                (block_remainder)))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (vocabulary)))))
             (line_end)
             (line_start))))
       (line_end))))
@@ -952,7 +964,12 @@ asdf {teer} asdf
         (text
           (vocabulary)
           (inline_block
-            (block_remainder))
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))
           (vocabulary)))
       (line_end))))
 
@@ -973,10 +990,26 @@ asdf {teer:{test:asdf|asdf}|asd} asdf
         (text
           (vocabulary)
           (inline_block
-            (block_remainder)
-            (inline_block
-              (block_remainder))
-            (block_remainder))
+            (inline_conditional
+              (inline_conditional_start)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              (inline_content
+                (inline_block
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (inline_content
+                      (vocabulary))
+                    (inline_content
+                      (vocabulary)))))
+              (inline_content
+                (vocabulary))))
           (vocabulary)))
       (line_end))))
 

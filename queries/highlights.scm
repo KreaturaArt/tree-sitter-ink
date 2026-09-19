@@ -75,8 +75,10 @@
   (hide_end)
 ] @punctuation.bracket
 
-; content markup not yet structurally classified
-(inline_block) @embedded
+; content markup
+(inline_expression) @embedded
+(inline_conditional) @embedded
+(inline_sequence) @embedded
 (condition_block) @embedded
 
 ; Helix uses this client-specific capture to retain prose rendering.

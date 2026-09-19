@@ -1929,6 +1929,7 @@ It's time I tackled a problem I can solve.
       (dialog_text
         (condition_text
           (condition_block
+            (block_brace_start)
             (condition_block_content
               (block_remainder))
             (line_end)
@@ -2149,7 +2150,20 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))))
+              (inline_sequence
+                (inline_sequence_start)
+                (sequence_separator)
+                (sequence_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (sequence_separator)))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -2210,7 +2224,14 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary))))
             (vocabulary)
             (other)
             (vocabulary)
@@ -2250,7 +2271,23 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (unary_expression
+                    (not_operator)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary))))
             (vocabulary)
             (vocabulary)
             (other)
@@ -2738,7 +2775,24 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -2934,7 +2988,21 @@ It's time I tackled a problem I can solve.
             (text
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))
               (vocabulary)
               (vocabulary)
               (vocabulary)
@@ -3126,10 +3194,31 @@ It's time I tackled a problem I can solve.
                 (vocabulary)
                 (other)
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (inline_content
+                      (vocabulary))
+                    (inline_content
+                      (vocabulary))))
                 (vocabulary)
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (inline_content
+                      (inline_text_other)
+                      (vocabulary))))
                 (other)
                 (vocabulary)
                 (other)
@@ -3302,6 +3391,7 @@ It's time I tackled a problem I can solve.
             (dialog_text
               (condition_text
                 (condition_block
+                  (block_brace_start)
                   (condition_block_content
                     (block_remainder))
                   (line_end)
@@ -3494,6 +3584,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -4055,7 +4146,24 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))
             (other)))
         (line_end))
       (empty_line)
@@ -4294,7 +4402,21 @@ It's time I tackled a problem I can solve.
             (other)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary))))
             (vocabulary)
             (other)))
         (line_end))
@@ -4430,7 +4552,33 @@ It's time I tackled a problem I can solve.
           (text
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)
             (vocabulary)
             (other)
@@ -4439,7 +4587,28 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4482,10 +4651,51 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)))
         (line_end))
       (weave_body_line
@@ -4721,7 +4931,29 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder)))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (vocabulary))
+                  (inline_content
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4775,7 +5007,56 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (choice_text_other)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))
               (choice_text_other)
               (vocabulary)
               (vocabulary)
@@ -4947,7 +5228,22 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder)))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)))))
           (divert_or_thread
             (divert_chain
               (divert
@@ -5021,7 +5317,16 @@ It's time I tackled a problem I can solve.
           (text
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary))
+                (inline_content
+                  (vocabulary))))
             (other)
             (vocabulary)
             (vocabulary)
@@ -5031,7 +5336,23 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)
             (vocabulary)
             (vocabulary)
@@ -5184,7 +5505,24 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (unary_expression
+                    (not_operator)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))
             (vocabulary)
             (vocabulary)
             (vocabulary)
@@ -5198,6 +5536,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -5260,7 +5599,33 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary))
+                  (inline_content
+                    (inline_text_other)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))))
               (choice_text_other))))
         (line_end))
       (empty_line)
@@ -5314,7 +5679,28 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))
             (other)))
         (line_end))
       (empty_line)
@@ -5382,9 +5768,46 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder)
-                (inline_block
-                  (block_remainder))))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))
+                  (inline_content
+                    (inline_block
+                      (inline_conditional
+                        (inline_conditional_start)
+                        (expression
+                          (binary_expression
+                            (expression
+                              (reference
+                                (identifier_path
+                                  (identifier))))
+                            (expression
+                              (number))))
+                        (inline_content
+                          (vocabulary)
+                          (inline_text_other)
+                          (vocabulary)
+                          (vocabulary)
+                          (vocabulary)
+                          (vocabulary)
+                          (vocabulary)
+                          (inline_text_other))))))))))
         (line_end))
       (empty_line)
       (weave_body_line
@@ -5533,7 +5956,16 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))))
               (vocabulary)
               (vocabulary)
               (other)
@@ -5650,7 +6082,16 @@ It's time I tackled a problem I can solve.
               (other)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (vocabulary))
+                  (inline_content
+                    (vocabulary))))
               (other)
               (vocabulary)
               (vocabulary)
@@ -5985,7 +6426,41 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)
             (vocabulary)
             (other)
@@ -6354,7 +6829,21 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary))))
             (other)
             (vocabulary)
             (other)
@@ -6603,6 +7092,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -6610,7 +7100,30 @@ It's time I tackled a problem I can solve.
               (condition_block_content
                 (block_remainder)
                 (inline_block
-                  (block_remainder)))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (inline_content
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (inline_text_other)))))
               (line_end)
               (line_start)
               (condition_block_content
@@ -7157,7 +7670,16 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)
+                        (dot)
+                        (identifier))))
+                  (inline_content
+                    (vocabulary))))
               (other)
               (vocabulary)
               (vocabulary)
@@ -7276,7 +7798,15 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (inline_text_other))))
             (other)))
         (line_end))
       (weave_body_line
@@ -7491,7 +8021,43 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))))
               (other)))
           (line_end))
         (weave_body_line
@@ -8080,7 +8646,28 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (vocabulary)
             (vocabulary)
             (vocabulary)
@@ -8464,6 +9051,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -8573,7 +9161,46 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (empty_line)
       (weave_body_line
@@ -9304,6 +9931,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -9398,6 +10026,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -9715,6 +10344,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -9722,7 +10352,22 @@ It's time I tackled a problem I can solve.
               (condition_block_content
                 (block_remainder)
                 (inline_block
-                  (block_remainder)))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (inline_content
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (inline_text_other)))))
               (line_end)
               (line_start)
               (condition_block_content
@@ -9792,7 +10437,43 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))
             (vocabulary)
             (vocabulary)
             (other)
@@ -10979,6 +11660,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -12860,7 +13542,64 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))
               (other)
               (vocabulary)
               (vocabulary)
@@ -14072,6 +14811,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -14890,6 +15630,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -14923,6 +15664,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -14986,6 +15728,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -16634,6 +17377,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -16659,14 +17403,46 @@ It's time I tackled a problem I can solve.
               (condition_block_content
                 (block_remainder)
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))))
+                    (inline_content
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary))))
                 (block_remainder))
               (line_end)
               (line_start)
               (condition_block_content
                 (block_remainder)
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))))
+                    (inline_content
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary))))
                 (block_remainder))
               (line_end)
               (line_start))))
@@ -17417,9 +18193,55 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder)
-                (inline_block
-                  (block_remainder)))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))
+                  (inline_content
+                    (inline_block
+                      (inline_conditional
+                        (inline_conditional_start)
+                        (expression
+                          (binary_expression
+                            (expression
+                              (reference
+                                (identifier_path
+                                  (identifier))))
+                            (expression
+                              (reference
+                                (identifier_path
+                                  (identifier))))))
+                        (inline_content
+                          (vocabulary)
+                          (vocabulary))
+                        (inline_content
+                          (vocabulary)
+                          (vocabulary)
+                          (vocabulary)
+                          (vocabulary)))))))
               (other)))
           (line_end))
         (weave_body_line
@@ -17568,9 +18390,38 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder)
-                (inline_block
-                  (block_remainder)))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary))
+                  (inline_content
+                    (inline_block
+                      (inline_conditional
+                        (inline_conditional_start)
+                        (expression
+                          (binary_expression
+                            (expression
+                              (reference
+                                (identifier_path
+                                  (identifier))))
+                            (expression
+                              (reference
+                                (identifier_path
+                                  (identifier))))))
+                        (inline_content
+                          (vocabulary))
+                        (inline_content
+                          (vocabulary)))))))
               (vocabulary)
               (vocabulary)
               (vocabulary)
@@ -17766,7 +18617,32 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))
               (vocabulary)
               (vocabulary)
               (vocabulary)
@@ -17799,6 +18675,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -17900,6 +18777,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -18525,7 +19403,25 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (unary_expression
+                          (not_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))
               (vocabulary)
               (vocabulary)
               (other)
@@ -18936,9 +19832,62 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder)
-              (inline_block
-                (block_remainder)))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (inline_block
+                    (inline_conditional
+                      (inline_conditional_start)
+                      (expression
+                        (binary_expression
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (inline_content
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (inline_text_other))
+                      (inline_content
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (inline_text_other)))))))
             (vocabulary)
             (vocabulary)
             (vocabulary)
@@ -19672,7 +20621,80 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (unary_expression
+                    (not_operator)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -21136,7 +22158,21 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)
             (vocabulary)
             (vocabulary)
@@ -21237,7 +22273,25 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary))))
             (other)
             (vocabulary)
             (vocabulary)
@@ -21415,7 +22469,19 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (divert_or_thread
+                    (divert_chain
+                      (divert
+                        (arrow)
+                        (identifier_path
+                          (identifier))))))))))
         (line_end))
       (empty_line)
       (weave_body_line
@@ -21622,7 +22688,20 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))
             (vocabulary)
             (other)
             (vocabulary)
@@ -21882,7 +22961,21 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -23144,7 +24237,21 @@ It's time I tackled a problem I can solve.
                 (vocabulary)
                 (other)
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (inline_content
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary))
+                    (inline_content
+                      (vocabulary)
+                      (vocabulary))))
                 (other)
                 (vocabulary)
                 (other)
@@ -23427,6 +24534,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -23515,6 +24623,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -23562,7 +24671,48 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))))
+                (inline_content
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -24834,6 +25984,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -24841,7 +25992,75 @@ It's time I tackled a problem I can solve.
               (condition_block_content
                 (block_remainder)
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (inline_content
+                      (inline_text_other)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (inline_text_other)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary))
+                    (inline_content
+                      (inline_text_other)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (inline_text_other)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (inline_text_other)
+                      (vocabulary)
+                      (inline_text_other)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (inline_text_other)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary)
+                      (vocabulary))))
                 (block_remainder))
               (line_end)
               (line_start)
@@ -25476,6 +26695,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -25829,7 +27049,30 @@ It's time I tackled a problem I can solve.
               (other)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))))
               (vocabulary)
               (vocabulary)
               (vocabulary)
@@ -25840,7 +27083,19 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (vocabulary)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))))
               (other))))
         (line_end))
       (weave_body_line
@@ -25848,6 +27103,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -25944,7 +27200,22 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))))
+                (inline_content
+                  (vocabulary))
+                (inline_content
+                  (vocabulary))))
             (vocabulary)
             (vocabulary)
             (other)
@@ -26116,7 +27387,29 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (other)))
         (line_end))
       (weave_body_line
@@ -26997,6 +28290,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -27004,7 +28298,31 @@ It's time I tackled a problem I can solve.
                 (condition_block_content
                   (block_remainder)
                   (inline_block
-                    (block_remainder))
+                    (inline_conditional
+                      (inline_conditional_start)
+                      (expression
+                        (binary_expression
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (inline_content
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary))
+                      (inline_content
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary)
+                        (vocabulary))))
                   (block_remainder))
                 (line_end)
                 (line_start)
@@ -27333,7 +28651,51 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary))))
               (other))))
         (line_end))
       (empty_line)
@@ -27403,7 +28765,43 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -28211,7 +29609,21 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (vocabulary)
             (vocabulary)
             (vocabulary)
@@ -28261,6 +29673,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -28641,7 +30054,29 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier)
+                      (dot)
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))
             (vocabulary)
             (vocabulary)
             (vocabulary)
@@ -28741,6 +30176,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -28759,6 +30195,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -29017,7 +30454,58 @@ It's time I tackled a problem I can solve.
               (vocabulary)
               (choice_text_other)
               (inline_block
-                (block_remainder)))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other))
+                  (inline_content
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (vocabulary)
+                    (inline_text_other)))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -29109,7 +30597,28 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (vocabulary)
             (inline_block
-              (block_remainder))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary))))
             (vocabulary)
             (vocabulary)
             (vocabulary)
@@ -29140,7 +30649,40 @@ It's time I tackled a problem I can solve.
             (vocabulary)
             (other)
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (binary_expression
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier))))
+                    (expression
+                      (number))))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))
+                (inline_content
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -29319,7 +30861,24 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (text
             (inline_block
-              (block_remainder))))
+              (inline_conditional
+                (inline_conditional_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (inline_content
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other)
+                  (vocabulary)
+                  (vocabulary)
+                  (vocabulary)
+                  (inline_text_other))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -29328,6 +30887,7 @@ It's time I tackled a problem I can solve.
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -29359,6 +30919,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)
@@ -29385,6 +30946,7 @@ It's time I tackled a problem I can solve.
         (dialog_text
           (condition_text
             (condition_block
+              (block_brace_start)
               (condition_block_content
                 (block_remainder))
               (line_end)

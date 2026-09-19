@@ -740,14 +740,49 @@ VAR time = 0
             (text
               (glue)
               (inline_block
-                (block_remainder))))
+                (inline_sequence
+                  (inline_sequence_start)
+                  (sequence_separator)
+                  (sequence_content
+                    (inline_text_other))
+                  (sequence_separator)
+                  (sequence_content
+                    (inline_text_other))
+                  (sequence_separator)
+                  (sequence_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (divert_or_thread
+                      (divert_chain
+                        (divert
+                          (arrow)
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (divert_or_thread
+                      (divert_chain
+                        (divert
+                          (arrow)
+                          (identifier_path
+                            (identifier)))
+                        (divert_continue
+                          (arrow)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -775,14 +810,36 @@ VAR time = 0
             (dialog_text
               (text
                 (inline_block
-                  (block_remainder)))))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (unary_expression
+                        (not_operator)
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))))
+                    (inline_content
+                      (inline_text_other)))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (glue)
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -924,7 +981,23 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (divert_or_thread
+                      (divert_chain
+                        (divert
+                          (arrow)
+                          (identifier_path
+                            (identifier))))))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -1090,6 +1163,7 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -1271,7 +1345,14 @@ VAR time = 0
               (hide_start)
               (choice_text
                 (inline_block
-                  (block_remainder)))
+                  (inline_sequence
+                    (inline_sequence_start)
+                    (sequence_annotation)
+                    (sequence_content
+                      (inline_text_other))
+                    (sequence_separator)
+                    (sequence_content
+                      (inline_text_other)))))
               (hide_end)
               (choice_text
                 (choice_text_other))))
@@ -1587,7 +1668,14 @@ VAR time = 0
               (choice_text
                 (choice_text_other)
                 (inline_block
-                  (block_remainder)))))
+                  (inline_sequence
+                    (inline_sequence_start)
+                    (sequence_annotation)
+                    (sequence_content
+                      (inline_text_other))
+                    (sequence_separator)
+                    (sequence_content
+                      (inline_text_other)))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -1666,6 +1754,7 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -2131,6 +2220,7 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (line_end)
                 (line_start)
                 (condition_block_content
@@ -2168,6 +2258,7 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -2187,6 +2278,7 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -2557,14 +2649,37 @@ VAR time = 0
               (hide_end)
               (choice_text
                 (inline_block
-                  (block_remainder)))))
+                  (inline_sequence
+                    (inline_sequence_start)
+                    (sequence_annotation)
+                    (sequence_content
+                      (inline_text_other))
+                    (sequence_separator)
+                    (sequence_content
+                      (inline_text_other)))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (divert_or_thread
+                      (divert_chain
+                        (divert
+                          (arrow)
+                          (identifier_path
+                            (identifier))))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -2692,6 +2807,7 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
@@ -2724,7 +2840,18 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3348,7 +3475,18 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -3387,7 +3525,18 @@ VAR time = 0
               (vocabulary)
               (other)
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -3568,7 +3717,18 @@ VAR time = 0
               (hide_end)
               (choice_text
                 (inline_block
-                  (block_remainder))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (inline_content
+                      (inline_text_other))))
                 (choice_text_other))))
           (line_end))
         (weave_body_line
@@ -3662,7 +3822,17 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3678,7 +3848,18 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -3709,7 +3890,17 @@ VAR time = 0
               (hide_end)
               (choice_text
                 (inline_block
-                  (block_remainder)))))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (unary_expression
+                        (not_operator)
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))))
+                    (inline_content
+                      (inline_text_other)))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -4005,7 +4196,17 @@ VAR time = 0
               (hide_end)
               (choice_text
                 (inline_block
-                  (block_remainder)))))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (unary_expression
+                        (not_operator)
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))))
+                    (inline_content
+                      (inline_text_other)))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -4217,21 +4418,50 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -4268,7 +4498,20 @@ VAR time = 0
               (hide_end)
               (choice_text
                 (inline_block
-                  (block_remainder)))))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (inline_content
+                      (inline_text_other))
+                    (inline_content
+                      (inline_text_other)))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -4407,7 +4650,17 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -4427,7 +4680,20 @@ VAR time = 0
               (hide_end)
               (choice_text
                 (inline_block
-                  (block_remainder)))))
+                  (inline_conditional
+                    (inline_conditional_start)
+                    (expression
+                      (binary_expression
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier))))
+                        (expression
+                          (number))))
+                    (inline_content
+                      (inline_text_other))
+                    (inline_content
+                      (inline_text_other)))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -4601,34 +4867,86 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (binary_expression
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))
+                          (expression
+                            (number))))
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (inline_text_other)
+                    (glue))))))
           (line_end))
         (weave_body_line
           (line_start)
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
                 (line_start)
                 (condition_block_content
                   (inline_block
-                    (block_remainder)))
+                    (inline_conditional
+                      (inline_conditional_start)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (inline_content
+                        (inline_text_other)
+                        (glue))
+                      (inline_content
+                        (inline_text_other)
+                        (glue)))))
                 (line_end)
                 (line_start))))
           (line_end))
@@ -4643,13 +4961,25 @@ VAR time = 0
           (dialog_text
             (condition_text
               (condition_block
+                (block_brace_start)
                 (condition_block_content
                   (block_remainder))
                 (line_end)
                 (line_start)
                 (condition_block_content
                   (inline_block
-                    (block_remainder)))
+                    (inline_conditional
+                      (inline_conditional_start)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (inline_content
+                        (glue)
+                        (inline_text_other))
+                      (inline_content
+                        (glue)
+                        (inline_text_other)))))
                 (line_end)
                 (line_start))))
           (line_end))
@@ -4658,7 +4988,19 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (expression
+                        (number))))
+                  (inline_content
+                    (glue)
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (empty_line)
@@ -4873,7 +5215,17 @@ VAR time = 0
           (dialog_text
             (text
               (inline_block
-                (block_remainder))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (unary_expression
+                      (not_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (inline_content
+                    (inline_text_other))))))
           (line_end))
         (empty_line)
         (weave_body_line
@@ -5015,7 +5367,18 @@ VAR time = 0
             (choice_text
               (choice_text_other)
               (inline_block
-                (block_remainder)))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)
+                        (dot)
+                        (identifier))))
+                  (inline_content
+                    (inline_text_other))
+                  (inline_content
+                    (inline_text_other)))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5104,7 +5467,25 @@ VAR time = 0
             (text
               (other)
               (inline_block
-                (block_remainder)))))
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier)
+                            (dot)
+                            (identifier))))
+                      (expression
+                        (unary_expression
+                          (not_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))))
+                  (inline_content
+                    (inline_text_other)))))))
         (line_end))
       (weave_body_line
         (line_start)

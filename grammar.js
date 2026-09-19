@@ -42,6 +42,7 @@ module.exports = grammar({
     conflicts: $ => [
         [$.list_value, $.reference],
         [$.tag],
+        [$.divert_chain],
     ],
     externals: $ => [
         $.arrow,
@@ -49,6 +50,10 @@ module.exports = grammar({
         $.back_arrow,
         $.line_comment,
         $.glue,
+        $.inline_expression_start,
+        $.inline_conditional_start,
+        $.inline_sequence_start,
+        $.block_brace_start,
         $.line_start,
         $.stitch_start,
         $.knot_start,
@@ -424,7 +429,7 @@ module.exports = grammar({
         ),
 
         condition_block: $ => seq(
-            /\{/,
+            $.block_brace_start,
             optional($.condition_block_content),
             $.line_end,
             repeat(
@@ -444,15 +449,54 @@ module.exports = grammar({
         )),
         condition_block_nested: $ => $.condition_block,
 
-        // TODO parse code within inline block
-        inline_block: $ => seq(
-            /\{/,
-            optional(repeat1(prec(2, choice(
-                $.block_remainder,
-                $.inline_block
-            )))),
-            /\}/
+        inline_block: $ => choice(
+            $.inline_conditional,
+            $.inline_sequence,
+            $.inline_expression,
         ),
+        inline_expression: $ => prec(3, seq(
+            $.inline_expression_start,
+            field("value", $.expression),
+            /\}/,
+        )),
+        inline_conditional: $ => prec(4, seq(
+            $.inline_conditional_start,
+            field("condition", $.expression),
+            /:/,
+            field("consequence", optional($.inline_content)),
+            optional(seq(/\|/, field("alternative", optional($.inline_content)))),
+            /\}/,
+        )),
+        inline_sequence: $ => prec(2, seq(
+            $.inline_sequence_start,
+            optional(field("annotation", $.sequence_annotation)),
+            optional(field("alternative", $.sequence_content)),
+            repeat1(seq(
+                $.sequence_separator,
+                optional(field("alternative", $.sequence_content)),
+            )),
+            /\}/,
+        )),
+        sequence_annotation: $ => choice(/&/, /!/, /~/, /\$/, /~!/, /!~/, /~\$/, /\$~/),
+        sequence_separator: $ => /\|/,
+        sequence_content: $ => repeat1(choice(
+            $.escaped_character,
+            $.glue,
+            $.inline_block,
+            $.divert_or_thread,
+            $.vocabulary,
+            $.inline_text_other,
+        )),
+        inline_content: $ => repeat1(choice(
+            $.escaped_character,
+            $.glue,
+            $.inline_block,
+            $.divert_or_thread,
+            $.tag,
+            $.vocabulary,
+            $.inline_text_other,
+        )),
+        inline_text_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}_\{\}\|#-]/)),
 
         identifier_path: $ => seq(
             $.identifier,

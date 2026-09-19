@@ -20,6 +20,10 @@ enum TokenType {
     BACK_ARROW,
     LINE_COMMENT,
     GLUE,
+    INLINE_EXPRESSION_START,
+    INLINE_CONDITIONAL_START,
+    INLINE_SEQUENCE_START,
+    BLOCK_BRACE_START,
     LINE_START,
     STITCH_START,
     KNOT_START,
@@ -279,6 +283,59 @@ static bool check_glue_back_arrow(TSLexer *lexer, const bool *valid_symbols) {
     return false;
 }
 
+static bool check_brace_start(TSLexer *lexer, const bool *valid_symbols) {
+    if (
+        lexer->lookahead != '{' ||
+        (
+            !valid_symbols[INLINE_EXPRESSION_START] &&
+            !valid_symbols[INLINE_CONDITIONAL_START] &&
+            !valid_symbols[INLINE_SEQUENCE_START] &&
+            !valid_symbols[BLOCK_BRACE_START]
+        )
+    ) {
+        return false;
+    }
+
+    lexer->advance(lexer, false);
+    lexer->mark_end(lexer);
+    unsigned depth = 1;
+    bool has_colon = false;
+    bool has_pipe = false;
+    bool in_string = false;
+
+    while (!lexer->eof(lexer) && lexer->lookahead != '\n' && lexer->lookahead != '\r') {
+        if (lexer->lookahead == '\\') {
+            lexer->advance(lexer, false);
+            if (!lexer->eof(lexer)) lexer->advance(lexer, false);
+            continue;
+        }
+        if (lexer->lookahead == '"') in_string = !in_string;
+        if (!in_string && lexer->lookahead == '{') depth++;
+        if (!in_string && depth == 1 && lexer->lookahead == ':') has_colon = true;
+        if (!in_string && depth == 1 && lexer->lookahead == '|') has_pipe = true;
+        if (lexer->lookahead == '}' && --depth == 0) {
+            if (has_colon && valid_symbols[INLINE_CONDITIONAL_START]) {
+                lexer->result_symbol = INLINE_CONDITIONAL_START;
+                return true;
+            }
+            if (has_pipe && valid_symbols[INLINE_SEQUENCE_START]) {
+                lexer->result_symbol = INLINE_SEQUENCE_START;
+                return true;
+            }
+            if (valid_symbols[INLINE_EXPRESSION_START]) {
+                lexer->result_symbol = INLINE_EXPRESSION_START;
+                return true;
+            }
+            return false;
+        }
+        lexer->advance(lexer, false);
+    }
+
+    if (!valid_symbols[BLOCK_BRACE_START]) return false;
+    lexer->result_symbol = BLOCK_BRACE_START;
+    return true;
+}
+
 static bool scan(TSLexer *lexer, const bool *valid_symbols) {
     // Position dependant lexes (whitespaces may not be consumed)
     if (check_start_tokens(lexer, valid_symbols)) return true;
@@ -286,6 +343,7 @@ static bool scan(TSLexer *lexer, const bool *valid_symbols) {
     // Position independant lexes (whitespaces must be consumed)
     skip_whitespace(lexer);
     if (check_glue_back_arrow(lexer, valid_symbols)) return true;
+    if (check_brace_start(lexer, valid_symbols)) return true;
     if (check_line_end(lexer, valid_symbols)) return true;
     if (check_arrows(lexer, valid_symbols)) return true;
     if (check_comment_start(lexer, valid_symbols)) return true;

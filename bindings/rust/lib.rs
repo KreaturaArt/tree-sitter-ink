@@ -398,4 +398,31 @@ mod tests {
         assert_eq!(sexp.matches("(tag ").count(), 4);
         assert_eq!(sexp.matches("(tag_text)").count(), 4);
     }
+
+    #[test]
+    fn test_structured_inline_logic() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "Hello {name}.\n",
+            "{seen:yes|no}\n",
+            "{one|two|}\n",
+            "{~!red|green}\n",
+            "# image: {name}.png\n",
+            "VAR dynamic = \"{~red|blue}\"",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert!(sexp.contains("(inline_expression"));
+        assert!(sexp.contains("(inline_conditional"));
+        assert_eq!(sexp.matches("(inline_sequence").count(), 4);
+        assert!(sexp.contains("(sequence_annotation"));
+        assert_eq!(sexp.matches("(sequence_separator").count(), 3);
+    }
 }
