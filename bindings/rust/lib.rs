@@ -64,4 +64,30 @@ mod tests {
         assert!(!root.has_error());
         assert!(root.to_sexp().contains("(line_comment)"));
     }
+
+    #[test]
+    fn test_unpaired_function_parentheses_are_errors() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        for source in ["=== function open(", "=== function close) ==="] {
+            let tree = parser.parse(source, None).unwrap();
+            assert!(tree.root_node().has_error(), "accepted {source:?}");
+        }
+    }
+
+    #[test]
+    fn test_unpaired_list_item_parentheses_are_errors() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        for source in ["LIST values = (open", "LIST values = close)"] {
+            let tree = parser.parse(source, None).unwrap();
+            assert!(tree.root_node().has_error(), "accepted {source:?}");
+        }
+    }
 }

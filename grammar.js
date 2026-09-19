@@ -195,10 +195,13 @@ module.exports = grammar({
             optional(/,/),
         ),
 
-        marked_identifier: $ => seq(
-            optional($.mark_start),
+        marked_identifier: $ => choice(
             $.identifier,
-            optional($.mark_end),
+            seq(
+                $.mark_start,
+                $.identifier,
+                $.mark_end,
+            ),
         ),
         mark_start: $ => /\(/,
         mark_end: $ => /\)/,
@@ -254,9 +257,11 @@ module.exports = grammar({
             $.function_start,
             optional(/=+/),
             $.identifier,
-            optional(/\(/),
-            optional($.arguments),
-            optional(/\)/),
+            optional(seq(
+                /\(/,
+                optional($.arguments),
+                /\)/,
+            )),
             optional(/=+/),
             $.line_end
         ),
