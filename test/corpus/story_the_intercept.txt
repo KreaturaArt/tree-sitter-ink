@@ -1701,14 +1701,14 @@ It's time I tackled a problem I can solve.
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (number))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (number))
       (line_end))
     (weave_body_line
@@ -1719,148 +1719,14 @@ It's time I tackled a problem I can solve.
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (weave_body_line
-      (line_start)
-      (line_comment)
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (weave_body_line
-      (line_start)
-      (line_comment)
-      (line_end))
-    (const_line
-      (const_start)
-      (identifier)
-      (assignment)
-      (value
-        (number))
-      (line_end))
-    (const_line
-      (const_start)
-      (identifier)
-      (assignment)
-      (value
-        (number))
-      (line_end))
-    (const_line
-      (const_start)
-      (identifier)
-      (assignment)
-      (value
-        (number))
-      (line_end))
-    (const_line
-      (const_start)
-      (identifier)
-      (assignment)
-      (value
-        (number))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (identifier))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (const_line
-      (const_start)
-      (identifier)
-      (assignment)
-      (value
-        (number))
-      (line_end))
-    (const_line
-      (const_start)
-      (identifier)
-      (assignment)
-      (value
-        (number))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (identifier))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
-        (boolean))
-      (line_end))
-    (var_line
-      (var_start)
-      (identifier)
-      (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (weave_body_line
@@ -1871,28 +1737,134 @@ It's time I tackled a problem I can solve.
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
+        (boolean))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (line_comment)
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (reference
+          (identifier_path
+            (identifier))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (reference
+          (identifier_path
+            (identifier))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
         (boolean))
       (line_end))
     (weave_body_line
@@ -1903,7 +1875,39 @@ It's time I tackled a problem I can solve.
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (line_comment)
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
         (boolean))
       (line_end))
     (weave_body_line
@@ -1961,12 +1965,17 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (vocabulary)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (binary_expression
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (expression
+                  (number))))))
         (line_end))))
   (function
     (function_header
@@ -1982,12 +1991,17 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (binary_expression
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (expression
+                  (number))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -2319,11 +2333,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -2383,11 +2401,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -2442,11 +2464,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -2701,10 +2727,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -2880,19 +2907,24 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -2933,11 +2965,15 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3096,20 +3132,28 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3159,11 +3203,15 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3306,11 +3354,15 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3663,11 +3715,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -3706,11 +3762,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -3764,11 +3824,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -3802,20 +3866,28 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -3899,11 +3971,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4003,19 +4079,24 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4211,19 +4292,24 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4254,19 +4340,24 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4311,11 +4402,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4661,19 +4756,24 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -4878,20 +4978,28 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5173,19 +5281,24 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5242,18 +5355,20 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5287,11 +5402,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5418,11 +5537,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5799,11 +5922,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5889,11 +6016,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -5975,11 +6106,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -6084,10 +6219,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -7034,10 +7170,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -7208,10 +7345,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -7356,11 +7494,15 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -7838,11 +7980,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -8046,11 +8192,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -8588,11 +8738,15 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)
-            (other)))
+          (call_statement
+            (call_expression
+              (identifier)
+              (call_arguments
+                (call_argument
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier)))))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -8807,11 +8961,13 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (temporary_declaration
+            (identifier)
+            (assignment)
+            (expression
+              (reference
+                (identifier_path
+                  (identifier))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -9231,10 +9387,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -9943,10 +10100,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -10363,10 +10521,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -13070,11 +13229,15 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)
-              (other)))
+            (call_statement
+              (call_expression
+                (identifier)
+                (call_arguments
+                  (call_argument
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -13821,10 +13984,13 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (reference
+                (identifier_path
+                  (identifier))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -13972,10 +14138,13 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (reference
+                (identifier_path
+                  (identifier))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -14663,10 +14832,13 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (reference
+                (identifier_path
+                  (identifier))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -15218,10 +15390,13 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (reference
+                (identifier_path
+                  (identifier))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -15712,10 +15887,13 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -16352,10 +16530,13 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -16502,10 +16683,13 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -17604,18 +17788,20 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -17631,10 +17817,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -18109,18 +18296,22 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (reference
+                (identifier_path
+                  (identifier))))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -18493,10 +18684,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -18601,10 +18793,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -19291,18 +19484,20 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -20093,18 +20288,20 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -20181,18 +20378,20 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -21137,10 +21336,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -21560,10 +21760,11 @@ It's time I tackled a problem I can solve.
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -23529,10 +23730,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -23653,18 +23855,20 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -24366,18 +24570,20 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -26873,10 +27079,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -26992,18 +27199,20 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -27130,10 +27339,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -27276,10 +27486,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)
@@ -28220,10 +28431,11 @@ It's time I tackled a problem I can solve.
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)
-            (vocabulary)))
+          (assignment_statement
+            (identifier)
+            (assignment)
+            (expression
+              (boolean))))
         (line_end))
       (weave_body_line
         (line_start)

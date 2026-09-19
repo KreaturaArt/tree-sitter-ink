@@ -631,21 +631,21 @@ VAR time = 0
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (boolean))
       (line_end))
     (var_line
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (number))
       (line_end))
     (weave_body_line
@@ -667,9 +667,9 @@ VAR time = 0
       (weave_body_line
         (line_start)
         (code_text
-          (text
-            (vocabulary)
-            (other)))
+          (mutation_statement
+            (identifier)
+            (mutation_operator)))
         (line_end))
       (weave_body_line
         (line_start)
@@ -963,10 +963,11 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -1011,16 +1012,17 @@ VAR time = 0
           (var_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (number))
           (line_end))
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (number))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -1095,10 +1097,11 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -1638,10 +1641,11 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -1955,7 +1959,7 @@ VAR time = 0
           (var_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (boolean))
           (line_end))
         (weave_body_line
@@ -2113,14 +2117,14 @@ VAR time = 0
           (var_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (boolean))
           (line_end))
         (var_line
           (var_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (number))
           (line_end))
         (weave_body_line
@@ -2133,9 +2137,9 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)))
+            (mutation_statement
+              (identifier)
+              (mutation_operator)))
           (line_end))
         (weave_body_line
           (line_start)
@@ -2776,7 +2780,7 @@ VAR time = 0
           (var_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (boolean))
           (line_end))
         (weave_body_line
@@ -3377,10 +3381,11 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3758,10 +3763,11 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)
@@ -3799,10 +3805,11 @@ VAR time = 0
         (weave_body_line
           (line_start)
           (code_text
-            (text
-              (vocabulary)
-              (other)
-              (vocabulary)))
+            (assignment_statement
+              (identifier)
+              (assignment)
+              (expression
+                (boolean))))
           (line_end))
         (weave_body_line
           (line_start)

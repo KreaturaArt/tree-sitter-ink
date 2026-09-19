@@ -81,22 +81,22 @@ The largest remaining limitations are:
 - [x] Parse reference divert-target parameters: `ref -> target`.
 - [x] Support empty parameter lists where upstream permits them.
 - [ ] Add `name` and `parameters` fields while introducing these nodes.
-- [ ] Test and accept trailing commas in parameter lists, matching upstream's
+- [x] Test and accept trailing commas in parameter and call argument lists, matching upstream's
       `Interleave` parser behavior.
 
 ## Slice 5: Diverts, Tunnels, And Threads
 
 - [x] Parse arguments on diverts: `-> target(a, b)`.
 - [x] Parse arguments on threads: `<- target(a, b)`.
-- [ ] Parse argument expressions, including divert targets.
+- [x] Parse argument expressions, including divert targets.
 - [x] Preserve qualified targets such as `knot.stitch.label`.
 - [ ] Represent `END` and `DONE` as special destinations or well-documented
       target identifiers.
-- [ ] Parse divert targets as values in declarations and expressions.
+- [x] Parse divert targets as values in declarations and expressions.
 - [x] Support tunnel calls and chains: `-> first -> second -> destination`.
 - [x] Support tunnel return: `->->`.
-- [ ] Support tunnel return overrides: `->-> destination`.
-- [ ] Support variable tunnel return destinations.
+- [x] Support tunnel return overrides: `->-> destination`.
+- [x] Support variable tunnel return destinations.
 - [x] Keep a bare `->` valid only as an explicit fallback choice marker.
 - [ ] Add `target` and `arguments` fields to navigation nodes.
 
@@ -156,16 +156,16 @@ The largest remaining limitations are:
 ## Slice 9: Literals And Expression Foundation
 
 - [x] Parse integer literals.
-- [ ] Parse decimal floating-point literals.
-- [ ] Keep hexadecimal, binary, exponent, and numeric separators invalid.
+- [x] Parse decimal floating-point literals.
+- [x] Keep hexadecimal, binary, exponent, and numeric separators invalid.
 - [x] Parse `true` and `false` as boolean literals.
 - [x] Parse quoted strings with escaped characters.
 - [x] Parse simple identifier values.
-- [ ] Parse parenthesized expressions.
-- [ ] Parse zero-argument and argument-bearing function calls.
-- [ ] Parse divert-target values.
-- [ ] Parse empty, single-item, and multi-item list values.
-- [ ] Resolve the syntax ambiguity between `(expression)` and one-item list
+- [x] Parse parenthesized expressions.
+- [x] Parse zero-argument and argument-bearing function calls.
+- [x] Parse divert-target values.
+- [x] Parse empty, single-item, and multi-item list values.
+- [x] Resolve the syntax ambiguity between `(expression)` and one-item list
       values without making common incomplete input unstable.
 - [ ] Allow dynamic ink content inside runtime string expressions where valid.
 - [ ] Restrict global constant-like string initializers according to upstream
@@ -174,32 +174,32 @@ The largest remaining limitations are:
 
 ## Slice 10: Operators And Precedence
 
-- [ ] Parse unary `-`, `!`, and `not`.
-- [ ] Parse logical `&&`, `and`, `||`, and `or`.
-- [ ] Parse comparison `==`, `!=`, `<`, `<=`, `>`, and `>=`.
-- [ ] Parse containment/list operators `?`, `has`, `!?`, and `hasnt`.
-- [ ] Parse list intersection `^`.
-- [ ] Parse arithmetic `+`, `-`, `*`, `/`, `%`, and `mod`.
-- [ ] Reproduce upstream precedence, including its distinct precedence levels
+- [x] Parse unary `-`, `!`, and `not`.
+- [x] Parse logical `&&`, `and`, `||`, and `or`.
+- [x] Parse comparison `==`, `!=`, `<`, `<=`, `>`, and `>=`.
+- [x] Parse containment/list operators `?`, `has`, `!?`, and `hasnt`.
+- [x] Parse list intersection `^`.
+- [x] Parse arithmetic `+`, `-`, `*`, `/`, `%`, and `mod`.
+- [x] Reproduce upstream precedence, including its distinct precedence levels
       for `+` versus `-`, `*` versus `/`, and `%`/`mod`.
-- [ ] Require word operators to have valid token boundaries.
-- [ ] Parse postfix `++` and `--` on references, then restrict their valid use to
+- [x] Require word operators to have valid token boundaries.
+- [x] Parse postfix `++` and `--` on references, then restrict their valid use to
       logic-line contexts through grammar context or semantic validation.
 - [ ] Add ambiguity and associativity fixtures for every precedence boundary.
 
 ## Slice 11: Logic Statements
 
-- [ ] Replace opaque `code_text` with structured logic statements.
-- [ ] Parse assignment `=`.
-- [ ] Parse compound assignment `+=` and `-=`.
-- [ ] Parse standalone increment and decrement.
-- [ ] Parse `temp` declarations with and without initializers as upstream allows.
-- [ ] Parse `return` with and without a value.
-- [ ] Parse function-call statements.
-- [ ] Recover unsupported bare expressions after `~` without treating them as
+- [x] Replace opaque `code_text` content with structured logic statements.
+- [x] Parse assignment `=`.
+- [x] Parse compound assignment `+=` and `-=`.
+- [x] Parse standalone increment and decrement.
+- [x] Parse `temp` declarations with and without initializers as upstream allows.
+- [x] Parse `return` with and without a value.
+- [x] Parse function-call statements.
+- [x] Recover unsupported bare expressions after `~` without treating them as
       ordinary story prose.
-- [ ] Reuse expression nodes in `VAR` and `CONST` initializers.
-- [ ] Preserve an opaque fallback temporarily if needed during migration, then
+- [x] Reuse expression nodes in `VAR` and `CONST` initializers.
+- [x] Preserve an explicit invalid-logic fallback temporarily, then
       remove it once representative upstream fixtures parse structurally.
 
 ## Slice 12: Inline Output And Conditional Text

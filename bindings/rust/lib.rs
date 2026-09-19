@@ -222,6 +222,56 @@ mod tests {
     }
 
     #[test]
+    fn test_expressions_and_logic_statements() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "VAR integer = 12\n",
+            "VAR decimal = 12.5\n",
+            "VAR target = -> knot.stitch\n",
+            "VAR empty = ()\n",
+            "VAR one = (Colours.red)\n",
+            "VAR result = helper(1, other(), -> destination,)\n",
+            "~ x = a + b - c\n",
+            "~ x += 3\n",
+            "~ x--\n",
+            "~ temp roll = RANDOM(1, 6)\n",
+            "~ return not ready or count >= 2\n",
+            "~ helper()",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert!(sexp.contains("(float)"));
+        assert!(sexp.contains("(divert_target_value"));
+        assert!(sexp.contains("(list_value"));
+        assert!(sexp.contains("(binary_expression"));
+        assert!(sexp.contains("(unary_expression"));
+        assert!(sexp.contains("(temporary_declaration"));
+        assert!(sexp.contains("(mutation_statement"));
+        assert!(sexp.contains("(call_statement"));
+    }
+
+    #[test]
+    fn test_tunnel_return_overrides() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        for source in ["->->", "->-> destination", "->-> destination(1,)"] {
+            let tree = parser.parse(source, None).unwrap();
+            assert!(!tree.root_node().has_error(), "rejected {source:?}");
+            assert!(tree.root_node().to_sexp().contains("(divert_return"));
+        }
+    }
+
+    #[test]
     fn test_repeated_tags_with_freeform_text() {
         let mut parser = tree_sitter::Parser::new();
         parser

@@ -182,7 +182,7 @@ asdsdf -> test.bla asdf
                 (dot)
                 (identifier))))))
       (ERROR
-        (identifier))
+        (UNEXPECTED 's'))
       (line_end)))
   (knot
     (knot_header
@@ -691,7 +691,7 @@ VAR huhu = 1
       (var_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (number))
       (line_end)))
   (knot
@@ -704,7 +704,7 @@ VAR huhu = 1
         (var_start)
         (identifier)
         (assignment)
-        (value
+        (expression
           (number))
         (line_end)))
     (stitch
@@ -717,7 +717,7 @@ VAR huhu = 1
           (var_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (number))
           (line_end)))))
   (function
@@ -731,7 +731,7 @@ VAR huhu = 1
         (var_start)
         (identifier)
         (assignment)
-        (value
+        (expression
           (number))
         (line_end)))))
 
@@ -755,7 +755,7 @@ CONST huhu = 1
       (const_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (number))
       (line_end)))
   (knot
@@ -768,7 +768,7 @@ CONST huhu = 1
         (const_start)
         (identifier)
         (assignment)
-        (value
+        (expression
           (number))
         (line_end)))
     (stitch
@@ -781,7 +781,7 @@ CONST huhu = 1
           (const_start)
           (identifier)
           (assignment)
-          (value
+          (expression
             (number))
           (line_end)))))
   (function
@@ -795,7 +795,7 @@ CONST huhu = 1
         (const_start)
         (identifier)
         (assignment)
-        (value
+        (expression
           (number))
         (line_end)))))
 
@@ -867,7 +867,7 @@ CONST test = 1
       (const_start)
       (identifier)
       (assignment)
-      (value
+      (expression
         (number))
       (line_end))))
 

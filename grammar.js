@@ -3,6 +3,19 @@ const ID_ASCII = "A-Za-z0-9_";
 const ID_UNICODE = "\\u0080-\\u00FF\\u0100-\\u024F\\u0370-\\u0373\\u0376-\\u0377\\u0386\\u0388-\\u038A\\u038C\\u038E-\\u03A1\\u03A3-\\u03FF\\u0400-\\u0481\\u048A-\\u04FF\\u0531-\\u0556\\u0561-\\u0587\\u058F\\u0590-\\u06FF\\u3041-\\u3096\\u30A0-\\u30FC\\u4E00-\\u9FFF\\uAC00-\\uD7AF";
 const ID_CHAR = `[${ID_ASCII}${ID_UNICODE}]`;
 const ID_NON_DIGIT = `[A-Za-z_${ID_UNICODE}]`;
+const PREC = {
+    LOGICAL: 1,
+    COMPARISON: 2,
+    CONTAINMENT: 3,
+    ADD: 4,
+    SUBTRACT: 5,
+    MULTIPLY: 6,
+    DIVIDE: 7,
+    MODULO: 8,
+    UNARY: 9,
+    POSTFIX: 10,
+    CALL: 11,
+};
 
 /* Note
 - PLEASE remember that repeat($.line_start, $.catch_all, $.line_end) can also
@@ -27,6 +40,7 @@ module.exports = grammar({
         $.line_comment
     ],
     conflicts: $ => [
+        [$.list_value, $.reference],
     ],
     externals: $ => [
         $.arrow,
@@ -162,21 +176,28 @@ module.exports = grammar({
 
         code_text: $ => seq(
             /~/,
-            $.text,
+            choice(
+                $.return_statement,
+                $.temporary_declaration,
+                $.assignment_statement,
+                $.mutation_statement,
+                $.call_statement,
+                $.invalid_logic_statement,
+            ),
         ),
 
         var_line: $ => seq(
             $.var_start,
-            $.identifier,
-            $.assignment,
-            $.value,
+            field("name", $.identifier),
+            field("operator", $.assignment),
+            field("value", $.expression),
             $.line_end
         ),
         const_line: $ => seq(
             $.const_start,
-            $.identifier,
-            $.assignment,
-            $.value,
+            field("name", $.identifier),
+            field("operator", $.assignment),
+            field("value", $.expression),
             $.line_end
         ),
         list_line: $ => seq(
@@ -269,7 +290,13 @@ module.exports = grammar({
             optional($.call_arguments),
         ),
         divert_continue: $ => $.arrow,
-        divert_return: $ => $.double_arrow,
+        divert_return: $ => seq(
+            $.double_arrow,
+            optional(seq(
+                field("target", $.identifier_path),
+                optional(field("arguments", $.call_arguments)),
+            )),
+        ),
         thread: $ => seq(
             $.back_arrow,
             $.identifier_path,
@@ -318,9 +345,32 @@ module.exports = grammar({
             /\)/,
         ),
         call_argument: $ => choice(
-            $.value,
-            seq($.arrow, $.identifier_path),
+            $.expression,
         ),
+
+        return_statement: $ => seq(
+            /return/,
+            optional(field("value", $.expression)),
+        ),
+        temporary_declaration: $ => seq(
+            /temp/,
+            field("name", $.identifier),
+            optional(seq(
+                field("operator", $.assignment),
+                field("value", $.expression),
+            )),
+        ),
+        assignment_statement: $ => seq(
+            field("target", $.identifier),
+            field("operator", choice($.assignment, $.compound_assignment)),
+            field("value", $.expression),
+        ),
+        mutation_statement: $ => seq(
+            field("target", $.identifier),
+            field("operator", $.mutation_operator),
+        ),
+        call_statement: $ => $.call_expression,
+        invalid_logic_statement: $ => token(prec(-10, /[^\r\n]+/)),
 
         condition_text: $ => seq(
             $.condition_block,
@@ -376,11 +426,68 @@ module.exports = grammar({
         ),
         tag_text: $ => /[^#\\\{\}\r\n]+/,
 
-        value: $ => choice(
+        expression: $ => choice(
+            $.binary_expression,
+            $.unary_expression,
+            $.postfix_expression,
+            $.call_expression,
+            $.divert_target_value,
+            $.list_value,
+            $.parenthesized_expression,
+            $.reference,
             $.boolean,
             $.string,
+            $.float,
             $.number,
-            $.identifier
+        ),
+        binary_expression: $ => choice(
+            ...[
+                [PREC.LOGICAL, choice(/&&/, /\|\|/, $.and_operator, $.or_operator)],
+                [PREC.COMPARISON, choice(/==/, /!=/, /<=/, />=/, /</, />/)],
+                [PREC.CONTAINMENT, choice(/!\?/, /\?/, /\^/, $.has_operator, $.hasnt_operator)],
+                [PREC.ADD, /\+/],
+                [PREC.SUBTRACT, /-/],
+                [PREC.MULTIPLY, /\*/],
+                [PREC.DIVIDE, /\//],
+                [PREC.MODULO, choice(/%/, $.mod_operator)],
+            ].map(([precedence, operator]) => prec.left(precedence, seq(
+                field("left", $.expression),
+                field("operator", operator),
+                field("right", $.expression),
+            ))),
+        ),
+        unary_expression: $ => prec.right(PREC.UNARY, seq(
+            field("operator", choice(/-/, /!/, $.not_operator)),
+            field("argument", $.expression),
+        )),
+        postfix_expression: $ => prec.left(PREC.POSTFIX, seq(
+            field("argument", $.reference),
+            field("operator", $.mutation_operator),
+        )),
+        call_expression: $ => prec(PREC.CALL, seq(
+            field("function", $.identifier),
+            field("arguments", $.call_arguments),
+        )),
+        divert_target_value: $ => seq(
+            $.arrow,
+            field("target", $.identifier_path),
+        ),
+        reference: $ => $.identifier_path,
+        parenthesized_expression: $ => seq(
+            /\(/,
+            field("value", $.expression),
+            /\)/,
+        ),
+        list_value: $ => seq(
+            /\(/,
+            optional(seq(
+                field("item", $.identifier_path),
+                repeat(seq(
+                    /,/,
+                    field("item", $.identifier_path),
+                )),
+            )),
+            /\)/,
         ),
         boolean: $ => /(true|false)/,
         string: $ => seq(
@@ -398,8 +505,17 @@ module.exports = grammar({
         ),
 
         ref: $ => /ref/,
+        and_operator: $ => token(/and[ \t]+/),
+        or_operator: $ => token(/or[ \t]+/),
+        has_operator: $ => token(/has[ \t]+/),
+        hasnt_operator: $ => token(/hasnt[ \t]+/),
+        mod_operator: $ => token(/mod[ \t]+/),
+        not_operator: $ => token(/not[ \t]+/),
         number: $ => /\d+/,
+        float: $ => token(prec(1, /\d+\.\d*/)),
         assignment: $ => /=/,
+        compound_assignment: $ => /(\+=|-=)/,
+        mutation_operator: $ => /(\+\+|--)/,
         dot: $ => /\./,
         include_path: $ => /[^\r\n]+/,
         directive_remainder: $ => /[^\r\n]+/,
