@@ -87,28 +87,28 @@ module.exports = grammar({
 
         knot: $ => seq(
             $.knot_header,
-            optional($.weave_body),
+            optional(field("body", $.weave_body)),
             repeat(
-                $.stitch
+                field("stitch", $.stitch)
             )
         ),
         knot_header: $ => seq(
             $.knot_start,
             optional(/=+/),
-            $.identifier,
-            optional($.parameter_list),
+            field("name", $.identifier),
+            optional(field("parameters", $.parameter_list)),
             optional(/=+/),
             $.line_end
         ),
 
         stitch: $ => seq(
             $.stitch_header,
-            optional($.weave_body), // actually not optional
+            optional(field("body", $.weave_body)), // actually not optional
         ),
         stitch_header: $ => seq(
             $.stitch_start,
-            $.identifier,
-            optional($.parameter_list),
+            field("name", $.identifier),
+            optional(field("parameters", $.parameter_list)),
             $.line_end,
         ),
 
@@ -137,13 +137,13 @@ module.exports = grammar({
 
         function: $ => seq(
             $.function_header,
-            optional($.weave_body) // actually not optional
+            optional(field("body", $.weave_body)) // actually not optional
         ),
 
         gather_text: $ => seq(
-            $.gather_mark,
-            optional($.label),
-            optional($.dialog_text)
+            field("marker", $.gather_mark),
+            optional(field("label", $.label)),
+            optional(field("content", $.dialog_text))
         ),
         gather_mark: $ => repeat1(
             /-/,
@@ -248,13 +248,13 @@ module.exports = grammar({
         ),
         include_line: $ => seq(
             $.include_start,
-            $.include_path,
+            field("path", $.include_path),
             $.line_end,
         ),
         external_line: $ => seq(
             $.external_start,
-            $.identifier,
-            $.parameter_list,
+            field("name", $.identifier),
+            field("parameters", $.parameter_list),
             $.line_end,
         ),
         todo_line: $ => seq(
@@ -333,8 +333,8 @@ module.exports = grammar({
         ),
         divert: $ => seq(
             $.arrow,
-            $.identifier_path,
-            optional($.call_arguments),
+            field("target", $.identifier_path),
+            optional(field("arguments", $.call_arguments)),
         ),
         divert_continue: $ => $.arrow,
         divert_return: $ => seq(
@@ -346,15 +346,15 @@ module.exports = grammar({
         ),
         thread: $ => seq(
             $.back_arrow,
-            $.identifier_path,
-            optional($.call_arguments),
+            field("target", $.identifier_path),
+            optional(field("arguments", $.call_arguments)),
         ),
 
         function_header: $ => seq(
             $.function_start,
             optional(/=+/),
-            $.identifier,
-            optional($.parameter_list),
+            field("name", $.identifier),
+            optional(field("parameters", $.parameter_list)),
             optional(/=+/),
             $.line_end
         ),

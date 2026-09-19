@@ -80,7 +80,7 @@ The largest remaining limitations are:
 - [x] Parse divert-target parameters: `-> target`.
 - [x] Parse reference divert-target parameters: `ref -> target`.
 - [x] Support empty parameter lists where upstream permits them.
-- [ ] Add `name` and `parameters` fields while introducing these nodes.
+- [x] Add `name` and `parameters` fields to flow headers and externals.
 - [x] Test and accept trailing commas in parameter and call argument lists, matching upstream's
       `Interleave` parser behavior.
 
@@ -98,7 +98,7 @@ The largest remaining limitations are:
 - [x] Support tunnel return overrides: `->-> destination`.
 - [x] Support variable tunnel return destinations.
 - [x] Keep a bare `->` valid only as an explicit fallback choice marker.
-- [ ] Add `target` and `arguments` fields to navigation nodes.
+- [x] Add `target` and `arguments` fields to navigation nodes.
 
 ## Slice 6: Choices And Weaves
 
@@ -146,7 +146,7 @@ The largest remaining limitations are:
 - [x] Reject hyphens in identifiers while continuing to permit them in prose.
 - [x] Test and reject generic combining marks outside upstream's explicit ranges.
 - [x] Parse qualified identifier paths of arbitrary depth.
-- [ ] Distinguish declarations, references, calls, list items, and flow paths in
+- [x] Distinguish declarations, references, calls, list items, and flow paths in
       the syntax tree.
 - [x] Parse backslash as an escape of the immediately following character.
 - [x] Support escapes in prose, choices, tags, and strings.
@@ -281,11 +281,11 @@ The largest remaining limitations are:
 
 ## Slice 18: Syntax-Tree API
 
-- [ ] Add `name` fields to declarations and flow headers.
-- [ ] Add `value` fields to declarations and assignments.
-- [ ] Add `body` fields to knots, stitches, functions, and block branches.
-- [ ] Add `target` and `arguments` fields to diverts and threads.
-- [ ] Add choice/gather fields introduced alongside their structural rewrite.
+- [x] Add `name` fields to declarations and flow headers.
+- [x] Add `value` fields to declarations and assignments.
+- [x] Add `body` fields to knots, stitches, and functions; block branches remain pending.
+- [x] Add `target` and `arguments` fields to diverts and threads.
+- [x] Add choice and gather fields alongside their structural rewrite.
 - [ ] Prefer stable named nodes over aliases with empty or misleading names.
 - [ ] Document intentional node-shape compatibility breaks.
 - [ ] Avoid a standalone compatibility layer unless an actual downstream user
