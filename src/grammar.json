@@ -735,8 +735,11 @@
           "name": "divert_or_thread"
         },
         {
-          "type": "SYMBOL",
-          "name": "tag"
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "tag"
+          }
         },
         {
           "type": "SEQ",
@@ -759,8 +762,11 @@
               "name": "text"
             },
             {
-              "type": "SYMBOL",
-              "name": "tag"
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "tag"
+              }
             }
           ]
         }
@@ -1355,34 +1361,13 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": ":"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "tag_remainder"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "name": "tag_text"
         }
       ]
     },
-    "tag_remainder": {
+    "tag_text": {
       "type": "PATTERN",
-      "value": "[^\\r\\n:]+"
+      "value": "[^#\\r\\n]+"
     },
     "value": {
       "type": "CHOICE",

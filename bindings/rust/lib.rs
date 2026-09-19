@@ -139,4 +139,24 @@ mod tests {
         assert_eq!(sexp.matches("(call_arguments").count(), 2);
         assert_eq!(sexp.matches("(call_argument ").count(), 7);
     }
+
+    #[test]
+    fn test_repeated_tags_with_freeform_text() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "A line. # colour: bright blue # voiced/dialogue:01.ogg\n",
+            "# standalone tag # second: tag: value",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(tag ").count(), 4);
+        assert_eq!(sexp.matches("(tag_text)").count(), 4);
+    }
 }
