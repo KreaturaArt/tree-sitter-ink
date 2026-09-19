@@ -276,7 +276,11 @@ static bool check_commment_start(TSLexer *lexer, const bool *valid_symbols) {
         } else if (lexer->lookahead == '/') {
             lexer->advance(lexer, false);
             lexer->result_symbol = LINE_COMMENT;
-            while (lexer->lookahead != '\n' && lexer->lookahead != '\r') {
+            while (
+                lexer->lookahead != '\n' &&
+                lexer->lookahead != '\r' &&
+                !lexer->eof(lexer)
+            ) {
                 lexer->advance(lexer, false);
             }
             return true;

@@ -50,4 +50,18 @@ mod tests {
             .set_language(&super::LANGUAGE.into())
             .expect("Error loading Ink parser");
     }
+
+    #[test]
+    fn test_line_comment_at_end_of_file() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let tree = parser.parse("text // comment", None).unwrap();
+        let root = tree.root_node();
+
+        assert!(!root.has_error());
+        assert!(root.to_sexp().contains("(line_comment)"));
+    }
 }
