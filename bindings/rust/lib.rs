@@ -272,6 +272,39 @@ mod tests {
     }
 
     #[test]
+    fn test_complete_list_syntax() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "LIST Plain = one, two, three\n",
+            "LIST Valued = one = 10, two = -20\n",
+            "LIST Active = (one), two\n",
+            "LIST ActiveInside = (one = 10), two\n",
+            "LIST ActiveOutside = (one) = 10, two\n",
+            "VAR multi = (Plain.one, Active.two)\n",
+            "~ multi += Plain.three\n",
+            "~ temp range = LIST_RANGE(multi, 1, 3)",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(list_definition_item").count(), 11);
+        assert!(sexp.contains("(signed_integer"));
+        assert!(sexp.contains("(list_value"));
+        assert!(sexp.contains("(call_expression"));
+
+        for invalid in ["LIST Bad = one,", "VAR Bad = (one,)"] {
+            let tree = parser.parse(invalid, None).unwrap();
+            assert!(tree.root_node().has_error(), "accepted {invalid:?}");
+        }
+    }
+
+    #[test]
     fn test_repeated_tags_with_freeform_text() {
         let mut parser = tree_sitter::Parser::new();
         parser

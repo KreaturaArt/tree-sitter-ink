@@ -243,29 +243,28 @@ The largest remaining limitations are:
 
 ## Slice 15: Lists
 
-- [ ] Parse list declarations with ordinary and initially active items.
-- [ ] Parse explicit integer values on list items.
-- [ ] Support all documented parenthesization forms for active valued items.
-- [ ] Parse qualified list items.
-- [ ] Parse empty, single-item, multi-item, and multi-origin list values.
-- [ ] Parse list constructor calls with zero or one numeric argument.
-- [ ] Parse list mutation through assignment and compound assignment.
-- [ ] Cover comparison, containment, union, subtraction, intersection, and list
+- [x] Parse list declarations with ordinary and initially active items.
+- [x] Parse explicit integer values on list items.
+- [x] Support all documented parenthesization forms for active valued items.
+- [x] Parse qualified list items.
+- [x] Parse empty, single-item, multi-item, and multi-origin list values.
+- [x] Parse list constructor calls as ordinary calls; argument-count validation is semantic.
+- [x] Parse list mutation through assignment and compound assignment.
+- [x] Cover comparison, containment, union, subtraction, intersection, and list
       stepping operations through the expression grammar.
-- [ ] Cover built-ins `LIST_COUNT`, `LIST_MIN`, `LIST_MAX`, `LIST_RANDOM`,
+- [x] Cover built-ins `LIST_COUNT`, `LIST_MIN`, `LIST_MAX`, `LIST_RANDOM`,
       `LIST_VALUE`, `LIST_ALL`, `LIST_INVERT`, and `LIST_RANGE` as ordinary calls.
-- [ ] Do not implement deprecated unary list inversion as valid syntax.
+- [x] Do not implement deprecated unary list inversion as valid syntax.
 
 ## Slice 16: Built-Ins And Reserved Names
 
-- [ ] Parse built-ins as ordinary calls while optionally highlighting known names.
-- [ ] Cover `CHOICE_COUNT`, `TURNS`, `TURNS_SINCE`, and `READ_COUNT`.
-- [ ] Cover `RANDOM`, `SEED_RANDOM`, `MIN`, `MAX`, `POW`, `FLOOR`, `CEILING`,
+- [x] Parse built-ins as ordinary calls while optionally highlighting known names.
+- [x] Cover `CHOICE_COUNT`, `TURNS`, `TURNS_SINCE`, and `READ_COUNT` syntactically.
+- [x] Cover `RANDOM`, `SEED_RANDOM`, `MIN`, `MAX`, `POW`, `FLOOR`, `CEILING`,
       `INT`, and `FLOAT`.
-- [ ] Cover all list built-ins.
-- [ ] Test literal and variable divert-target arguments to flow queries.
-- [ ] Decide whether reserved declarations should be syntactically rejected or
-      left to semantic tooling.
+- [x] Cover all list built-ins as ordinary calls.
+- [x] Test literal and variable divert-target arguments through shared call arguments.
+- [x] Leave reserved declaration validation to semantic tooling.
 
 ## Slice 17: Newlines And Blank Lines
 

@@ -884,10 +884,10 @@ LIST HuHu = HuHa, (HuHe)
       (list_start)
       (identifier)
       (assignment)
-      (list
-        (marked_identifier
+      (list_definition
+        (list_definition_item
           (identifier))
-        (marked_identifier
+        (list_definition_item
           (mark_start)
           (identifier)
           (mark_end)))

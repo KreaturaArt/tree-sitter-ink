@@ -202,9 +202,9 @@ module.exports = grammar({
         ),
         list_line: $ => seq(
             $.list_start,
-            $.identifier,
-            $.assignment,
-            $.list,
+            field("name", $.identifier),
+            field("operator", $.assignment),
+            field("value", $.list_definition),
             $.line_end
         ),
         include_line: $ => seq(
@@ -224,25 +224,42 @@ module.exports = grammar({
             optional($.directive_remainder),
             $.line_end,
         ),
-        list: $ => seq(
-            $.marked_identifier,
+        list_definition: $ => seq(
+            $.list_definition_item,
             repeat(
                 seq(
                     /,/,
-                    $.marked_identifier
+                    $.list_definition_item
                 )
             ),
-            optional(/,/),
         ),
 
-        marked_identifier: $ => choice(
-            $.identifier,
+        list_definition_item: $ => choice(
+            seq(
+                field("name", $.identifier),
+                optional(seq(
+                    field("operator", $.assignment),
+                    field("value", $.signed_integer),
+                )),
+            ),
             seq(
                 $.mark_start,
-                $.identifier,
+                field("name", $.identifier),
+                $.mark_end,
+                optional(seq(
+                    field("operator", $.assignment),
+                    field("value", $.signed_integer),
+                )),
+            ),
+            seq(
+                $.mark_start,
+                field("name", $.identifier),
+                field("operator", $.assignment),
+                field("value", $.signed_integer),
                 $.mark_end,
             ),
         ),
+        signed_integer: $ => seq(optional(/-/), $.number),
         mark_start: $ => /\(/,
         mark_end: $ => /\)/,
 

@@ -812,7 +812,7 @@
     }
   },
   {
-    "type": "list",
+    "type": "list_definition",
     "named": true,
     "fields": {},
     "children": {
@@ -820,7 +820,57 @@
       "required": true,
       "types": [
         {
-          "type": "marked_identifier",
+          "type": "list_definition_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_definition_item",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "signed_integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "mark_end",
+          "named": true
+        },
+        {
+          "type": "mark_start",
           "named": true
         }
       ]
@@ -829,25 +879,44 @@
   {
     "type": "list_line",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "list_definition",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "assignment",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "line_end",
-          "named": true
-        },
-        {
-          "type": "list",
           "named": true
         },
         {
@@ -882,29 +951,6 @@
     "type": "mark_start",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "marked_identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "mark_end",
-          "named": true
-        },
-        {
-          "type": "mark_start",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "mutation_statement",
@@ -1131,6 +1177,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "signed_integer",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
     }
   },
   {
