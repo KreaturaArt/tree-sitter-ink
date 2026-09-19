@@ -22,25 +22,22 @@ The grammar currently handles knots, stitches, functions, weave markers,
 labels, basic diverts and threads, glue, comments, simple declarations, simple
 tags, balanced brace blocks, Unicode prose, and broad error recovery.
 
-The largest current limitations are:
+The largest remaining limitations are:
 
-- `//` at end of file without a newline can hang the external scanner.
 - Code after `~` and logic inside braces are opaque text.
 - `VAR` and `CONST` initializers accept only a narrow subset of values.
-- Knot and stitch parameters and divert/thread arguments are absent.
-- `INCLUDE`, `EXTERNAL`, and `TODO` statements are not represented.
-- Tags, choices, tunnels, lists, escapes, and identifiers are incomplete.
+- Choices, tunnels, lists, escapes, identifiers, and dynamic tags are incomplete.
 - The generated tree has no semantic fields.
 - Highlight queries contain incorrect and overly broad captures.
 - The standard package test command does not run the corpus.
 
 ## Slice 1: Scanner Safety And Lexical Correctness
 
-- [ ] Stop line-comment scanning at EOF.
-- [ ] Test empty and non-empty line comments at EOF with no final newline.
+- [x] Stop line-comment scanning at EOF.
+- [x] Test a non-empty line comment at EOF with no final newline.
+- [ ] Test an empty line comment at EOF with no final newline.
 - [ ] Test comments before LF, CRLF, and CR line endings.
-- [ ] Decide whether block comments should match upstream non-nesting behavior;
-      the current grammar accepts nested block comments.
+- [ ] Match upstream non-nesting block comments, which end at the first `*/`.
 - [ ] Keep newlines inside block comments observable enough for correct source
       positions.
 - [ ] Rename misspelled scanner helpers such as `check_commment_start`.
@@ -50,87 +47,89 @@ The largest current limitations are:
 
 ## Slice 2: Paired Delimiters And Recovery
 
-- [ ] Require function parameter parentheses as a pair.
-- [ ] Require parentheses around initially active list items as a pair.
-- [ ] Add malformed-input corpus cases for missing opening and closing tokens.
-- [ ] Keep incomplete editor input recoverable with explicit `ERROR` or missing
+- [x] Require function parameter parentheses as a pair.
+- [x] Require parentheses around initially active list items as a pair.
+- [x] Add malformed-input binding cases for missing opening and closing tokens.
+- [x] Keep incomplete editor input recoverable with explicit `ERROR` or missing
       tokens rather than silently accepting malformed declarations.
 - [ ] Apply the same paired-delimiter policy to labels, list values, calls, and
       parameter lists as those constructs are added.
 
 ## Slice 3: Source Directives
 
-- [ ] Parse `INCLUDE` and capture the complete filename through end of line.
-- [ ] Permit dots, path separators, spaces, and non-ASCII filename characters.
-- [ ] Parse `EXTERNAL name(parameters)` declarations, including zero arguments.
-- [ ] Parse `TODO` author warnings with an optional colon.
-- [ ] Distinguish directives from ordinary text only at a physical line start.
-- [ ] Test keyword prefixes such as `INCLUDED`, `EXTERNALITY`, and `TODOLIST` as
+- [x] Parse `INCLUDE` and capture the complete filename through end of line.
+- [x] Permit dots, path separators, spaces, and non-ASCII filename characters.
+- [x] Parse `EXTERNAL name(parameters)` declarations, including zero arguments.
+- [x] Parse `TODO` author warnings with an optional colon.
+- [x] Distinguish directives from ordinary text only at a physical line start.
+- [x] Test the `INCLUDED` keyword prefix as ordinary content.
+- [ ] Test `EXTERNALITY` and `TODOLIST` keyword prefixes as
       ordinary content.
-- [ ] Decide whether to accept declarations in nested flows for recovery even
-      though upstream authoring guidance treats them as global.
+- [x] Accept declarations and author warnings in nested flows, matching upstream
+      statement parsing and preserving editor recovery.
 - [ ] Do not support deprecated `~ include`; recover it as invalid code.
 
 ## Slice 4: Flow Headers And Parameters
 
-- [ ] Add knot parameter lists: `=== knot(a, b) ===`.
-- [ ] Add stitch parameter lists: `= stitch(a)`.
-- [ ] Reuse parameter parsing for functions, knots, stitches, and externals.
-- [ ] Parse ordinary value parameters.
-- [ ] Parse reference parameters: `ref value`.
-- [ ] Parse divert-target parameters: `-> target`.
-- [ ] Parse reference divert-target parameters: `ref -> target`.
-- [ ] Support empty parameter lists where upstream permits them.
+- [x] Add knot parameter lists: `=== knot(a, b) ===`.
+- [x] Add stitch parameter lists: `= stitch(a)`.
+- [x] Reuse parameter parsing for functions, knots, stitches, and externals.
+- [x] Parse ordinary value parameters.
+- [x] Parse reference parameters: `ref value`.
+- [x] Parse divert-target parameters: `-> target`.
+- [x] Parse reference divert-target parameters: `ref -> target`.
+- [x] Support empty parameter lists where upstream permits them.
 - [ ] Add `name` and `parameters` fields while introducing these nodes.
-- [ ] Test trailing commas according to upstream compiler behavior rather than
-      accepting them accidentally.
+- [ ] Test and accept trailing commas in parameter lists, matching upstream's
+      `Interleave` parser behavior.
 
 ## Slice 5: Diverts, Tunnels, And Threads
 
-- [ ] Parse arguments on diverts: `-> target(a, b)`.
-- [ ] Parse arguments on threads: `<- target(a, b)`.
+- [x] Parse arguments on diverts: `-> target(a, b)`.
+- [x] Parse arguments on threads: `<- target(a, b)`.
 - [ ] Parse argument expressions, including divert targets.
-- [ ] Preserve qualified targets such as `knot.stitch.label`.
+- [x] Preserve qualified targets such as `knot.stitch.label`.
 - [ ] Represent `END` and `DONE` as special destinations or well-documented
       target identifiers.
 - [ ] Parse divert targets as values in declarations and expressions.
-- [ ] Support tunnel calls and chains: `-> first -> second -> destination`.
-- [ ] Support tunnel return: `->->`.
+- [x] Support tunnel calls and chains: `-> first -> second -> destination`.
+- [x] Support tunnel return: `->->`.
 - [ ] Support tunnel return overrides: `->-> destination`.
 - [ ] Support variable tunnel return destinations.
-- [ ] Keep a bare `->` valid only as an explicit fallback choice marker.
+- [x] Keep a bare `->` valid only as an explicit fallback choice marker.
 - [ ] Add `target` and `arguments` fields to navigation nodes.
 
 ## Slice 6: Choices And Weaves
 
 - [ ] Preserve once-only `*` and sticky `+` choice kinds as distinct nodes or a
       named marker value.
-- [ ] Preserve structural depth for compact and spaced markers (`***`, `* * *`).
+- [x] Preserve structural depth for compact and spaced markers (`***`, `* * *`).
 - [ ] Reject or recover mixed marker kinds at one choice depth.
 - [ ] Parse choice labels before conditions.
 - [ ] Support a newline between a choice label and its text, added in ink 1.2.0.
 - [ ] Parse multiple adjacent choice conditions.
 - [ ] Support conditions and choice content split across lines.
 - [ ] Represent choice text partitions before, inside, and after `[...]`.
-- [ ] Support empty hidden text `[]`.
-- [ ] Support fallback choices and fallback choices with bodies.
+- [x] Support empty hidden text `[]`.
+- [x] Support fallback choices and fallback choices with bodies.
 - [ ] Support tags in shared, choice-only, and output-only partitions.
-- [ ] Parse diverts at the end of choice text.
+- [x] Parse diverts at the end of choice text.
 - [ ] Add fields for marker, depth, label, conditions, displayed text, output
       text, and target where practical.
-- [ ] Preserve gather depth for compact and spaced `-` markers.
-- [ ] Parse gather labels and divert-only gathers.
+- [x] Preserve gather depth for compact and spaced `-` markers.
+- [x] Parse gather labels and divert-only gathers.
 - [ ] Distinguish weave gathers from branch dashes inside brace blocks.
 - [ ] Test directly nested gathers and options at arbitrary depth.
 
 ## Slice 7: Tags
 
-- [ ] Support multiple tags on a content line.
-- [ ] Support standalone tag-only lines.
-- [ ] Accept arbitrary tag text rather than only `identifier[: remainder]`.
-- [ ] Preserve spaces, punctuation, slashes, and additional colons in tag text.
+- [x] Support multiple tags on a content line.
+- [x] Support standalone tag-only lines.
+- [x] Accept arbitrary tag text rather than only `identifier[: remainder]`.
+- [x] Preserve spaces, punctuation, slashes, and additional colons in tag text.
 - [ ] Parse dynamic inline expressions inside tags.
-- [ ] Stop one tag at the next unescaped `#` or the relevant content boundary.
+- [x] Stop one tag at the next `#` or physical line boundary.
+- [ ] Stop one tag at escaped hashes and choice/content boundaries correctly.
 - [ ] Respect escaped hashes as literal text.
 - [ ] Reject or recover tags inside string expressions, where ink forbids them.
 - [ ] Cover global tags, knot tags, choice tags, and multiple dynamic tags.
@@ -141,11 +140,11 @@ The largest current limitations are:
       arbitrary Unicode letters and numbers.
 - [ ] Add CJK, Hiragana, Katakana, Hangul, Arabic, Hebrew, Armenian, Cyrillic,
       Greek, and Latin range fixtures.
-- [ ] Permit identifiers beginning with digits.
+- [x] Permit identifiers beginning with digits.
 - [ ] Reject identifiers made entirely of digits.
-- [ ] Reject hyphens in identifiers while continuing to permit them in prose.
+- [x] Reject hyphens in identifiers while continuing to permit them in prose.
 - [ ] Test combining marks and document whether upstream accepts them.
-- [ ] Parse qualified identifier paths of arbitrary depth.
+- [x] Parse qualified identifier paths of arbitrary depth.
 - [ ] Distinguish declarations, references, calls, list items, and flow paths in
       the syntax tree.
 - [ ] Parse backslash as an escape of the immediately following character.
@@ -155,12 +154,12 @@ The largest current limitations are:
 
 ## Slice 9: Literals And Expression Foundation
 
-- [ ] Parse integer literals.
+- [x] Parse integer literals.
 - [ ] Parse decimal floating-point literals.
 - [ ] Keep hexadecimal, binary, exponent, and numeric separators invalid.
-- [ ] Parse `true` and `false` as boolean literals.
-- [ ] Parse quoted strings and escaped characters.
-- [ ] Parse references and qualified paths.
+- [x] Parse `true` and `false` as boolean literals.
+- [x] Parse quoted strings with escaped characters.
+- [x] Parse simple identifier values.
 - [ ] Parse parenthesized expressions.
 - [ ] Parse zero-argument and argument-bearing function calls.
 - [ ] Parse divert-target values.
@@ -183,7 +182,8 @@ The largest current limitations are:
 - [ ] Reproduce upstream precedence, including its distinct precedence levels
       for `+` versus `-`, `*` versus `/`, and `%`/`mod`.
 - [ ] Require word operators to have valid token boundaries.
-- [ ] Keep postfix `++` and `--` out of general expressions.
+- [ ] Parse postfix `++` and `--` on references, then restrict their valid use to
+      logic-line contexts through grammar context or semantic validation.
 - [ ] Add ambiguity and associativity fixtures for every precedence boundary.
 
 ## Slice 11: Logic Statements
@@ -268,13 +268,13 @@ The largest current limitations are:
 
 ## Slice 17: Newlines And Blank Lines
 
-- [ ] Make one `line_end` consume one physical ending, treating CRLF atomically.
+- [ ] Make one `line_end` consume one LF or CRLF ending atomically; bare CR is
+      unsupported upstream and should be recovery input.
 - [ ] Decide whether blank lines should be named nodes, anonymous tokens, or
       discarded, then implement only that model.
 - [ ] Remove the generated anonymous node whose type is an empty string.
 - [ ] Test LF, CRLF, and CR throughout declarations, comments, and flow bodies.
-- [ ] Decide whether U+2028 and U+2029 are line endings or unsupported input;
-      do not classify them as ordinary spaces while claiming line significance.
+- [ ] Treat U+2028 and U+2029 as unsupported input, not line endings or spaces.
 - [ ] Keep indentation non-semantic.
 - [ ] Verify incremental reparsing around inserted and deleted newlines.
 - [ ] Isolate this slice because it will update broad corpus snapshots.
@@ -293,7 +293,7 @@ The largest current limitations are:
 
 ## Slice 19: Queries And Editor Support
 
-- [ ] Fix the `@commment` typo.
+- [x] Fix the `@commment` typo.
 - [ ] Stop highlighting every identifier as a function.
 - [ ] Avoid whole-line captures that include line endings.
 - [ ] Highlight declarations, references, calls, flow names, labels, operators,
@@ -307,14 +307,14 @@ The largest current limitations are:
 ## Slice 20: Test And Release Workflow
 
 - [ ] Make `npm test` run corpus and binding tests.
-- [ ] Add a binding smoke test that parses representative ink.
+- [x] Add binding smoke tests that parse representative ink features.
 - [ ] Add focused corpus files by feature instead of extending one large file
       indefinitely.
-- [ ] Keep real-story fixtures as non-error integration tests.
+- [x] Keep real-story fixtures as non-error integration tests.
 - [ ] Add scanner regression tests for EOF and incremental edits.
 - [ ] Add malformed syntax fixtures where recovery behavior is part of the API.
-- [ ] Run `tree-sitter generate` after every grammar shape change.
-- [ ] Verify `tree-sitter test` after every slice.
+- [x] Run `tree-sitter generate` after every grammar shape change completed so far.
+- [x] Verify `tree-sitter test` after every completed slice so far.
 - [ ] Verify all available language bindings before release.
 - [ ] Record the supported ink version and known semantic-only validations.
 
