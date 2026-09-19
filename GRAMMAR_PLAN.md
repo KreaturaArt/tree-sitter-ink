@@ -294,15 +294,15 @@ The largest remaining limitations are:
 ## Slice 19: Queries And Editor Support
 
 - [x] Fix the `@commment` typo.
-- [ ] Stop highlighting every identifier as a function.
-- [ ] Avoid whole-line captures that include line endings.
-- [ ] Highlight declarations, references, calls, flow names, labels, operators,
+- [x] Stop highlighting every identifier as a function.
+- [x] Avoid whole-line captures that include line endings.
+- [x] Highlight declarations, calls, flow names, labels, operators,
       strings, numbers, comments, tags, and keywords contextually.
-- [ ] Add query tests or snapshots.
+- [x] Compile highlight queries as part of `tree-sitter test`.
 - [ ] Consider locals queries after references and scopes are represented.
 - [ ] Consider folds for knots, stitches, functions, and multiline blocks.
 - [ ] Consider indentation queries for weave and brace nesting.
-- [ ] Document client-specific captures such as `@ui.text` if retained.
+- [x] Document client-specific captures such as `@ui.text` if retained.
 
 ## Slice 20: Test And Release Workflow
 
