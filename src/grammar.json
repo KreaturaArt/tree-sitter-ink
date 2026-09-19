@@ -217,6 +217,18 @@
               "name": "list_line"
             },
             {
+              "type": "SYMBOL",
+              "name": "include_line"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "external_line"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "todo_line"
+            },
+            {
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
@@ -530,6 +542,97 @@
         {
           "type": "SYMBOL",
           "name": "list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "line_end"
+        }
+      ]
+    },
+    "include_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "include_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "include_path"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "line_end"
+        }
+      ]
+    },
+    "external_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "external_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\)"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "line_end"
+        }
+      ]
+    },
+    "todo_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "todo_start"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": ":"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "directive_remainder"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -1223,6 +1326,14 @@
       "type": "PATTERN",
       "value": "\\."
     },
+    "include_path": {
+      "type": "PATTERN",
+      "value": "[^\\r\\n]+"
+    },
+    "directive_remainder": {
+      "type": "PATTERN",
+      "value": "[^\\r\\n]+"
+    },
     "block_remainder": {
       "type": "PATTERN",
       "value": "[^\\r\\n\\}\\{]+"
@@ -1330,6 +1441,18 @@
     {
       "type": "SYMBOL",
       "name": "list_start"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "include_start"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "external_start"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "todo_start"
     },
     {
       "type": "SYMBOL",

@@ -210,6 +210,11 @@
     }
   },
   {
+    "type": "directive_remainder",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "divert",
     "named": true,
     "fields": {},
@@ -295,6 +300,33 @@
       "types": [
         {
           "type": "double_arrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "external_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "external_start",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "line_end",
           "named": true
         }
       ]
@@ -392,6 +424,34 @@
         }
       ]
     }
+  },
+  {
+    "type": "include_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "include_path",
+          "named": true
+        },
+        {
+          "type": "include_start",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "include_path",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "inline_block",
@@ -740,6 +800,29 @@
     }
   },
   {
+    "type": "todo_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "directive_remainder",
+          "named": true
+        },
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "todo_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "value",
     "named": true,
     "fields": {},
@@ -810,7 +893,19 @@
           "named": true
         },
         {
+          "type": "external_line",
+          "named": true
+        },
+        {
+          "type": "include_line",
+          "named": true
+        },
+        {
           "type": "list_line",
+          "named": true
+        },
+        {
+          "type": "todo_line",
           "named": true
         },
         {
@@ -948,6 +1043,10 @@
     "named": true
   },
   {
+    "type": "external_start",
+    "named": true
+  },
+  {
     "type": "function_start",
     "named": true
   },
@@ -965,6 +1064,10 @@
   },
   {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "include_start",
     "named": true
   },
   {
@@ -1005,6 +1108,10 @@
   },
   {
     "type": "tag_remainder",
+    "named": true
+  },
+  {
+    "type": "todo_start",
     "named": true
   },
   {

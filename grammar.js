@@ -16,7 +16,6 @@ const WS = /[ \t\v\f\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007
 */
 
 /* TODO
-- INCLUDE
 - === knot(name) knot arguments
 - = stitch(name) stitch arguments
 - = knit(-> name) knot divert arguments
@@ -47,6 +46,9 @@ module.exports = grammar({
         $.var_start,
         $.const_start,
         $.list_start,
+        $.include_start,
+        $.external_start,
+        $.todo_start,
         $.empty_line,
         $.line_end
     ],
@@ -104,6 +106,9 @@ module.exports = grammar({
                 $.var_line,
                 $.const_line,
                 $.list_line,
+                $.include_line,
+                $.external_line,
+                $.todo_line,
                 alias($.empty_line, "")
             )
         )),
@@ -183,6 +188,25 @@ module.exports = grammar({
             $.assignment,
             $.list,
             $.line_end
+        ),
+        include_line: $ => seq(
+            $.include_start,
+            $.include_path,
+            $.line_end,
+        ),
+        external_line: $ => seq(
+            $.external_start,
+            $.identifier,
+            /\(/,
+            optional($.arguments),
+            /\)/,
+            $.line_end,
+        ),
+        todo_line: $ => seq(
+            $.todo_start,
+            optional(/:/),
+            optional($.directive_remainder),
+            $.line_end,
         ),
         list: $ => seq(
             $.marked_identifier,
@@ -355,6 +379,8 @@ module.exports = grammar({
         number: $ => /\d+/,
         assignment: $ => /=/,
         dot: $ => /\./,
+        include_path: $ => /[^\r\n]+/,
+        directive_remainder: $ => /[^\r\n]+/,
         block_remainder: $ => /[^\r\n\}\{]+/,
         vocabulary: $ => /[\p{N}\p{L}_-]+/,
         identifier: $ => /[\p{N}\p{L}_]+/,

@@ -30,6 +30,9 @@ enum TokenType {
     VAR_START,
     CONST_START,
     LIST_START,
+    INCLUDE_START,
+    EXTERNAL_START,
+    TODO_START,
     EMPTY_LINE,
     LINE_END,
 };
@@ -38,6 +41,9 @@ static const char *KW_FUNCTION = "function";
 static const char *KW_VAR = "VAR";
 static const char *KW_CONST = "CONST";
 static const char *KW_LIST = "LIST";
+static const char *KW_INCLUDE = "INCLUDE";
+static const char *KW_EXTERNAL = "EXTERNAL";
+static const char *KW_TODO = "TODO";
 static const char *PAIR_BLOCK_COMMENT_END = "*/";
 
 static int is_unicode_whitespace(int32_t wc) {
@@ -154,6 +160,10 @@ static bool check_start_tokens(TSLexer *lexer, const bool *valid_symbols) {
             valid_symbols[FUNCTION_START] ||
             valid_symbols[VAR_START] ||
             valid_symbols[CONST_START] ||
+            valid_symbols[LIST_START] ||
+            valid_symbols[INCLUDE_START] ||
+            valid_symbols[EXTERNAL_START] ||
+            valid_symbols[TODO_START] ||
             valid_symbols[EMPTY_LINE]
         )
     ) {
@@ -206,6 +216,21 @@ static bool check_start_tokens(TSLexer *lexer, const bool *valid_symbols) {
         }
         if (check_keyword(lexer, valid_symbols, LIST_START, KW_LIST)) {
             return true;
+        }
+        if (check_keyword(lexer, valid_symbols, INCLUDE_START, KW_INCLUDE)) {
+            return true;
+        }
+        if (check_keyword(lexer, valid_symbols, EXTERNAL_START, KW_EXTERNAL)) {
+            return true;
+        }
+        if (lexer->lookahead == 'T' && valid_symbols[TODO_START]) {
+            if (lex_keyword(lexer, KW_TODO)) {
+                if (lexer->lookahead == ':' || is_unicode_whitespace(lexer->lookahead)) {
+                    lexer->mark_end(lexer);
+                    lexer->result_symbol = TODO_START;
+                    return true;
+                }
+            }
         }
         if (valid_symbols[LINE_START]) {
             return true;

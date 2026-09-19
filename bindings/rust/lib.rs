@@ -90,4 +90,29 @@ mod tests {
             assert!(tree.root_node().has_error(), "accepted {source:?}");
         }
     }
+
+    #[test]
+    fn test_source_directives() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let source = concat!(
+            "INCLUDE chapters/first scene.ink\n",
+            "EXTERNAL playSound(name)\n",
+            "EXTERNAL currentScore()\n",
+            "TODO: Rewrite this scene\n",
+            "INCLUDED is ordinary text",
+        );
+        let tree = parser.parse(source, None).unwrap();
+        let root = tree.root_node();
+        let sexp = root.to_sexp();
+
+        assert!(!root.has_error(), "{sexp}");
+        assert_eq!(sexp.matches("(include_line").count(), 1);
+        assert_eq!(sexp.matches("(external_line").count(), 2);
+        assert_eq!(sexp.matches("(todo_line").count(), 1);
+        assert!(sexp.contains("(dialog_text"));
+    }
 }
