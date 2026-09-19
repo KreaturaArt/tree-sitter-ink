@@ -70,7 +70,13 @@ fn appFrame() !dvui.App.Result {
 
 extern fn tree_sitter_ink() callconv(.c) *dvui.c.TSLanguage;
 
-const highlight_query = @embedFile("ink-highlights");
+const highlight_query = query: {
+    const query = @embedFile("ink-highlights");
+    const injection_tail = "; support injection\n(program) @ui.text";
+    const tail_start = std.mem.indexOf(u8, query, injection_tail) orelse
+        @compileError("expected injection capture in highlights query");
+    break :query query[0..tail_start];
+};
 
 const highlights = [_]dvui.TextEntryWidget.SyntaxHighlight{
     highlight("label", .{ .r = 0x7e, .g = 0xc7, .b = 0xc7 }),
@@ -120,4 +126,46 @@ test "highlight query compiles" {
         return error.InvalidTreeSitterQuery;
     };
     defer dvui.c.ts_query_delete(query);
+}
+
+test "sample produces styled captures" {
+    const parser = dvui.c.ts_parser_new().?;
+    defer dvui.c.ts_parser_delete(parser);
+    try std.testing.expect(dvui.c.ts_parser_set_language(parser, tree_sitter_ink()));
+
+    const tree = dvui.c.ts_parser_parse_string(parser, null, sample_source.ptr, @intCast(sample_source.len)).?;
+    defer dvui.c.ts_tree_delete(tree);
+
+    var error_offset: u32 = undefined;
+    var error_type: dvui.c.TSQueryError = undefined;
+    const query = dvui.c.ts_query_new(
+        tree_sitter_ink(),
+        highlight_query.ptr,
+        @intCast(highlight_query.len),
+        &error_offset,
+        &error_type,
+    ).?;
+    defer dvui.c.ts_query_delete(query);
+
+    const cursor = dvui.c.ts_query_cursor_new().?;
+    defer dvui.c.ts_query_cursor_delete(cursor);
+    dvui.c.ts_query_cursor_exec(cursor, query, dvui.c.ts_tree_root_node(tree));
+
+    var styled_captures: usize = 0;
+    var match: dvui.c.TSQueryMatch = undefined;
+    var capture_index: u32 = undefined;
+    while (dvui.c.ts_query_cursor_next_capture(cursor, &match, &capture_index)) {
+        const capture = match.captures[capture_index];
+        var name_len: u32 = undefined;
+        const name_ptr = dvui.c.ts_query_capture_name_for_id(query, capture.index, &name_len);
+        const name = name_ptr[0..name_len];
+        for (highlights) |style| {
+            if (std.mem.startsWith(u8, name, style.name)) {
+                styled_captures += 1;
+                break;
+            }
+        }
+    }
+
+    try std.testing.expect(styled_captures > 0);
 }
