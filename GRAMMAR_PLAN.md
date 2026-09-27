@@ -337,6 +337,31 @@ The largest remaining limitations are:
 15. Syntax-tree fields, queries, and editor support as each relevant node family
     stabilizes.
 
+## Follow-up Review Plan
+
+The following independent fixes address gaps found after the initial implementation.
+Each item gets a focused positive and recovery corpus test, generated parser updates
+where needed, a passing `tree-sitter test`, and its own commit. Do not change the
+unusual operator precedence: it matches the ink compiler.
+
+- [ ] Fix inline brace classification: ignore `||` as an alternative separator,
+      ignore punctuation and braces inside block comments, and do not count `}`
+      inside strings as a closing brace. Test all three alongside nested braces.
+- [ ] Stop inline tag text at an alternative separator so a tag cannot swallow
+      the false branch of `{condition: true #tag|false}`.
+- [ ] Parse a choice-leading inline conditional as choice text rather than a
+      choice condition, while preserving ordinary `{expression}` choice guards.
+- [ ] Parse inline ink in runtime string expressions (for example
+      `~ temp s = "{~red|blue}"`) without treating global constant-string
+      restrictions as grammar errors.
+- [ ] Support two unlabelled true/false branches in a multiline conditional
+      with an initial query, in addition to existing labelled switch cases.
+- [ ] Support list declarations spanning physical lines around item separators.
+- [ ] Parse `not(true)` as unary negation, while preserving calls to unrelated
+      identifiers and existing spaced word operators.
+- [ ] Verify against the ink compiler whether a divert after a closing multiline
+      block is legal; if so, preserve `-> END` as a divert rather than prose.
+
 ## Per-Slice Acceptance Criteria
 
 Every implementation slice should:
