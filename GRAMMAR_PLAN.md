@@ -344,7 +344,7 @@ Each item gets a focused positive and recovery corpus test, generated parser upd
 where needed, a passing `tree-sitter test`, and its own commit. Do not change the
 unusual operator precedence: it matches the ink compiler.
 
-- [ ] Fix inline brace classification: ignore `||` as an alternative separator,
+- [x] Fix inline brace classification: ignore `||` as an alternative separator,
       ignore punctuation and braces inside block comments, and do not count `}`
       inside strings as a closing brace. Test all three alongside nested braces.
 - [ ] Stop inline tag text at an alternative separator so a tag cannot swallow

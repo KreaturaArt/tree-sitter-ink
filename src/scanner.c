@@ -326,18 +326,54 @@ static bool check_brace_start(TSLexer *lexer, const bool *valid_symbols) {
     bool has_colon = false;
     bool has_pipe = false;
     bool in_string = false;
+    bool in_comment = false;
+    bool after_star = false;
 
     while (!lexer->eof(lexer) && lexer->lookahead != '\n' && lexer->lookahead != '\r') {
-        if (lexer->lookahead == '\\') {
+        int32_t current = lexer->lookahead;
+        if (in_comment) {
+            if (after_star && current == '/') in_comment = false;
+            after_star = current == '*';
             lexer->advance(lexer, false);
-            if (!lexer->eof(lexer)) lexer->advance(lexer, false);
             continue;
         }
-        if (lexer->lookahead == '"') in_string = !in_string;
-        if (!in_string && lexer->lookahead == '{') depth++;
-        if (!in_string && depth == 1 && lexer->lookahead == ':') has_colon = true;
-        if (!in_string && depth == 1 && lexer->lookahead == '|') has_pipe = true;
-        if (lexer->lookahead == '}' && --depth == 0) {
+        if (current == '\\') {
+            lexer->advance(lexer, false);
+            if (!lexer->eof(lexer) && lexer->lookahead != '\n' && lexer->lookahead != '\r') {
+                lexer->advance(lexer, false);
+            }
+            continue;
+        }
+        if (current == '"') {
+            in_string = !in_string;
+            lexer->advance(lexer, false);
+            continue;
+        }
+        if (in_string) {
+            lexer->advance(lexer, false);
+            continue;
+        }
+        if (current == '/') {
+            lexer->advance(lexer, false);
+            if (lexer->lookahead == '*') {
+                in_comment = true;
+                after_star = false;
+                lexer->advance(lexer, false);
+            }
+            continue;
+        }
+        if (current == '{') depth++;
+        if (depth == 1 && current == ':') has_colon = true;
+        if (depth == 1 && current == '|') {
+            lexer->advance(lexer, false);
+            if (lexer->lookahead == '|') {
+                lexer->advance(lexer, false);
+            } else {
+                has_pipe = true;
+            }
+            continue;
+        }
+        if (current == '}' && --depth == 0) {
             if (has_colon && valid_symbols[INLINE_CONDITIONAL_START]) {
                 lexer->result_symbol = INLINE_CONDITIONAL_START;
                 return true;

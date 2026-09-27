@@ -260,3 +260,163 @@ Operator associativity
                   (identifier_path
                     (identifier))))))))
       (line_end))))
+
+=======================================
+Brace classification with logical or
+=======================================
+
+{true || false}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (binary_expression
+                  (expression
+                    (boolean))
+                  (expression
+                    (boolean))))))))
+      (line_end))))
+
+=========================================
+Brace classification with block comments
+=========================================
+
+{true /* : | } { */ : yes|no}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              (expression
+                (boolean))
+              (block_comment)
+              (inline_content
+                (vocabulary))
+              (inline_content
+                (vocabulary))))))
+      (line_end))))
+
+=========================================
+Brace classification comment punctuation
+=========================================
+
+{true /* : | } { */}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (boolean))
+              (block_comment)))))
+      (line_end))))
+
+=======================================
+Brace classification with quoted brace
+=======================================
+
+{"}" == "}"}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (binary_expression
+                  (expression
+                    (string))
+                  (expression
+                    (string))))))))
+      (line_end))))
+
+=========================================
+Brace classification with nested braces
+=========================================
+
+{true: {count}|no}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              (expression
+                (boolean))
+              (inline_content
+                (inline_block
+                  (inline_expression
+                    (inline_expression_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))
+              (inline_content
+                (vocabulary))))))
+      (line_end))))
+
+============================================
+Brace classification multiline recovery
+============================================
+
+{true /* : | } { */
+- yes
+}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line))
+  (ERROR
+    (line_start)
+    (block_brace_start)
+    (ERROR
+      (expression
+        (boolean)))
+    (block_comment)
+    (line_end)
+    (line_start)
+    (identifier)
+    (line_end)
+    (line_end)))
