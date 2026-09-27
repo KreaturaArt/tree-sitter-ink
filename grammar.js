@@ -761,7 +761,7 @@ module.exports = grammar({
         has_operator: $ => token(/has[ \t]+/),
         hasnt_operator: $ => token(/hasnt[ \t]+/),
         mod_operator: $ => token(/mod[ \t]+/),
-        not_operator: $ => token(/not[ \t]+/),
+        not_operator: $ => choice(token(/not[ \t]+/), /not/),
         number: $ => /\d+/,
         float: $ => token(prec(1, /\d+\.\d*/)),
         assignment: $ => /=/,

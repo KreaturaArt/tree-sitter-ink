@@ -357,7 +357,7 @@ unusual operator precedence: it matches the ink compiler.
 - [x] Support two unlabelled true/false branches in a multiline conditional
       with an initial query, in addition to existing labelled switch cases.
 - [x] Support list declarations spanning physical lines around item separators.
-- [ ] Parse `not(true)` as unary negation, while preserving calls to unrelated
+- [x] Parse `not(true)` as unary negation, while preserving calls to unrelated
       identifiers and existing spaced word operators.
 - [ ] Verify against the ink compiler whether a divert after a closing multiline
       block is legal; if so, preserve `-> END` as a divert rather than prose.

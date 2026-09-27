@@ -192,7 +192,7 @@ asdsdf -> test.bla asdf
                 (dot)
                 (identifier))))))
       (ERROR
-        (UNEXPECTED 's'))
+        (identifier))
       (line_end)))
   (knot
     (knot_header

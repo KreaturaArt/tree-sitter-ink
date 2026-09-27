@@ -3836,11 +3836,20 @@
       }
     },
     "not_operator": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "not[ \\t]+"
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "not[ \\t]+"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "not"
+        }
+      ]
     },
     "number": {
       "type": "PATTERN",
