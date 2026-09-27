@@ -8,9 +8,9 @@ unicode support.
 ## State
 
 The grammar targets ink 1.2.1. It structurally parses flow declarations,
-directives, choices, navigation, declarations, lists, expressions, and logic
-statements. Inline and multiline conditional/sequence content remains the main
-area represented by balanced recovery nodes.
+directives, choices, navigation, declarations, lists, expressions, logic
+statements, runtime strings with inline ink, and inline and multiline
+conditionals and sequences. Incomplete input remains recoverable.
 
 Validation that depends on symbol resolution or runtime types is intentionally
 left to semantic tooling. This includes reserved-name errors, declaration
@@ -27,6 +27,13 @@ Run Rust binding and parser regressions with:
 
 ```shell
 cargo test
+```
+
+Run the corpus and all language binding checks using the tool versions in
+`mise.toml` with:
+
+```shell
+mise run ci
 ```
 
 ## Install for helix

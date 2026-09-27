@@ -16,20 +16,16 @@ or query changes.
 - Keep generated parser files, node types, corpus fixtures, and queries in sync.
 - Document intentional permissiveness where the grammar accepts incomplete ink.
 
-## Current Baseline
+## Current Status
 
-The grammar currently handles knots, stitches, functions, weave markers,
-labels, basic diverts and threads, glue, comments, simple declarations, simple
-tags, balanced brace blocks, Unicode prose, and broad error recovery.
+The grammar structurally parses flows, choices, navigation, lists, declarations,
+logic statements, expressions, inline ink, and multiline conditionals and
+sequences. It exposes semantic fields and contextual highlights. The corpus and
+binding tests run through `mise run ci`.
 
-The largest remaining limitations are:
-
-- Code after `~` and logic inside braces are opaque text.
-- `VAR` and `CONST` initializers accept only a narrow subset of values.
-- Choices, tunnels, lists, escapes, identifiers, and dynamic tags are incomplete.
-- The generated tree has no semantic fields.
-- Highlight queries contain incorrect and overly broad captures.
-- The standard package test command does not run the corpus.
+Validation requiring symbol resolution or runtime types, including reserved
+names, initializer restrictions, built-in arity, and list origin checks, remains
+outside the grammar. Incomplete input still relies on parser recovery.
 
 ## Slice 1: Scanner Safety And Lexical Correctness
 
