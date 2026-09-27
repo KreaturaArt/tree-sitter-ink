@@ -1,0 +1,263 @@
+============================================
+Initial query with unlabelled true/false branches
+============================================
+
+{ready:
+- true: Good
+  ~ temp result = 1
+  * [Continue] -> END
+- false:
+  {fallback:
+  - true: Retry
+  - false: Stop
+  }
+  -> DONE
+}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_switch
+              (block_brace_start)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              (line_end)
+              (true_branch
+                (line_start)
+                (block_line_content
+                  (dialog_text
+                    (text
+                      (vocabulary))))
+                (line_end)
+                (block_body
+                  (block_statement
+                    (block_statement_line
+                      (line_start)
+                      (block_line_content
+                        (code_text
+                          (temporary_declaration
+                            (identifier)
+                            (assignment)
+                            (expression
+                              (number)))))
+                      (line_end)))
+                  (block_statement
+                    (block_statement_line
+                      (line_start)
+                      (block_line_content
+                        (option_text
+                          (choice_marker
+                            (once_choice_marker))
+                          (choice_content
+                            (hide_start)
+                            (choice_text
+                              (vocabulary))
+                            (hide_end))
+                          (divert_or_thread
+                            (divert_chain
+                              (divert
+                                (arrow)
+                                (end_destination))))))
+                      (line_end)))))
+              (false_branch
+                (line_start)
+                (line_end)
+                (block_body
+                  (block_statement
+                    (block_statement_line
+                      (line_start)
+                      (block_line_content
+                        (dialog_text
+                          (condition_text
+                            (condition_block
+                              (multiline_switch
+                                (block_brace_start)
+                                (expression
+                                  (reference
+                                    (identifier_path
+                                      (identifier))))
+                                (line_end)
+                                (true_branch
+                                  (line_start)
+                                  (block_line_content
+                                    (dialog_text
+                                      (text
+                                        (vocabulary))))
+                                  (line_end))
+                                (false_branch
+                                  (line_start)
+                                  (block_line_content
+                                    (dialog_text
+                                      (text
+                                        (vocabulary))))
+                                  (line_end))
+                                (line_start))))))
+                      (line_end)))
+                  (block_statement
+                    (block_statement_line
+                      (line_start)
+                      (block_line_content
+                        (dialog_text
+                          (divert_or_thread
+                            (divert_chain
+                              (divert
+                                (arrow)
+                                (done_destination))))))
+                      (line_end)))))
+              (line_start)))))
+      (line_end))))
+
+===================================
+Labelled switch cases and else
+===================================
+
+{mood:
+- 1: Happy
+- 2:
+  ~ temp result = 2
+- else: Unknown
+}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_switch
+              (block_brace_start)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              (line_end)
+              (switch_case
+                (line_start)
+                (expression
+                  (number))
+                (block_line_content
+                  (dialog_text
+                    (text
+                      (vocabulary))))
+                (line_end))
+              (switch_case
+                (line_start)
+                (expression
+                  (number))
+                (line_end)
+                (block_body
+                  (block_statement
+                    (block_statement_line
+                      (line_start)
+                      (block_line_content
+                        (code_text
+                          (temporary_declaration
+                            (identifier)
+                            (assignment)
+                            (expression
+                              (number)))))
+                      (line_end)))))
+              (else_branch
+                (line_start)
+                (block_line_content
+                  (dialog_text
+                    (text
+                      (vocabulary))))
+                (line_end))
+              (line_start)))))
+      (line_end))))
+
+========================================
+Query-less conditions and else remain
+========================================
+
+{
+- ready: Yes
+- else: No
+}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_conditional
+              (block_brace_start)
+              (line_end)
+              (conditional_branch
+                (line_start)
+                (expression
+                  (reference
+                    (identifier_path
+                      (identifier))))
+                (block_line_content
+                  (dialog_text
+                    (text
+                      (vocabulary))))
+                (line_end))
+              (else_branch
+                (line_start)
+                (block_line_content
+                  (dialog_text
+                    (text
+                      (vocabulary))))
+                (line_end))
+              (line_start)))))
+      (line_end))))
+
+====================================
+Missing false branch is recoverable
+====================================
+
+{ready:
+- true: Good
+- false
+}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_if
+              (block_brace_start)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              (ERROR
+                (line_end)
+                (true_branch
+                  (line_start)
+                  (block_line_content
+                    (dialog_text
+                      (text
+                        (vocabulary))))
+                  (line_end))
+                (line_start))
+              (line_end)
+              (line_start)))))
+      (line_end))))

@@ -354,7 +354,7 @@ unusual operator precedence: it matches the ink compiler.
 - [x] Parse inline ink in runtime string expressions (for example
       `~ temp s = "{~red|blue}"`) without treating global constant-string
       restrictions as grammar errors.
-- [ ] Support two unlabelled true/false branches in a multiline conditional
+- [x] Support two unlabelled true/false branches in a multiline conditional
       with an initial query, in addition to existing labelled switch cases.
 - [ ] Support list declarations spanning physical lines around item separators.
 - [ ] Parse `not(true)` as unary negation, while preserving calls to unrelated

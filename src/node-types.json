@@ -949,6 +949,46 @@
     }
   },
   {
+    "type": "false_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      },
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_line_content",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function",
     "named": true,
     "fields": {
@@ -1701,15 +1741,29 @@
           {
             "type": "else_branch",
             "named": true
+          },
+          {
+            "type": "false_branch",
+            "named": true
           }
         ]
       },
       "case": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "switch_case",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "true_branch",
             "named": true
           }
         ]
@@ -2467,6 +2521,46 @@
         },
         {
           "type": "todo_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "true_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_body",
+            "named": true
+          }
+        ]
+      },
+      "content": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block_line_content",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_end",
+          "named": true
+        },
+        {
+          "type": "line_start",
           "named": true
         }
       ]
