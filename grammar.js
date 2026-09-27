@@ -42,6 +42,7 @@ module.exports = grammar({
     conflicts: $ => [
         [$.list_value, $.reference],
         [$.tag],
+        [$.inline_tag],
         [$.divert_chain],
         [$.block_body],
         [$.conditional_branch],
@@ -597,6 +598,7 @@ module.exports = grammar({
             $.glue,
             $.inline_block,
             $.divert_or_thread,
+            $.inline_tag,
             $.vocabulary,
             $.inline_text_other,
         )),
@@ -605,7 +607,7 @@ module.exports = grammar({
             $.glue,
             $.inline_block,
             $.divert_or_thread,
-            $.tag,
+            $.inline_tag,
             $.vocabulary,
             $.inline_text_other,
         )),
@@ -628,6 +630,15 @@ module.exports = grammar({
             )),
         ),
         tag_text: $ => /[^#\\\{\}\[\]\r\n]+/,
+        inline_tag: $ => seq(
+            /#/,
+            repeat1(choice(
+                $.escaped_character,
+                $.inline_block,
+                $.inline_tag_text,
+            )),
+        ),
+        inline_tag_text: $ => /[^#\\\{\}\[\]\|\r\n]+/,
 
         expression: $ => choice(
             $.binary_expression,

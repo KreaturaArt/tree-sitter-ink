@@ -347,7 +347,7 @@ unusual operator precedence: it matches the ink compiler.
 - [x] Fix inline brace classification: ignore `||` as an alternative separator,
       ignore punctuation and braces inside block comments, and do not count `}`
       inside strings as a closing brace. Test all three alongside nested braces.
-- [ ] Stop inline tag text at an alternative separator so a tag cannot swallow
+- [x] Stop inline tag text at an alternative separator so a tag cannot swallow
       the false branch of `{condition: true #tag|false}`.
 - [ ] Parse a choice-leading inline conditional as choice text rather than a
       choice condition, while preserving ordinary `{expression}` choice guards.

@@ -1,0 +1,137 @@
+=======================================
+Conditional tag stops at the separator
+=======================================
+
+{true: yes #tag|no}
+{true: yes #tag|no #other}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (vocabulary)
+                (inline_tag
+                  (inline_tag_text)))
+              alternative: (inline_content
+                (vocabulary))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (vocabulary)
+                (inline_tag
+                  (inline_tag_text)))
+              alternative: (inline_content
+                (vocabulary)
+                (inline_tag
+                  (inline_tag_text)))))))
+      (line_end))))
+
+==========================================
+Sequence tags stop at each separator
+==========================================
+
+{~one #tag|two #other}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_sequence
+              (inline_sequence_start)
+              annotation: (sequence_annotation)
+              alternative: (sequence_content
+                (vocabulary)
+                (inline_tag
+                  (inline_tag_text)))
+              (sequence_separator)
+              alternative: (sequence_content
+                (vocabulary)
+                (inline_tag
+                  (inline_tag_text)))))))
+      (line_end))))
+
+===============================================
+Escaped separator and ordinary tag pipe
+===============================================
+
+{true: yes #tag\|literal|no}
+#ordinary|pipe
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (vocabulary)
+                (inline_tag
+                  (inline_tag_text)
+                  (escaped_character
+                    (escaped_value))
+                  (inline_tag_text)))
+              alternative: (inline_content
+                (vocabulary))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (tag
+          (tag_text)))
+      (line_end))))
+
+==============================================
+Unclosed conditional tag recovers at newline
+==============================================
+
+{true: yes #tag
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (ERROR
+        (block_brace_start)
+        (expression
+          (boolean))
+        (UNEXPECTED 'y'))
+      (dialog_text
+        (tag
+          (tag_text)))
+      (line_end))))
