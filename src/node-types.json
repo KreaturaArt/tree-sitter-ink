@@ -470,6 +470,10 @@
           "named": true
         },
         {
+          "type": "divert_or_thread",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         }

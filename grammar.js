@@ -453,7 +453,8 @@ module.exports = grammar({
 
         condition_text: $ => seq(
             $.condition_block,
-            optional($.text)
+            optional($.text),
+            optional($.divert_or_thread)
         ),
 
         condition_block: $ => choice(

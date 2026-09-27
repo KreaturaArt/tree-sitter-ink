@@ -359,8 +359,9 @@ unusual operator precedence: it matches the ink compiler.
 - [x] Support list declarations spanning physical lines around item separators.
 - [x] Parse `not(true)` as unary negation, while preserving calls to unrelated
       identifiers and existing spaced word operators.
-- [ ] Verify against the ink compiler whether a divert after a closing multiline
-      block is legal; if so, preserve `-> END` as a divert rather than prose.
+- [x] Verified against upstream InkParser_Conditional.cs, InkParser_Logic.cs,
+      InkParser_Content.cs, and InkParser_Divert.cs: `{true:\n yes\n} -> END` is
+      valid; preserve the trailing arrow as a divert rather than prose.
 
 ## Per-Slice Acceptance Criteria
 

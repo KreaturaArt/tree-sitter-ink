@@ -1,0 +1,121 @@
+========================================
+Divert directly after closing multiline block
+========================================
+
+{true:
+ yes
+} -> END
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_if
+              (block_brace_start)
+              (expression
+                (boolean))
+              (line_end)
+              (block_body
+                (block_statement
+                  (block_statement_line
+                    (line_start)
+                    (block_line_content
+                      (dialog_text
+                        (text
+                          (vocabulary))))
+                    (line_end))))
+              (line_start)))
+          (divert_or_thread
+            (divert_chain
+              (divert
+                (arrow)
+                (end_destination))))))
+      (line_end))))
+
+========================================
+Text followed by divert after closing block
+========================================
+
+{true:
+ yes
+} aftermath -> DONE
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_if
+              (block_brace_start)
+              (expression
+                (boolean))
+              (line_end)
+              (block_body
+                (block_statement
+                  (block_statement_line
+                    (line_start)
+                    (block_line_content
+                      (dialog_text
+                        (text
+                          (vocabulary))))
+                    (line_end))))
+              (line_start)))
+          (text
+            (vocabulary))
+          (divert_or_thread
+            (divert_chain
+              (divert
+                (arrow)
+                 (done_destination))))))
+      (line_end))))
+
+========================================
+Incomplete divert after closing block recovers
+========================================
+
+{true:
+ yes
+} ->
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (condition_text
+          (condition_block
+            (multiline_if
+              (block_brace_start)
+              (expression
+                (boolean))
+              (line_end)
+              (block_body
+                (block_statement
+                  (block_statement_line
+                    (line_start)
+                    (block_line_content
+                      (dialog_text
+                        (text
+                          (vocabulary))))
+                    (line_end))))
+              (line_start)))
+          (divert_or_thread
+            (divert_chain
+              (divert
+                (arrow)
+                (MISSING end_destination))))))
+      (line_end))))
