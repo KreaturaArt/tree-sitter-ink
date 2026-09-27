@@ -1069,6 +1069,18 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "line_end"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "list_definition_item"
         },
@@ -1078,8 +1090,29 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "PATTERN",
-                "value": ","
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "list_separator_continuation"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "line_end"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -3975,6 +4008,10 @@
     {
       "type": "SYMBOL",
       "name": "choice_condition_continuation"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "list_separator_continuation"
     },
     {
       "type": "SYMBOL",

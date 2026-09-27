@@ -1451,7 +1451,15 @@
       "required": true,
       "types": [
         {
+          "type": "line_end",
+          "named": true
+        },
+        {
           "type": "list_definition_item",
+          "named": true
+        },
+        {
+          "type": "list_separator_continuation",
           "named": true
         }
       ]
@@ -2866,6 +2874,10 @@
   },
   {
     "type": "line_start",
+    "named": true
+  },
+  {
+    "type": "list_separator_continuation",
     "named": true
   },
   {

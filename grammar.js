@@ -65,6 +65,7 @@ module.exports = grammar({
         $.block_brace_start,
         $.choice_label_continuation,
         $.choice_condition_continuation,
+        $.list_separator_continuation,
         $.line_start,
         $.stitch_start,
         $.knot_start,
@@ -293,10 +294,12 @@ module.exports = grammar({
             $.line_end,
         ),
         list_definition: $ => seq(
+            optional($.line_end),
             $.list_definition_item,
             repeat(
                 seq(
-                    /,/,
+                    choice(/,/, $.list_separator_continuation),
+                    optional($.line_end),
                     $.list_definition_item
                 )
             ),

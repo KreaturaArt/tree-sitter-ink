@@ -1,0 +1,156 @@
+============================================
+List items across physical separator lines
+============================================
+
+LIST colors =
+  (red = -1)
+  ,
+  blue = 2,
+  (green) = 3
+After the list.
+LIST sizes = small,
+  medium
+Another line.
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (list_line
+      (list_start)
+      (identifier)
+      (assignment)
+      (list_definition
+        (line_end)
+        (list_definition_item
+          (mark_start)
+          (identifier)
+          (assignment)
+          (signed_integer
+            (number))
+          (mark_end))
+        (list_separator_continuation)
+        (line_end)
+        (list_definition_item
+          (identifier)
+          (assignment)
+          (signed_integer
+            (number)))
+        (line_end)
+        (list_definition_item
+          (mark_start)
+          (identifier)
+          (mark_end)
+          (assignment)
+          (signed_integer
+            (number))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (vocabulary)
+          (vocabulary)
+          (vocabulary)
+          (other)))
+      (line_end))
+    (list_line
+      (list_start)
+      (identifier)
+      (assignment)
+      (list_definition
+        (list_definition_item
+          (identifier))
+        (line_end)
+        (list_definition_item
+          (identifier)))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (vocabulary)
+          (vocabulary)
+          (other)))
+      (line_end))))
+
+============================================
+List ends before the next ordinary line
+============================================
+
+LIST colors = red
+blue, green
+LIST sizes = small
+Afterward.
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (list_line
+      (list_start)
+      (identifier)
+      (assignment)
+      (list_definition
+        (list_definition_item
+          (identifier)))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (vocabulary)
+          (other)
+          (vocabulary)))
+      (line_end))
+    (list_line
+      (list_start)
+      (identifier)
+      (assignment)
+      (list_definition
+        (list_definition_item
+          (identifier)))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (vocabulary)
+          (other)))
+      (line_end))))
+
+============================================
+Malformed separator recovers at following declaration
+============================================
+
+LIST colors = red, @
+Afterward.
+VAR count = 1
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (list_line
+      (list_start)
+      (identifier)
+      (assignment)
+      (list_definition
+        (list_definition_item
+          (identifier))
+        (ERROR)
+        (line_end)
+        (list_definition_item
+          (identifier)))
+      (ERROR)
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))))
