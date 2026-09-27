@@ -351,7 +351,7 @@ unusual operator precedence: it matches the ink compiler.
       the false branch of `{condition: true #tag|false}`.
 - [x] Parse a choice-leading inline conditional as choice text rather than a
       choice condition, while preserving ordinary `{expression}` choice guards.
-- [ ] Parse inline ink in runtime string expressions (for example
+- [x] Parse inline ink in runtime string expressions (for example
       `~ temp s = "{~red|blue}"`) without treating global constant-string
       restrictions as grammar errors.
 - [ ] Support two unlabelled true/false branches in a multiline conditional

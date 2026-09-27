@@ -3574,11 +3574,19 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[^\"\\\\\\n\\r]+"
+                "value": "[^\"\\\\\\n\\r{]+"
               },
               {
                 "type": "SYMBOL",
                 "name": "escaped_character"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "inline_block"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\{"
               }
             ]
           }

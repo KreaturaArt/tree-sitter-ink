@@ -711,8 +711,10 @@ module.exports = grammar({
         string: $ => seq(
             '"',
             repeat(choice(
-                /[^"\\\n\r]+/,
+                /[^"\\\n\r{]+/,
                 $.escaped_character,
+                $.inline_block,
+                /\{/,
             )),
             '"'
         ),

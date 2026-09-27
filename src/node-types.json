@@ -2265,6 +2265,10 @@
         {
           "type": "escaped_character",
           "named": true
+        },
+        {
+          "type": "inline_block",
+          "named": true
         }
       ]
     }
