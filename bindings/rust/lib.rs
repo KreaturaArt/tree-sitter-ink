@@ -444,9 +444,9 @@ mod tests {
         assert!(!root.has_error(), "{sexp}");
         assert!(sexp.contains("(inline_expression"));
         assert!(sexp.contains("(inline_conditional"));
-        assert_eq!(sexp.matches("(inline_sequence").count(), 4);
+        assert_eq!(sexp.matches("(inline_sequence").count(), 6);
         assert!(sexp.contains("(sequence_annotation"));
-        assert_eq!(sexp.matches("(sequence_separator").count(), 3);
+        assert_eq!(sexp.matches("(sequence_separator").count(), 4);
     }
 
     #[test]
