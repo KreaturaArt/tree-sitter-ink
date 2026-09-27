@@ -2141,6 +2141,14 @@
           "named": true
         },
         {
+          "type": "inline_conditional",
+          "named": true
+        },
+        {
+          "type": "inline_sequence",
+          "named": true
+        },
+        {
           "type": "shared_choice_text_other",
           "named": true
         },

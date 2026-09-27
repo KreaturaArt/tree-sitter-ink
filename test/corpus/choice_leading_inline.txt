@@ -1,0 +1,299 @@
+=================================================
+Choice-leading conditional and sequence are text
+=================================================
+
+* {true: yes|no}
++ {false: {true: nested|other}|no} next
+* {~red|blue}
+* {first|second}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (vocabulary))
+              alternative: (inline_content
+                (vocabulary))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (sticky_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (inline_block
+                  (inline_conditional
+                    (inline_conditional_start)
+                    condition: (expression
+                      (boolean))
+                    consequence: (inline_content
+                      (vocabulary))
+                    alternative: (inline_content
+                      (vocabulary)))))
+              alternative: (inline_content
+                (vocabulary)))
+            (vocabulary))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_sequence
+              (inline_sequence_start)
+              annotation: (sequence_annotation)
+              alternative: (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              alternative: (sequence_content
+                (vocabulary))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_sequence
+              (inline_sequence_start)
+              alternative: (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              alternative: (sequence_content
+                (vocabulary))))))
+      (line_end))))
+
+==============================================
+Guards remain conditions before choice text
+==============================================
+
+* {true} {false} {true: yes|no}
+* (label) {count > 0} {~one|two}
+* {true} [choice] output
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        condition: (choice_condition
+          condition: (expression
+            (boolean)))
+        condition: (choice_condition
+          condition: (expression
+            (boolean)))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (vocabulary))
+              alternative: (inline_content
+                (vocabulary))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        label: (label
+          (identifier))
+        condition: (choice_condition
+          condition: (expression
+            (binary_expression
+              left: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              right: (expression
+                (number)))))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_sequence
+              (inline_sequence_start)
+              annotation: (sequence_annotation)
+              alternative: (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              alternative: (sequence_content
+                (vocabulary))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        condition: (choice_condition
+          condition: (expression
+            (boolean)))
+        content: (choice_content
+          (hide_start)
+          choice_only: (choice_text
+            (vocabulary))
+          (hide_end)
+          output_only: (choice_text
+            (vocabulary))))
+      (line_end))))
+
+====================================================
+Escaped whitespace and leading braces in choice text
+====================================================
+
+* \ {true}
+* \ {true: yes|no}
+* \{true}
+* {true: yes|no}[choose] output
+* {true} {~red|blue}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (escaped_character
+              (escaped_value))
+            (inline_block
+              (inline_expression
+                (inline_expression_start)
+                value: (expression
+                  (boolean)))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (escaped_character
+              (escaped_value))
+            (inline_block
+              (inline_conditional
+                (inline_conditional_start)
+                condition: (expression
+                  (boolean))
+                consequence: (inline_content
+                  (vocabulary))
+                alternative: (inline_content
+                  (vocabulary)))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (escaped_character
+              (escaped_value))
+            (vocabulary)
+            (choice_text_other))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_conditional
+              (inline_conditional_start)
+              condition: (expression
+                (boolean))
+              consequence: (inline_content
+                (vocabulary))
+              alternative: (inline_content
+                (vocabulary))))
+          (hide_start)
+          choice_only: (choice_text
+            (vocabulary))
+          (hide_end)
+          output_only: (choice_text
+            (vocabulary))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        condition: (choice_condition
+          condition: (expression
+            (boolean)))
+        content: (choice_content
+          shared: (shared_choice_text
+            (inline_sequence
+              (inline_sequence_start)
+              annotation: (sequence_annotation)
+              alternative: (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              alternative: (sequence_content
+                (vocabulary))))))
+      (line_end))))
+
+====================================================
+Incomplete leading brace recovers at the next choice
+====================================================
+
+* {true: yes
+* {true} next
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker)))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (option_text
+        marker: (choice_marker
+          (once_choice_marker))
+        condition: (choice_condition
+          condition: (expression
+            (boolean)))
+        content: (choice_content
+          shared: (shared_choice_text
+            (vocabulary))))
+      (line_end))))

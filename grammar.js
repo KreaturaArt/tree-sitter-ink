@@ -202,6 +202,8 @@ module.exports = grammar({
             choice(
                 $.escaped_character,
                 $.glue,
+                $.inline_conditional,
+                $.inline_sequence,
                 $.tag,
                 $.vocabulary,
                 $.shared_choice_text_other,

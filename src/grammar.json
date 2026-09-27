@@ -683,6 +683,14 @@
             },
             {
               "type": "SYMBOL",
+              "name": "inline_conditional"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "inline_sequence"
+            },
+            {
+              "type": "SYMBOL",
               "name": "tag"
             },
             {

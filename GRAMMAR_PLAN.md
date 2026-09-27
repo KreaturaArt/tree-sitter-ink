@@ -349,7 +349,7 @@ unusual operator precedence: it matches the ink compiler.
       inside strings as a closing brace. Test all three alongside nested braces.
 - [x] Stop inline tag text at an alternative separator so a tag cannot swallow
       the false branch of `{condition: true #tag|false}`.
-- [ ] Parse a choice-leading inline conditional as choice text rather than a
+- [x] Parse a choice-leading inline conditional as choice text rather than a
       choice condition, while preserving ordinary `{expression}` choice guards.
 - [ ] Parse inline ink in runtime string expressions (for example
       `~ temp s = "{~red|blue}"`) without treating global constant-string
