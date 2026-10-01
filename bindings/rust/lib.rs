@@ -74,7 +74,10 @@ mod tests {
 
         for source in ["//", "// comment\ntext", "// comment\r\ntext"] {
             let tree = parser.parse(source, None).unwrap();
-            assert!(!tree.root_node().has_error(), "accepted boundary: {source:?}");
+            assert!(
+                !tree.root_node().has_error(),
+                "accepted boundary: {source:?}"
+            );
             assert!(tree.root_node().to_sexp().contains("(line_comment)"));
         }
     }
@@ -112,7 +115,9 @@ mod tests {
             .set_language(&super::LANGUAGE.into())
             .expect("Error loading Ink parser");
 
-        let tree = parser.parse("text /* outer /* inner */ remainder", None).unwrap();
+        let tree = parser
+            .parse("text /* outer /* inner */ remainder", None)
+            .unwrap();
         let sexp = tree.root_node().to_sexp();
 
         assert!(!tree.root_node().has_error(), "{sexp}");
@@ -286,6 +291,38 @@ mod tests {
         assert!(sexp.contains("(temporary_declaration"));
         assert!(sexp.contains("(mutation_statement"));
         assert!(sexp.contains("(call_statement"));
+    }
+
+    #[test]
+    fn test_semantic_fields() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading Ink parser");
+
+        let tree = parser.parse("VAR target = -> knot.stitch", None).unwrap();
+        let root = tree.root_node();
+        assert!(!root.has_error());
+
+        let body = root.named_child(0).unwrap();
+        let declaration = body.named_child(0).unwrap();
+        assert_eq!(declaration.kind(), "var_line");
+        assert_eq!(
+            declaration.child_by_field_name("name").unwrap().kind(),
+            "identifier"
+        );
+        assert_eq!(
+            declaration.child_by_field_name("operator").unwrap().kind(),
+            "assignment"
+        );
+        let value = declaration.child_by_field_name("value").unwrap();
+        assert_eq!(value.kind(), "expression");
+        let target = value
+            .named_child(0)
+            .unwrap()
+            .child_by_field_name("target")
+            .unwrap();
+        assert_eq!(target.kind(), "identifier_path");
     }
 
     #[test]

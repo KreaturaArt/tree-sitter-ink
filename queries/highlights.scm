@@ -1,8 +1,17 @@
+[
+  (vocabulary)
+  (other)
+  (inline_text_other)
+  (choice_text_other)
+  (shared_choice_text_other)
+] @ui.text
+
 ; comments and author metadata
 (line_comment) @comment
 (block_comment) @comment
 (todo_line) @comment.warning
 (tag) @comment
+(inline_tag) @comment
 
 ; flow declarations
 (knot_header name: (identifier) @type)
@@ -22,6 +31,9 @@
 (divert target: (identifier_path) @label)
 (divert_return target: (identifier_path) @label)
 (thread target: (identifier_path) @label)
+(divert_target_value target: (identifier_path) @label)
+(end_destination) @constant.builtin
+(done_destination) @constant.builtin
 (label (identifier) @label)
 
 ; values
@@ -40,6 +52,8 @@
   (external_start)
   (todo_start)
   (ref)
+  (return_keyword)
+  (temp_keyword)
 ] @keyword
 
 [
@@ -61,6 +75,8 @@
   (hasnt_operator)
   (mod_operator)
   (not_operator)
+  (symbolic_binary_operator)
+  (symbolic_unary_operator)
   (arrow)
   (double_arrow)
   (back_arrow)
@@ -85,6 +101,3 @@
   (multiline_switch)
   (multiline_sequence)
 ] @embedded
-
-; Helix uses this client-specific capture to retain prose rendering.
-(program) @ui.text

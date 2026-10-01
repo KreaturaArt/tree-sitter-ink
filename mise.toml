@@ -5,12 +5,13 @@ node = "22.14.0"
 python = "3.12.14"
 rust = "1.85.0"
 swift = "6.4.0"
+tree-sitter = "0.24.7"
 
 [tasks.install-node]
 hide = true
 run = '''
 npm install --no-package-lock
-npm rebuild
+npm rebuild --build-from-source
 '''
 
 [tasks.test-corpus]
@@ -21,7 +22,7 @@ run = "npm run test:corpus"
 [tasks.test-c]
 description = "Build the C binding"
 run = '''
-cmake -S . -B target/cmake -DBUILD_SHARED_LIBS=ON
+cmake -S . -B target/cmake -DBUILD_SHARED_LIBS=ON -DTREE_SITTER_CLI="$(mise which tree-sitter)"
 cmake --build target/cmake
 '''
 

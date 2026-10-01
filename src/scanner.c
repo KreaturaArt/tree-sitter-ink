@@ -27,6 +27,7 @@ enum TokenType {
     CHOICE_LABEL_CONTINUATION,
     CHOICE_CONDITION_CONTINUATION,
     LIST_SEPARATOR_CONTINUATION,
+    LIST_ITEM_CONTINUATION,
     LINE_START,
     STITCH_START,
     KNOT_START,
@@ -204,7 +205,8 @@ static bool check_line_end(TSLexer *lexer, const bool *valid_symbols) {
             valid_symbols[LINE_END] ||
             valid_symbols[CHOICE_LABEL_CONTINUATION] ||
             valid_symbols[CHOICE_CONDITION_CONTINUATION] ||
-            valid_symbols[LIST_SEPARATOR_CONTINUATION]
+            valid_symbols[LIST_SEPARATOR_CONTINUATION] ||
+            valid_symbols[LIST_ITEM_CONTINUATION]
         ) &&
         (
             lexer->lookahead == '\n' ||
@@ -239,6 +241,24 @@ static bool check_line_end(TSLexer *lexer, const bool *valid_symbols) {
                 lexer->result_symbol = LIST_SEPARATOR_CONTINUATION;
                 return true;
             }
+        }
+
+        if (valid_symbols[LIST_ITEM_CONTINUATION] && !valid_symbols[LINE_START]) {
+            skip_whitespace(lexer);
+            const char *keyword = NULL;
+            switch (lexer->lookahead) {
+                case 'V': keyword = KW_VAR; break;
+                case 'C': keyword = KW_CONST; break;
+                case 'L': keyword = KW_LIST; break;
+                case 'I': keyword = KW_INCLUDE; break;
+                case 'E': keyword = KW_EXTERNAL; break;
+                case 'T': keyword = KW_TODO; break;
+            }
+            if (keyword && lex_keyword(lexer, keyword) && is_inline_whitespace(lexer->lookahead)) {
+                return valid_symbols[LINE_END];
+            }
+            lexer->result_symbol = LIST_ITEM_CONTINUATION;
+            return true;
         }
 
         if (!valid_symbols[LINE_END]) return false;
@@ -335,8 +355,8 @@ static bool check_brace_start(TSLexer *lexer, const bool *valid_symbols) {
     lexer->advance(lexer, false);
     lexer->mark_end(lexer);
     unsigned depth = 1;
-    bool has_colon = false;
     bool has_pipe = false;
+    bool colon_before_pipe = false;
     bool in_string = false;
     bool in_comment = false;
     bool after_star = false;
@@ -375,7 +395,9 @@ static bool check_brace_start(TSLexer *lexer, const bool *valid_symbols) {
             continue;
         }
         if (current == '{') depth++;
-        if (depth == 1 && current == ':') has_colon = true;
+        if (depth == 1 && current == ':' && !has_pipe) {
+            colon_before_pipe = true;
+        }
         if (depth == 1 && current == '|') {
             lexer->advance(lexer, false);
             if (lexer->lookahead == '|') {
@@ -386,7 +408,7 @@ static bool check_brace_start(TSLexer *lexer, const bool *valid_symbols) {
             continue;
         }
         if (current == '}' && --depth == 0) {
-            if (has_colon && valid_symbols[INLINE_CONDITIONAL_START]) {
+            if (colon_before_pipe && valid_symbols[INLINE_CONDITIONAL_START]) {
                 lexer->result_symbol = INLINE_CONDITIONAL_START;
                 return true;
             }

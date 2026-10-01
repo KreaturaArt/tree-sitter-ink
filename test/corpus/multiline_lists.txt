@@ -31,13 +31,13 @@ Another line.
             (number))
           (mark_end))
         (list_separator_continuation)
-        (line_end)
+        (list_item_continuation)
         (list_definition_item
           (identifier)
           (assignment)
           (signed_integer
             (number)))
-        (line_end)
+        (list_item_continuation)
         (list_definition_item
           (mark_start)
           (identifier)
@@ -62,7 +62,7 @@ Another line.
       (list_definition
         (list_definition_item
           (identifier))
-        (line_end)
+        (list_item_continuation)
         (list_definition_item
           (identifier)))
       (line_end))
@@ -140,9 +140,41 @@ VAR count = 1
       (assignment)
       (list_definition
         (list_definition_item
-          (identifier))
-        (ERROR)
-        (line_end)
+          (identifier)))
+      (ERROR)
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (vocabulary)
+          (other)))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))))
+
+============================================
+Trailing list comma preserves following VAR
+============================================
+
+LIST colors = red,
+VAR count = 1
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (list_line
+      (list_start)
+      (identifier)
+      (assignment)
+      (list_definition
         (list_definition_item
           (identifier)))
       (ERROR)

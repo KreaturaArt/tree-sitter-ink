@@ -2064,6 +2064,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number))))))
         (line_end))
@@ -2091,6 +2092,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number))))))
         (line_end))
@@ -3286,6 +3288,7 @@ It's time I tackled a problem I can solve.
                           (reference
                             (identifier_path
                               (identifier))))
+                        (symbolic_binary_operator)
                         (expression
                           (number))))
                     (inline_content
@@ -3995,6 +3998,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number)))))
           (choice_content
@@ -4108,6 +4112,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number)))))
           (choice_content
@@ -4271,6 +4276,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -4376,6 +4382,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number)))))
           (choice_content
@@ -4404,6 +4411,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number)))))
           (choice_content
@@ -4527,6 +4535,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -4677,6 +4686,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -4776,6 +4786,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -5056,6 +5067,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5132,6 +5144,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5461,6 +5474,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -5741,6 +5755,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5821,6 +5836,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -5910,6 +5926,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5931,6 +5948,7 @@ It's time I tackled a problem I can solve.
                               (reference
                                 (identifier_path
                                   (identifier))))
+                            (symbolic_binary_operator)
                             (expression
                               (number))))
                         (inline_content
@@ -6568,6 +6586,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -6971,6 +6990,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -7258,6 +7278,7 @@ It's time I tackled a problem I can solve.
                                       (reference
                                         (identifier_path
                                           (identifier))))
+                                    (symbolic_binary_operator)
                                     (expression
                                       (number))))
                                 (inline_content
@@ -8198,6 +8219,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -8272,6 +8294,7 @@ It's time I tackled a problem I can solve.
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -8823,6 +8846,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -9083,6 +9107,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (number)))))
           (choice_content
@@ -9228,6 +9253,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (line_end)
@@ -9386,6 +9412,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -10272,6 +10299,7 @@ It's time I tackled a problem I can solve.
         (line_start)
         (code_text
           (temporary_declaration
+            (temp_keyword)
             (identifier)
             (assignment)
             (expression
@@ -10808,6 +10836,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -14100,6 +14129,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -18188,6 +18218,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (reference
                         (identifier_path
@@ -18305,6 +18336,7 @@ It's time I tackled a problem I can solve.
                                         (reference
                                           (identifier_path
                                             (identifier))))
+                                      (symbolic_binary_operator)
                                       (expression
                                         (reference
                                           (identifier_path
@@ -18350,6 +18382,7 @@ It's time I tackled a problem I can solve.
                                         (reference
                                           (identifier_path
                                             (identifier))))
+                                      (symbolic_binary_operator)
                                       (expression
                                         (reference
                                           (identifier_path
@@ -18619,6 +18652,7 @@ It's time I tackled a problem I can solve.
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (reference
                       (identifier_path
@@ -19123,6 +19157,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -19152,6 +19187,7 @@ It's time I tackled a problem I can solve.
                               (reference
                                 (identifier_path
                                   (identifier))))
+                            (symbolic_binary_operator)
                             (expression
                               (reference
                                 (identifier_path
@@ -19320,6 +19356,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -19336,6 +19373,7 @@ It's time I tackled a problem I can solve.
                               (reference
                                 (identifier_path
                                   (identifier))))
+                            (symbolic_binary_operator)
                             (expression
                               (reference
                                 (identifier_path
@@ -19547,6 +19585,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -20456,6 +20495,7 @@ It's time I tackled a problem I can solve.
                             (reference
                               (identifier_path
                                 (identifier))))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -20726,6 +20766,7 @@ It's time I tackled a problem I can solve.
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -20795,6 +20836,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))))
+                  (symbolic_binary_operator)
                   (expression
                     (reference
                       (identifier_path
@@ -20882,6 +20924,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (reference
                         (identifier_path
@@ -20914,6 +20957,7 @@ It's time I tackled a problem I can solve.
                             (reference
                               (identifier_path
                                 (identifier))))
+                          (symbolic_binary_operator)
                           (expression
                             (reference
                               (identifier_path
@@ -21829,6 +21873,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (unary_expression
                     (not_operator)
@@ -23738,6 +23783,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content
@@ -25584,6 +25630,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (reference
                         (identifier_path
@@ -25765,6 +25812,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (reference
                         (identifier_path
@@ -25940,6 +25988,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (reference
                     (identifier_path
@@ -27078,6 +27127,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (reference
                         (identifier_path
@@ -27465,6 +27515,7 @@ It's time I tackled a problem I can solve.
                   (reference
                     (identifier_path
                       (identifier))))
+                (symbolic_binary_operator)
                 (expression
                   (reference
                     (identifier_path
@@ -28534,6 +28585,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (reference
                         (identifier_path
@@ -29624,6 +29676,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -29646,6 +29699,7 @@ It's time I tackled a problem I can solve.
                                         (reference
                                           (identifier_path
                                             (identifier))))
+                                      (symbolic_binary_operator)
                                       (expression
                                         (reference
                                           (identifier_path
@@ -30093,6 +30147,7 @@ It's time I tackled a problem I can solve.
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -30472,6 +30527,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))))
+                (symbolic_binary_operator)
                 (expression
                   (unary_expression
                     (not_operator)
@@ -32371,6 +32427,7 @@ It's time I tackled a problem I can solve.
                       (reference
                         (identifier_path
                           (identifier))))
+                    (symbolic_binary_operator)
                     (expression
                       (number))))
                 (inline_content

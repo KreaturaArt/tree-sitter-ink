@@ -41,6 +41,7 @@ module.exports = grammar({
     ],
     conflicts: $ => [
         [$.list_value, $.reference],
+        [$.list_definition],
         [$.tag],
         [$.inline_tag],
         [$.divert_chain],
@@ -66,6 +67,7 @@ module.exports = grammar({
         $.choice_label_continuation,
         $.choice_condition_continuation,
         $.list_separator_continuation,
+        $.list_item_continuation,
         $.line_start,
         $.stitch_start,
         $.knot_start,
@@ -92,14 +94,7 @@ module.exports = grammar({
             )
         )),
 
-        block_comment: $ => token(seq(
-            /\/\*/,
-            repeat(choice(
-                /[^*]/,
-                /\*[^/]/
-            )),
-            /\*\//,
-        )),
+        block_comment: $ => token(/\/\*([^*]|\*+[^*/])*\*+\//),
 
         knot: $ => seq(
             $.knot_header,
@@ -244,7 +239,7 @@ module.exports = grammar({
         )),
 
         code_text: $ => seq(
-            /~/,
+            /~[ \t]*/,
             choice(
                 $.return_statement,
                 $.temporary_declaration,
@@ -299,7 +294,7 @@ module.exports = grammar({
             repeat(
                 seq(
                     choice(/,/, $.list_separator_continuation),
-                    optional($.line_end),
+                    optional($.list_item_continuation),
                     $.list_definition_item
                 )
             ),
@@ -428,11 +423,11 @@ module.exports = grammar({
         ),
 
         return_statement: $ => seq(
-            /return/,
+            alias(/return/, $.return_keyword),
             optional(field("value", $.expression)),
         ),
         temporary_declaration: $ => seq(
-            /temp/,
+            alias(/temp/, $.temp_keyword),
             field("name", $.identifier),
             optional(seq(
                 field("operator", $.assignment),
@@ -454,7 +449,8 @@ module.exports = grammar({
         condition_text: $ => seq(
             $.condition_block,
             optional($.text),
-            optional($.divert_or_thread)
+            optional($.divert_or_thread),
+            repeat($.tag)
         ),
 
         condition_block: $ => choice(
@@ -690,14 +686,14 @@ module.exports = grammar({
         ),
         binary_expression: $ => choice(
             ...[
-                [PREC.LOGICAL, choice(/&&/, /\|\|/, $.and_operator, $.or_operator)],
-                [PREC.COMPARISON, choice(/==/, /!=/, /<=/, />=/, /</, />/)],
-                [PREC.CONTAINMENT, choice(/!\?/, /\?/, /\^/, $.has_operator, $.hasnt_operator)],
-                [PREC.ADD, /\+/],
-                [PREC.SUBTRACT, /-/],
-                [PREC.MULTIPLY, /\*/],
-                [PREC.DIVIDE, /\//],
-                [PREC.MODULO, choice(/%/, $.mod_operator)],
+                [PREC.LOGICAL, choice(alias(/&&/, $.symbolic_binary_operator), alias(/\|\|/, $.symbolic_binary_operator), $.and_operator, $.or_operator)],
+                [PREC.COMPARISON, choice(...[/==/, /!=/, /<=/, />=/, /</, />/].map(operator => alias(operator, $.symbolic_binary_operator)))],
+                [PREC.CONTAINMENT, choice(alias(/!\?/, $.symbolic_binary_operator), alias(/\?/, $.symbolic_binary_operator), alias(/\^/, $.symbolic_binary_operator), $.has_operator, $.hasnt_operator)],
+                [PREC.ADD, alias(/\+/, $.symbolic_binary_operator)],
+                [PREC.SUBTRACT, alias(/-/, $.symbolic_binary_operator)],
+                [PREC.MULTIPLY, alias(/\*/, $.symbolic_binary_operator)],
+                [PREC.DIVIDE, alias(/\//, $.symbolic_binary_operator)],
+                [PREC.MODULO, choice(alias(/%/, $.symbolic_binary_operator), $.mod_operator)],
             ].map(([precedence, operator]) => prec.left(precedence, seq(
                 field("left", $.expression),
                 field("operator", operator),
@@ -705,7 +701,7 @@ module.exports = grammar({
             ))),
         ),
         unary_expression: $ => prec.right(PREC.UNARY, seq(
-            field("operator", choice(/-/, /!/, $.not_operator)),
+            field("operator", choice(alias(/-/, $.symbolic_unary_operator), alias(/!/, $.symbolic_unary_operator), $.not_operator)),
             field("argument", $.expression),
         )),
         postfix_expression: $ => prec.left(PREC.POSTFIX, seq(

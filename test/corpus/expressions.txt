@@ -54,6 +54,7 @@ VAR list = (Origin.one, Other.two)
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           name: (identifier)
           operator: (assignment)
           value: (expression
@@ -79,12 +80,14 @@ VAR list = (Origin.one, Other.two)
                 (reference
                   (identifier_path
                     (identifier))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (binary_expression
                   left: (expression
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (reference
                       (identifier_path
@@ -110,6 +113,7 @@ VAR list = (Origin.one, Other.two)
       (line_start)
       (code_text
         (return_statement
+          (return_keyword)
           value: (expression
             (binary_expression
               left: (expression
@@ -126,6 +130,7 @@ VAR list = (Origin.one, Other.two)
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (number))))))))
       (line_end))))
@@ -157,12 +162,14 @@ Operator associativity
                 (reference
                   (identifier_path
                     (identifier))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (binary_expression
                   left: (expression
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (reference
                       (identifier_path
@@ -182,10 +189,12 @@ Operator associativity
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (reference
                       (identifier_path
                         (identifier))))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (reference
                   (identifier_path
@@ -203,12 +212,14 @@ Operator associativity
                 (reference
                   (identifier_path
                     (identifier))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (binary_expression
                   left: (expression
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (reference
                       (identifier_path
@@ -228,10 +239,12 @@ Operator associativity
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (reference
                       (identifier_path
                         (identifier))))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (reference
                   (identifier_path
@@ -251,14 +264,174 @@ Operator associativity
                     (reference
                       (identifier_path
                         (identifier))))
+                  operator: (symbolic_binary_operator)
                   right: (expression
                     (reference
                       (identifier_path
                         (identifier))))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (reference
                   (identifier_path
                     (identifier))))))))
+      (line_end))))
+
+========================================
+Symbolic operators and logic keywords
+========================================
+
+~ temp result = -a + !b
+~ result = a && b || c == d != e <= f >= g < h > i !? j ? k ^ l % m / n * o
+~ return result
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (binary_expression
+              (expression
+                (unary_expression
+                  (symbolic_unary_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              (symbolic_binary_operator)
+              (expression
+                (unary_expression
+                  (symbolic_unary_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          (identifier)
+          (assignment)
+          (expression
+            (binary_expression
+              (expression
+                (binary_expression
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (symbolic_binary_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              (symbolic_binary_operator)
+              (expression
+                (binary_expression
+                  (expression
+                    (binary_expression
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (binary_expression
+                                  (expression
+                                    (binary_expression
+                                      (expression
+                                        (reference
+                                          (identifier_path
+                                            (identifier))))
+                                      (symbolic_binary_operator)
+                                      (expression
+                                        (reference
+                                          (identifier_path
+                                            (identifier))))))
+                                  (symbolic_binary_operator)
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))))
+                              (symbolic_binary_operator)
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))))
+                          (symbolic_binary_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (symbolic_binary_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (symbolic_binary_operator)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))
+                              (symbolic_binary_operator)
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))))
+                          (symbolic_binary_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (symbolic_binary_operator)
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (binary_expression
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))
+                                  (symbolic_binary_operator)
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))))
+                              (symbolic_binary_operator)
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))))
+                          (symbolic_binary_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (return_statement
+          (return_keyword)
+          (expression
+            (reference
+              (identifier_path
+                (identifier))))))
       (line_end))))
 
 =======================================
@@ -283,8 +456,36 @@ Brace classification with logical or
                 (binary_expression
                   (expression
                     (boolean))
+                  (symbolic_binary_operator)
                   (expression
                     (boolean))))))))
+      (line_end))))
+
+=========================================
+Sequence with colon after first pipe
+=========================================
+
+{first|time: second}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_sequence
+              (inline_sequence_start)
+              (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              (sequence_content
+                (vocabulary)
+                (inline_text_other)
+                (vocabulary))))))
       (line_end))))
 
 =========================================
@@ -359,6 +560,7 @@ Brace classification with quoted brace
                 (binary_expression
                   (expression
                     (string))
+                  (symbolic_binary_operator)
                   (expression
                     (string))))))))
       (line_end))))

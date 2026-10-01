@@ -765,6 +765,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -835,6 +836,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -989,6 +991,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -1589,6 +1592,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -1810,6 +1814,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -2261,6 +2266,7 @@ VAR time = 0
                           (reference
                             (identifier_path
                               (identifier))))
+                        (symbolic_binary_operator)
                         (expression
                           (number))))
                     (line_end)
@@ -2281,6 +2287,7 @@ VAR time = 0
                           (reference
                             (identifier_path
                               (identifier))))
+                        (symbolic_binary_operator)
                         (expression
                           (number))))
                     (line_end)
@@ -2513,6 +2520,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -2544,6 +2552,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_condition
@@ -2601,6 +2610,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_condition
@@ -2693,6 +2703,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_condition
@@ -2781,6 +2792,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -2925,6 +2937,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (line_end)
@@ -2992,6 +3005,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -3627,6 +3641,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -3652,6 +3667,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -3677,6 +3693,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -3869,6 +3886,7 @@ VAR time = 0
                           (reference
                             (identifier_path
                               (identifier))))
+                        (symbolic_binary_operator)
                         (expression
                           (number))))
                     (inline_content
@@ -4000,6 +4018,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -4570,6 +4589,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -4602,6 +4622,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -4622,6 +4643,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -4650,6 +4672,7 @@ VAR time = 0
                           (reference
                             (identifier_path
                               (identifier))))
+                        (symbolic_binary_operator)
                         (expression
                           (number))))
                     (inline_content
@@ -4781,6 +4804,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -4832,6 +4856,7 @@ VAR time = 0
                           (reference
                             (identifier_path
                               (identifier))))
+                        (symbolic_binary_operator)
                         (expression
                           (number))))
                     (inline_content
@@ -5019,6 +5044,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5039,8 +5065,10 @@ VAR time = 0
                             (reference
                               (identifier_path
                                 (identifier))))
+                          (symbolic_binary_operator)
                           (expression
                             (number))))
+                      (symbolic_binary_operator)
                       (expression
                         (reference
                           (identifier_path
@@ -5061,6 +5089,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5080,6 +5109,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (line_end)
@@ -5125,6 +5155,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (line_end)
@@ -5164,6 +5195,7 @@ VAR time = 0
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))
                   (inline_content
@@ -5216,6 +5248,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -5247,6 +5280,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -5268,6 +5302,7 @@ VAR time = 0
                     (reference
                       (identifier_path
                         (identifier))))
+                  (symbolic_binary_operator)
                   (expression
                     (number)))))
             (choice_content
@@ -5645,6 +5680,7 @@ VAR time = 0
                             (identifier)
                             (dot)
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (unary_expression
                           (not_operator)

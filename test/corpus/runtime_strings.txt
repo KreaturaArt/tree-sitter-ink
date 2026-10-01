@@ -16,6 +16,7 @@ Runtime strings with inline alternatives
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -83,6 +84,7 @@ Runtime strings with inline alternatives
                         (reference
                           (identifier_path
                             (identifier))))
+                      (symbolic_binary_operator)
                       (expression
                         (number))))))))))
       (line_end))))
@@ -103,6 +105,7 @@ Runtime strings with nested inline ink
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -135,6 +138,7 @@ Runtime strings with nested inline ink
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -175,6 +179,7 @@ Escapes and ordinary quoted string expressions
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -184,6 +189,7 @@ Escapes and ordinary quoted string expressions
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -201,6 +207,7 @@ Escapes and ordinary quoted string expressions
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -269,6 +276,7 @@ Incomplete inline ink in a runtime string
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -278,6 +286,7 @@ Incomplete inline ink in a runtime string
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression
@@ -287,6 +296,7 @@ Incomplete inline ink in a runtime string
       (line_start)
       (code_text
         (temporary_declaration
+          (temp_keyword)
           (identifier)
           (assignment)
           (expression

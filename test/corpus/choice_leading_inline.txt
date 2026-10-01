@@ -134,6 +134,7 @@ Guards remain conditions before choice text
                 (reference
                   (identifier_path
                     (identifier))))
+              operator: (symbolic_binary_operator)
               right: (expression
                 (number)))))
         content: (choice_content

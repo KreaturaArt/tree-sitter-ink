@@ -932,6 +932,34 @@ test /* asdf /* test */ */ bla
           (vocabulary)))
       (line_end))))
 
+=========================
+Block comment double star
+=========================
+
+test /* note **/ after
+VAR count = 1
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (vocabulary)
+          (block_comment)
+          (vocabulary)))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (number))
+      (line_end))))
+
 ============
 Line comment
 ============

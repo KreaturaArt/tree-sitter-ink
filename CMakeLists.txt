@@ -16,6 +16,17 @@ if(NOT ${TREE_SITTER_ABI_VERSION} MATCHES "^[0-9]+$")
 endif()
 
 find_program(TREE_SITTER_CLI tree-sitter DOC "Tree-sitter CLI")
+if(NOT TREE_SITTER_CLI)
+    message(FATAL_ERROR "tree-sitter CLI 0.24.7 is required; run mise install")
+endif()
+execute_process(COMMAND "${TREE_SITTER_CLI}" --version
+                OUTPUT_VARIABLE TREE_SITTER_CLI_VERSION
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+                RESULT_VARIABLE TREE_SITTER_CLI_RESULT)
+if(NOT TREE_SITTER_CLI_RESULT EQUAL 0 OR
+   NOT TREE_SITTER_CLI_VERSION MATCHES "^tree-sitter 0\\.24\\.7( \\([0-9a-f]+\\))?$")
+    message(FATAL_ERROR "tree-sitter CLI 0.24.7 is required; found ${TREE_SITTER_CLI_VERSION} at ${TREE_SITTER_CLI}")
+endif()
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/parser.c"
                    DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/grammar.json"

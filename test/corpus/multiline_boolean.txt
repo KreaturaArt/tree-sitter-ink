@@ -45,6 +45,7 @@ Initial query with unlabelled true/false branches
                       (block_line_content
                         (code_text
                           (temporary_declaration
+                            (temp_keyword)
                             (identifier)
                             (assignment)
                             (expression
@@ -165,6 +166,7 @@ Labelled switch cases and else
                       (block_line_content
                         (code_text
                           (temporary_declaration
+                            (temp_keyword)
                             (identifier)
                             (assignment)
                             (expression
