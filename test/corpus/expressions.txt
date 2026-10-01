@@ -1,0 +1,624 @@
+============================
+Expressions and logic lines
+============================
+
+VAR decimal = 12.5
+VAR target = -> knot.stitch
+VAR list = (Origin.one, Other.two)
+~ temp roll = RANDOM(1, 6)
+~ value = a + b - c
+~ value += 2
+~ value--
+~ return not ready or count >= 2
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (var_line
+      (var_start)
+      name: (identifier)
+      operator: (assignment)
+      value: (expression
+        (float))
+      (line_end))
+    (var_line
+      (var_start)
+      name: (identifier)
+      operator: (assignment)
+      value: (expression
+        (divert_target_value
+          (arrow)
+          target: (identifier_path
+            (identifier)
+            (dot)
+            (identifier))))
+      (line_end))
+    (var_line
+      (var_start)
+      name: (identifier)
+      operator: (assignment)
+      value: (expression
+        (list_value
+          item: (identifier_path
+            (identifier)
+            (dot)
+            (identifier))
+          item: (identifier_path
+            (identifier)
+            (dot)
+            (identifier))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          name: (identifier)
+          operator: (assignment)
+          value: (expression
+            (call_expression
+              function: (identifier)
+              arguments: (call_arguments
+                (call_argument
+                  (expression
+                    (number)))
+                (call_argument
+                  (expression
+                    (number))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              operator: (symbolic_binary_operator)
+              right: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (compound_assignment)
+          value: (expression
+            (number))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (mutation_statement
+          target: (identifier)
+          operator: (mutation_operator)))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (return_statement
+          (return_keyword)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (unary_expression
+                  operator: (not_operator)
+                  argument: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              operator: (or_operator)
+              right: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (number))))))))
+      (line_end))))
+
+=====================
+Operator associativity
+=====================
+
+~ a = one + two - three
+~ b = one - two + three
+~ c = one * two / three
+~ d = one / two * three
+~ e = one && two || three
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              operator: (symbolic_binary_operator)
+              right: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              operator: (symbolic_binary_operator)
+              right: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              operator: (symbolic_binary_operator)
+              right: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              operator: (symbolic_binary_operator)
+              right: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          target: (identifier)
+          operator: (assignment)
+          value: (expression
+            (binary_expression
+              left: (expression
+                (binary_expression
+                  left: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  operator: (symbolic_binary_operator)
+                  right: (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              operator: (symbolic_binary_operator)
+              right: (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))))
+      (line_end))))
+
+========================================
+Symbolic operators and logic keywords
+========================================
+
+~ temp result = -a + !b
+~ result = a && b || c == d != e <= f >= g < h > i !? j ? k ^ l % m / n * o
+~ return result
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (binary_expression
+              (expression
+                (unary_expression
+                  (symbolic_unary_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              (symbolic_binary_operator)
+              (expression
+                (unary_expression
+                  (symbolic_unary_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          (identifier)
+          (assignment)
+          (expression
+            (binary_expression
+              (expression
+                (binary_expression
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))
+                  (symbolic_binary_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              (symbolic_binary_operator)
+              (expression
+                (binary_expression
+                  (expression
+                    (binary_expression
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (binary_expression
+                                  (expression
+                                    (binary_expression
+                                      (expression
+                                        (reference
+                                          (identifier_path
+                                            (identifier))))
+                                      (symbolic_binary_operator)
+                                      (expression
+                                        (reference
+                                          (identifier_path
+                                            (identifier))))))
+                                  (symbolic_binary_operator)
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))))
+                              (symbolic_binary_operator)
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))))
+                          (symbolic_binary_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (symbolic_binary_operator)
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))))
+                  (symbolic_binary_operator)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))
+                              (symbolic_binary_operator)
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))))
+                          (symbolic_binary_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))
+                      (symbolic_binary_operator)
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (binary_expression
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))
+                                  (symbolic_binary_operator)
+                                  (expression
+                                    (reference
+                                      (identifier_path
+                                        (identifier))))))
+                              (symbolic_binary_operator)
+                              (expression
+                                (reference
+                                  (identifier_path
+                                    (identifier))))))
+                          (symbolic_binary_operator)
+                          (expression
+                            (reference
+                              (identifier_path
+                                (identifier))))))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (return_statement
+          (return_keyword)
+          (expression
+            (reference
+              (identifier_path
+                (identifier))))))
+      (line_end))))
+
+=======================================
+Brace classification with logical or
+=======================================
+
+{true || false}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (binary_expression
+                  (expression
+                    (boolean))
+                  (symbolic_binary_operator)
+                  (expression
+                    (boolean))))))))
+      (line_end))))
+
+=========================================
+Sequence with colon after first pipe
+=========================================
+
+{first|time: second}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_sequence
+              (inline_sequence_start)
+              (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              (sequence_content
+                (vocabulary)
+                (inline_text_other)
+                (vocabulary))))))
+      (line_end))))
+
+=========================================
+Brace classification with block comments
+=========================================
+
+{true /* : | } { */ : yes|no}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              (expression
+                (boolean))
+              (block_comment)
+              (inline_content
+                (vocabulary))
+              (inline_content
+                (vocabulary))))))
+      (line_end))))
+
+=========================================
+Brace classification comment punctuation
+=========================================
+
+{true /* : | } { */}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (boolean))
+              (block_comment)))))
+      (line_end))))
+
+=======================================
+Brace classification with quoted brace
+=======================================
+
+{"}" == "}"}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_expression
+              (inline_expression_start)
+              (expression
+                (binary_expression
+                  (expression
+                    (string))
+                  (symbolic_binary_operator)
+                  (expression
+                    (string))))))))
+      (line_end))))
+
+=========================================
+Brace classification with nested braces
+=========================================
+
+{true: {count}|no}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (dialog_text
+        (text
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              (expression
+                (boolean))
+              (inline_content
+                (inline_block
+                  (inline_expression
+                    (inline_expression_start)
+                    (expression
+                      (reference
+                        (identifier_path
+                          (identifier)))))))
+              (inline_content
+                (vocabulary))))))
+      (line_end))))
+
+============================================
+Brace classification multiline recovery
+============================================
+
+{true /* : | } { */
+- yes
+}
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line))
+  (ERROR
+    (line_start)
+    (block_brace_start)
+    (ERROR
+      (expression
+        (boolean)))
+    (block_comment)
+    (line_end)
+    (line_start)
+    (identifier)
+    (line_end)
+    (line_end)))

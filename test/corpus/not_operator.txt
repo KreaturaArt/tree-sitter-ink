@@ -1,0 +1,215 @@
+======================================
+Unspaced not and unrelated function calls
+======================================
+
+VAR negated = not(true)
+VAR nested = not(not(false))
+VAR compound = not(true) and ready
+VAR call = notify(true)
+VAR spaced_call = notify (false)
+VAR prefix = notable(true)
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (unary_expression
+          (not_operator)
+          (expression
+            (parenthesized_expression
+              (expression
+                (boolean))))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (unary_expression
+          (not_operator)
+          (expression
+            (parenthesized_expression
+              (expression
+                (unary_expression
+                  (not_operator)
+                  (expression
+                    (parenthesized_expression
+                      (expression
+                        (boolean))))))))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (binary_expression
+          (expression
+            (unary_expression
+              (not_operator)
+              (expression
+                (parenthesized_expression
+                  (expression
+                    (boolean))))))
+          (and_operator)
+          (expression
+            (reference
+              (identifier_path
+                (identifier))))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (call_expression
+          (identifier)
+          (call_arguments
+            (call_argument
+              (expression
+                (boolean))))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (call_expression
+          (identifier)
+          (call_arguments
+            (call_argument
+              (expression
+                (boolean))))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (call_expression
+          (identifier)
+          (call_arguments
+            (call_argument
+              (expression
+                (boolean))))))
+      (line_end))))
+
+======================================
+Spaced word operators remain intact
+======================================
+
+VAR value = not ready and other or false
+VAR count = amount mod divisor
+VAR contained = items has item and items hasnt other
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (binary_expression
+          (expression
+            (binary_expression
+              (expression
+                (unary_expression
+                  (not_operator)
+                  (expression
+                    (reference
+                      (identifier_path
+                        (identifier))))))
+              (and_operator)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))
+          (or_operator)
+          (expression
+            (boolean))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (binary_expression
+          (expression
+            (reference
+              (identifier_path
+                (identifier))))
+          (mod_operator)
+          (expression
+            (reference
+              (identifier_path
+                (identifier))))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (binary_expression
+          (expression
+            (binary_expression
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              (has_operator)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))
+          (and_operator)
+          (expression
+            (binary_expression
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))
+              (hasnt_operator)
+              (expression
+                (reference
+                  (identifier_path
+                    (identifier))))))))
+      (line_end))))
+
+======================================
+Incomplete not argument recovery
+======================================
+
+VAR value = not(
+VAR after = true
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (unary_expression
+          (not_operator)
+          (expression
+            (list_value
+              (MISSING "label_token2")))))
+      (line_end))
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (boolean))
+      (line_end))))

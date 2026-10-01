@@ -1,0 +1,304 @@
+========================================
+Runtime strings with inline alternatives
+========================================
+
+~ temp s = "{~red|blue}"
+~ result = "Before {~red|blue} after"
+~ result = "{true: yes|no}"
+~ result = "{count + 1}"
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (inline_block
+                (inline_sequence
+                  (inline_sequence_start)
+                  (sequence_annotation)
+                  (sequence_content
+                    (vocabulary))
+                  (sequence_separator)
+                  (sequence_content
+                    (vocabulary))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (inline_block
+                (inline_sequence
+                  (inline_sequence_start)
+                  (sequence_annotation)
+                  (sequence_content
+                    (vocabulary))
+                  (sequence_separator)
+                  (sequence_content
+                    (vocabulary))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (inline_block
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (boolean))
+                  (inline_content
+                    (vocabulary))
+                  (inline_content
+                    (vocabulary))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (assignment_statement
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (inline_block
+                (inline_expression
+                  (inline_expression_start)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (reference
+                          (identifier_path
+                            (identifier))))
+                      (symbolic_binary_operator)
+                      (expression
+                        (number))))))))))
+      (line_end))))
+
+====================================
+Runtime strings with nested inline ink
+====================================
+
+~ temp s = "{true: {~red|blue}|{count}}"
+~ temp s = "{~one|{true: two|three}}"
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (inline_block
+                (inline_conditional
+                  (inline_conditional_start)
+                  (expression
+                    (boolean))
+                  (inline_content
+                    (inline_block
+                      (inline_sequence
+                        (inline_sequence_start)
+                        (sequence_annotation)
+                        (sequence_content
+                          (vocabulary))
+                        (sequence_separator)
+                        (sequence_content
+                          (vocabulary)))))
+                  (inline_content
+                    (inline_block
+                      (inline_expression
+                        (inline_expression_start)
+                        (expression
+                          (reference
+                            (identifier_path
+                              (identifier)))))))))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (inline_block
+                (inline_sequence
+                  (inline_sequence_start)
+                  (sequence_annotation)
+                  (sequence_content
+                    (vocabulary))
+                  (sequence_separator)
+                  (sequence_content
+                    (inline_block
+                      (inline_conditional
+                        (inline_conditional_start)
+                        (expression
+                          (boolean))
+                        (inline_content
+                          (vocabulary))
+                        (inline_content
+                          (vocabulary)))))))))))
+      (line_end))))
+
+==============================================
+Escapes and ordinary quoted string expressions
+==============================================
+
+~ temp plain = "just ordinary text"
+~ temp escaped = "\{~red|blue} and \"quoted\" and \}"
+~ temp brace = "a { literal"
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string
+              (escaped_character
+                (escaped_value))
+              (escaped_character
+                (escaped_value))
+              (escaped_character
+                (escaped_value))
+              (escaped_character
+                (escaped_value))))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string))))
+      (line_end))))
+
+============================================
+Global initializer is syntactically permissive
+============================================
+
+VAR global = "{~red|blue}"
+CONST fixed = "{true: yes|no}"
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (var_line
+      (var_start)
+      (identifier)
+      (assignment)
+      (expression
+        (string
+          (inline_block
+            (inline_sequence
+              (inline_sequence_start)
+              (sequence_annotation)
+              (sequence_content
+                (vocabulary))
+              (sequence_separator)
+              (sequence_content
+                (vocabulary))))))
+      (line_end))
+    (const_line
+      (const_start)
+      (identifier)
+      (assignment)
+      (expression
+        (string
+          (inline_block
+            (inline_conditional
+              (inline_conditional_start)
+              (expression
+                (boolean))
+              (inline_content
+                (vocabulary))
+              (inline_content
+                (vocabulary))))))
+      (line_end))))
+
+==========================================
+Incomplete inline ink in a runtime string
+==========================================
+
+~ temp s = "{~red|blue"
+~ temp s = "{true: yes|no"
+~ temp recovered = "ok"
+
+--------------------------------------------------------------------------------
+
+(program
+  (weave_body
+    (empty_line)
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string))))
+      (line_end))
+    (weave_body_line
+      (line_start)
+      (code_text
+        (temporary_declaration
+          (temp_keyword)
+          (identifier)
+          (assignment)
+          (expression
+            (string))))
+      (line_end))))

@@ -1,4 +1,21 @@
-const WS = /[ \t\v\f\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u2028\u2029\u202F\u205F\u3000]/;
+const WS = /[ \t]/;
+const ID_ASCII = "A-Za-z0-9_";
+const ID_UNICODE = "\\u0080-\\u00FF\\u0100-\\u024F\\u0370-\\u0373\\u0376-\\u0377\\u0386\\u0388-\\u038A\\u038C\\u038E-\\u03A1\\u03A3-\\u03FF\\u0400-\\u0481\\u048A-\\u04FF\\u0531-\\u0556\\u0561-\\u0587\\u058F\\u0590-\\u06FF\\u3041-\\u3096\\u30A0-\\u30FC\\u4E00-\\u9FFF\\uAC00-\\uD7AF";
+const ID_CHAR = `[${ID_ASCII}${ID_UNICODE}]`;
+const ID_NON_DIGIT = `[A-Za-z_${ID_UNICODE}]`;
+const PREC = {
+    LOGICAL: 1,
+    COMPARISON: 2,
+    CONTAINMENT: 3,
+    ADD: 4,
+    SUBTRACT: 5,
+    MULTIPLY: 6,
+    DIVIDE: 7,
+    MODULO: 8,
+    UNARY: 9,
+    POSTFIX: 10,
+    CALL: 11,
+};
 
 /* Note
 - PLEASE remember that repeat($.line_start, $.catch_all, $.line_end) can also
@@ -15,14 +32,6 @@ const WS = /[ \t\v\f\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007
         - Function and stitch bodies are optional
 */
 
-/* TODO
-- INCLUDE
-- === knot(name) knot arguments
-- = stitch(name) stitch arguments
-- = knit(-> name) knot divert arguments
-- = stitch(-> name) stitch divert arguments
-*/
-
 module.exports = grammar({
     name: "ink",
     extras: $ => [
@@ -31,15 +40,34 @@ module.exports = grammar({
         $.line_comment
     ],
     conflicts: $ => [
+        [$.list_value, $.reference],
+        [$.list_definition],
+        [$.tag],
+        [$.inline_tag],
+        [$.divert_chain],
+        [$.block_body],
+        [$.conditional_branch],
+        [$.switch_case],
+        [$.true_branch],
+        [$.false_branch],
+        [$.else_branch],
+        [$.sequence_entry],
+        [$.condition_text, $.nested_block_statement],
     ],
     externals: $ => [
         $.arrow,
         $.double_arrow,
         $.back_arrow,
-        $.block_comment_start,
-        $.block_comment_end,
         $.line_comment,
         $.glue,
+        $.inline_expression_start,
+        $.inline_conditional_start,
+        $.inline_sequence_start,
+        $.block_brace_start,
+        $.choice_label_continuation,
+        $.choice_condition_continuation,
+        $.list_separator_continuation,
+        $.list_item_continuation,
         $.line_start,
         $.stitch_start,
         $.knot_start,
@@ -47,6 +75,9 @@ module.exports = grammar({
         $.var_start,
         $.const_start,
         $.list_start,
+        $.include_start,
+        $.external_start,
+        $.todo_start,
         $.empty_line,
         $.line_end
     ],
@@ -54,7 +85,6 @@ module.exports = grammar({
     rules: {
 
         program: $ => prec(1, seq(
-            optional(alias($.empty_line, "")),
             optional($.weave_body),
             repeat(
                 choice(
@@ -64,37 +94,32 @@ module.exports = grammar({
             )
         )),
 
-        block_comment: $ => seq(
-            $.block_comment_start,
-            repeat(choice(
-                /[^*]/,
-                /\*[^/]/
-            )),
-            $.block_comment_end
-        ),
+        block_comment: $ => token(/\/\*([^*]|\*+[^*/])*\*+\//),
 
         knot: $ => seq(
             $.knot_header,
-            optional($.weave_body),
+            optional(field("body", $.weave_body)),
             repeat(
-                $.stitch
+                field("stitch", $.stitch)
             )
         ),
         knot_header: $ => seq(
             $.knot_start,
             optional(/=+/),
-            $.identifier,
+            field("name", $.identifier),
+            optional(field("parameters", $.parameter_list)),
             optional(/=+/),
             $.line_end
         ),
 
         stitch: $ => seq(
             $.stitch_header,
-            optional($.weave_body), // actually not optional
+            optional(field("body", $.weave_body)), // actually not optional
         ),
         stitch_header: $ => seq(
             $.stitch_start,
-            $.identifier,
+            field("name", $.identifier),
+            optional(field("parameters", $.parameter_list)),
             $.line_end,
         ),
 
@@ -104,7 +129,10 @@ module.exports = grammar({
                 $.var_line,
                 $.const_line,
                 $.list_line,
-                alias($.empty_line, "")
+                $.include_line,
+                $.external_line,
+                $.todo_line,
+                $.empty_line
             )
         )),
         weave_body_line: $ => seq(
@@ -120,31 +148,83 @@ module.exports = grammar({
 
         function: $ => seq(
             $.function_header,
-            optional($.weave_body) // actually not optional
+            optional(field("body", $.weave_body)) // actually not optional
         ),
 
         gather_text: $ => seq(
-            $.gather_mark,
-            optional($.label),
-            optional($.dialog_text)
+            field("marker", $.gather_mark),
+            optional(field("label", $.label)),
+            optional(field("content", $.dialog_text))
         ),
         gather_mark: $ => repeat1(
             /-/,
         ),
 
         option_text: $ => seq(
-            repeat1($.option_mark),
-            optional($.label),
-            optional($.option_words)
+            field("marker", $.choice_marker),
+            optional(choice(
+                seq(
+                    field("label", $.label),
+                    optional($.choice_label_continuation),
+                    repeat(seq(
+                        field("condition", $.choice_condition),
+                        optional($.choice_condition_continuation),
+                    )),
+                ),
+                repeat1(seq(
+                    field("condition", $.choice_condition),
+                    optional($.choice_condition_continuation),
+                )),
+            )),
+            optional(field("content", $.choice_content)),
+            optional(field("target", choice($.divert_or_thread, $.default_option_mark))),
         ),
-        option_mark: $ => /[\+\*]/,
-        option_words: $ => choice(
-            $.words,
-            $.divert_or_thread,
-            $.default_option_mark,
-            seq($.words, $.divert_or_thread),
-            seq($.words, $.default_option_mark)
+        choice_marker: $ => choice(
+            $.once_choice_marker,
+            $.sticky_choice_marker,
         ),
+        once_choice_marker: $ => repeat1(/\*/),
+        sticky_choice_marker: $ => repeat1(/\+/),
+        choice_condition: $ => prec.dynamic(3, seq(/\{/, field("condition", $.expression), /\}/)),
+        choice_content: $ => choice(
+            field("shared", $.shared_choice_text),
+            seq(
+                optional(field("shared", $.shared_choice_text)),
+                $.hide_start,
+                optional(field("choice_only", $.choice_text)),
+                $.hide_end,
+                optional(field("output_only", $.choice_text)),
+            ),
+        ),
+        shared_choice_text: $ => seq(
+            choice(
+                $.escaped_character,
+                $.glue,
+                $.inline_conditional,
+                $.inline_sequence,
+                $.tag,
+                $.vocabulary,
+                $.shared_choice_text_other,
+            ),
+            repeat(choice(
+                $.escaped_character,
+                $.glue,
+                $.inline_block,
+                $.tag,
+                $.vocabulary,
+                $.choice_text_other,
+            )),
+        ),
+        shared_choice_text_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}\[\]_#\(\{\+\*]/)),
+        choice_text: $ => repeat1(choice(
+            $.escaped_character,
+            $.glue,
+            $.inline_block,
+            $.tag,
+            $.vocabulary,
+            $.choice_text_other,
+        )),
+        choice_text_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}\[\]_#]/)),
         default_option_mark: $ => $.arrow,
 
         divert_or_thread: $ => choice(
@@ -152,54 +232,100 @@ module.exports = grammar({
             $.thread
         ),
 
-        label: $ => seq(
+        label: $ => prec.dynamic(3, seq(
             /\(/,
             $.identifier,
             /\)/
-        ),
+        )),
 
         code_text: $ => seq(
-            /~/,
-            $.text,
+            /~[ \t]*/,
+            choice(
+                $.return_statement,
+                $.temporary_declaration,
+                $.assignment_statement,
+                $.mutation_statement,
+                $.call_statement,
+                $.invalid_logic_statement,
+            ),
         ),
 
         var_line: $ => seq(
             $.var_start,
-            $.identifier,
-            $.assignment,
-            $.value,
+            field("name", $.identifier),
+            field("operator", $.assignment),
+            field("value", $.expression),
             $.line_end
         ),
         const_line: $ => seq(
             $.const_start,
-            $.identifier,
-            $.assignment,
-            $.value,
+            field("name", $.identifier),
+            field("operator", $.assignment),
+            field("value", $.expression),
             $.line_end
         ),
         list_line: $ => seq(
             $.list_start,
-            $.identifier,
-            $.assignment,
-            $.list,
+            field("name", $.identifier),
+            field("operator", $.assignment),
+            field("value", $.list_definition),
             $.line_end
         ),
-        list: $ => seq(
-            $.marked_identifier,
+        include_line: $ => seq(
+            $.include_start,
+            field("path", $.include_path),
+            $.line_end,
+        ),
+        external_line: $ => seq(
+            $.external_start,
+            field("name", $.identifier),
+            field("parameters", $.parameter_list),
+            $.line_end,
+        ),
+        todo_line: $ => seq(
+            $.todo_start,
+            optional(/:/),
+            optional($.directive_remainder),
+            $.line_end,
+        ),
+        list_definition: $ => seq(
+            optional($.line_end),
+            $.list_definition_item,
             repeat(
                 seq(
-                    /,/,
-                    $.marked_identifier
+                    choice(/,/, $.list_separator_continuation),
+                    optional($.list_item_continuation),
+                    $.list_definition_item
                 )
             ),
-            optional(/,/),
         ),
 
-        marked_identifier: $ => seq(
-            optional($.mark_start),
-            $.identifier,
-            optional($.mark_end),
+        list_definition_item: $ => choice(
+            seq(
+                field("name", $.identifier),
+                optional(seq(
+                    field("operator", $.assignment),
+                    field("value", $.signed_integer),
+                )),
+            ),
+            seq(
+                $.mark_start,
+                field("name", $.identifier),
+                $.mark_end,
+                optional(seq(
+                    field("operator", $.assignment),
+                    field("value", $.signed_integer),
+                )),
+            ),
+            seq(
+                $.mark_start,
+                field("name", $.identifier),
+                field("operator", $.assignment),
+                field("value", $.signed_integer),
+                $.mark_end,
+            ),
         ),
+        signed_integer: $ => seq(optional(/-/), $.number),
         mark_start: $ => /\(/,
         mark_end: $ => /\)/,
 
@@ -207,25 +333,18 @@ module.exports = grammar({
             $.condition_text,
             $.text,
             $.divert_or_thread,
-            $.tag,
+            repeat1($.tag),
             seq($.text, $.divert_or_thread),
-            seq($.text, $.tag)
+            seq($.text, repeat1($.tag))
         ),
         text: $ => repeat1(choice(
+            $.escaped_character,
             $.glue,
             $.inline_block,
             $.vocabulary,
             $.other,
         )),
 
-        words: $ => repeat1(choice(
-            $.hide_start,
-            $.hide_end,
-            $.glue,
-            $.inline_block,
-            $.vocabulary,
-            $.word_other,
-        )),
         hide_start: $ => /\[/,
         hide_end: $ => /\]/,
 
@@ -241,76 +360,288 @@ module.exports = grammar({
         ),
         divert: $ => seq(
             $.arrow,
-            $.identifier_path,
+            field("target", choice($.end_destination, $.done_destination, $.identifier_path)),
+            optional(field("arguments", $.call_arguments)),
         ),
         divert_continue: $ => $.arrow,
-        divert_return: $ => $.double_arrow,
+        divert_return: $ => seq(
+            $.double_arrow,
+            optional(seq(
+                field("target", $.identifier_path),
+                optional(field("arguments", $.call_arguments)),
+            )),
+        ),
         thread: $ => seq(
             $.back_arrow,
-            $.identifier_path
+            field("target", $.identifier_path),
+            optional(field("arguments", $.call_arguments)),
         ),
 
         function_header: $ => seq(
             $.function_start,
             optional(/=+/),
-            $.identifier,
-            optional(/\(/),
-            optional($.arguments),
-            optional(/\)/),
+            field("name", $.identifier),
+            optional(field("parameters", $.parameter_list)),
             optional(/=+/),
             $.line_end
         ),
 
-        arguments: $ => seq(
-            $.argument,
+        parameter_list: $ => seq(
+            /\(/,
+            optional($.parameters),
+            /\)/,
+        ),
+        parameters: $ => seq(
+            $.parameter,
             repeat(
                 seq(
                     /,/,
-                    $.argument
+                    $.parameter
                 )
             ),
             optional(/,/),
         ),
-        argument: $ => seq(
+        parameter: $ => seq(
             optional($.ref),
+            optional($.arrow),
             $.identifier
         ),
+        call_arguments: $ => seq(
+            /\(/,
+            optional(seq(
+                $.call_argument,
+                repeat(seq(
+                    /,/,
+                    $.call_argument,
+                )),
+                optional(/,/),
+            )),
+            /\)/,
+        ),
+        call_argument: $ => choice(
+            $.expression,
+        ),
+
+        return_statement: $ => seq(
+            alias(/return/, $.return_keyword),
+            optional(field("value", $.expression)),
+        ),
+        temporary_declaration: $ => seq(
+            alias(/temp/, $.temp_keyword),
+            field("name", $.identifier),
+            optional(seq(
+                field("operator", $.assignment),
+                field("value", $.expression),
+            )),
+        ),
+        assignment_statement: $ => seq(
+            field("target", $.identifier),
+            field("operator", choice($.assignment, $.compound_assignment)),
+            field("value", $.expression),
+        ),
+        mutation_statement: $ => seq(
+            field("target", $.identifier),
+            field("operator", $.mutation_operator),
+        ),
+        call_statement: $ => $.call_expression,
+        invalid_logic_statement: $ => token(prec(-10, /[^\r\n]+/)),
 
         condition_text: $ => seq(
             $.condition_block,
-            optional($.text)
+            optional($.text),
+            optional($.divert_or_thread),
+            repeat($.tag)
         ),
 
-        condition_block: $ => seq(
-            /\{/,
-            optional($.condition_block_content),
+        condition_block: $ => choice(
+            $.multiline_sequence,
+            $.multiline_switch,
+            $.multiline_if,
+            $.multiline_conditional,
+        ),
+        multiline_if: $ => seq(
+            $.block_brace_start,
+            field("condition", $.expression),
+            /:/,
             $.line_end,
-            repeat(
+            optional(field("consequence", $.block_body)),
+            optional(field("alternative", $.else_branch)),
+            $.line_start,
+            /\}/,
+        ),
+        multiline_conditional: $ => seq(
+            $.block_brace_start,
+            $.line_end,
+            repeat1(field("branch", $.conditional_branch)),
+            optional(field("alternative", $.else_branch)),
+            $.line_start,
+            /\}/,
+        ),
+        multiline_switch: $ => seq(
+            $.block_brace_start,
+            field("query", $.expression),
+            /:/,
+            $.line_end,
+            choice(
                 seq(
-                    $.line_start,
-                    optional($.condition_block_content),
-                    $.line_end
-                )
+                    field("consequence", $.true_branch),
+                    field("alternative", $.false_branch),
+                ),
+                seq(
+                    repeat1(field("case", $.switch_case)),
+                    optional(field("alternative", $.else_branch)),
+                ),
             ),
             $.line_start,
-            /\}/
+            /\}/,
         ),
-        condition_block_content: $ => repeat1(choice(
-            $.block_remainder,
-            $.inline_block,
-            alias($.condition_block_nested, $.condition_block)
-        )),
-        condition_block_nested: $ => $.condition_block,
+        multiline_sequence: $ => seq(
+            $.block_brace_start,
+            field("annotation", $.multiline_sequence_annotation),
+            /:/,
+            $.line_end,
+            repeat1(field("entry", $.sequence_entry)),
+            $.line_start,
+            /\}/,
+        ),
+        multiline_sequence_annotation: $ => choice(
+            /stopping/,
+            /cycle/,
+            /once/,
+            /shuffle/,
+            seq(/shuffle/, /once/),
+            seq(/shuffle/, /stopping/),
+        ),
+        conditional_branch: $ => seq(
+            $.line_start,
+            /-/,
+            field("condition", $.expression),
+            /:/,
+            optional(field("content", $.block_line_content)),
+            $.line_end,
+            optional(field("body", $.block_body)),
+        ),
+        true_branch: $ => seq(
+            $.line_start,
+            /-/,
+            /true/,
+            /:/,
+            optional(field("content", $.block_line_content)),
+            $.line_end,
+            optional(field("body", $.block_body)),
+        ),
+        false_branch: $ => seq(
+            $.line_start,
+            /-/,
+            /false/,
+            /:/,
+            optional(field("content", $.block_line_content)),
+            $.line_end,
+            optional(field("body", $.block_body)),
+        ),
+        switch_case: $ => seq(
+            $.line_start,
+            /-/,
+            field("value", $.expression),
+            /:/,
+            optional(field("content", $.block_line_content)),
+            $.line_end,
+            optional(field("body", $.block_body)),
+        ),
+        else_branch: $ => seq(
+            $.line_start,
+            /-/,
+            /else/,
+            /:/,
+            optional(field("content", $.block_line_content)),
+            $.line_end,
+            optional(field("body", $.block_body)),
+        ),
+        sequence_entry: $ => seq(
+            $.line_start,
+            /-/,
+            optional(field("content", $.block_line_content)),
+            $.line_end,
+            optional(field("body", $.block_body)),
+        ),
+        block_body: $ => repeat1($.block_statement),
+        block_statement: $ => choice(
+            $.nested_block_statement,
+            $.block_statement_line,
+            $.var_line,
+            $.const_line,
+            $.list_line,
+            $.include_line,
+            $.external_line,
+            $.todo_line,
+            $.empty_line,
+        ),
+        nested_block_statement: $ => seq(
+            $.line_start,
+            optional(/-/),
+            $.condition_block,
+            $.line_end,
+        ),
+        block_statement_line: $ => seq(
+            $.line_start,
+            optional($.block_line_content),
+            $.line_end,
+        ),
+        block_line_content: $ => choice(
+            $.option_text,
+            $.code_text,
+            $.dialog_text,
+        ),
 
-        // TODO parse code within inline block
-        inline_block: $ => seq(
-            /\{/,
-            optional(repeat1(prec(2, choice(
-                $.block_remainder,
-                $.inline_block
-            )))),
-            /\}/
+        inline_block: $ => choice(
+            $.inline_conditional,
+            $.inline_sequence,
+            $.inline_expression,
         ),
+        inline_expression: $ => prec(3, seq(
+            $.inline_expression_start,
+            field("value", $.expression),
+            /\}/,
+        )),
+        inline_conditional: $ => prec(4, seq(
+            $.inline_conditional_start,
+            field("condition", $.expression),
+            /:/,
+            field("consequence", optional($.inline_content)),
+            optional(seq(/\|/, field("alternative", optional($.inline_content)))),
+            /\}/,
+        )),
+        inline_sequence: $ => prec(2, seq(
+            $.inline_sequence_start,
+            optional(field("annotation", $.sequence_annotation)),
+            optional(field("alternative", $.sequence_content)),
+            repeat1(seq(
+                $.sequence_separator,
+                optional(field("alternative", $.sequence_content)),
+            )),
+            /\}/,
+        )),
+        sequence_annotation: $ => choice(/&/, /!/, /~/, /\$/, /~!/, /!~/, /~\$/, /\$~/),
+        sequence_separator: $ => /\|/,
+        sequence_content: $ => repeat1(choice(
+            $.escaped_character,
+            $.glue,
+            $.inline_block,
+            $.divert_or_thread,
+            $.inline_tag,
+            $.vocabulary,
+            $.inline_text_other,
+        )),
+        inline_content: $ => repeat1(choice(
+            $.escaped_character,
+            $.glue,
+            $.inline_block,
+            $.divert_or_thread,
+            $.inline_tag,
+            $.vocabulary,
+            $.inline_text_other,
+        )),
+        inline_text_other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}_\{\}\|#-]/)),
 
         identifier_path: $ => seq(
             $.identifier,
@@ -322,42 +653,127 @@ module.exports = grammar({
 
         tag: $ => seq(
             /#/,
-            $.identifier,
-            optional(seq(
-                /:/,
-                $.tag_remainder
-            ))
+            repeat1(choice(
+                $.escaped_character,
+                $.inline_block,
+                $.tag_text,
+            )),
         ),
-        tag_remainder: $ => /[^\r\n:]+/,
+        tag_text: $ => /[^#\\\{\}\[\]\r\n]+/,
+        inline_tag: $ => seq(
+            /#/,
+            repeat1(choice(
+                $.escaped_character,
+                $.inline_block,
+                $.inline_tag_text,
+            )),
+        ),
+        inline_tag_text: $ => /[^#\\\{\}\[\]\|\r\n]+/,
 
-        value: $ => choice(
+        expression: $ => choice(
+            $.binary_expression,
+            $.unary_expression,
+            $.postfix_expression,
+            $.call_expression,
+            $.divert_target_value,
+            $.list_value,
+            $.parenthesized_expression,
+            $.reference,
             $.boolean,
             $.string,
+            $.float,
             $.number,
-            $.identifier
+        ),
+        binary_expression: $ => choice(
+            ...[
+                [PREC.LOGICAL, choice(alias(/&&/, $.symbolic_binary_operator), alias(/\|\|/, $.symbolic_binary_operator), $.and_operator, $.or_operator)],
+                [PREC.COMPARISON, choice(...[/==/, /!=/, /<=/, />=/, /</, />/].map(operator => alias(operator, $.symbolic_binary_operator)))],
+                [PREC.CONTAINMENT, choice(alias(/!\?/, $.symbolic_binary_operator), alias(/\?/, $.symbolic_binary_operator), alias(/\^/, $.symbolic_binary_operator), $.has_operator, $.hasnt_operator)],
+                [PREC.ADD, alias(/\+/, $.symbolic_binary_operator)],
+                [PREC.SUBTRACT, alias(/-/, $.symbolic_binary_operator)],
+                [PREC.MULTIPLY, alias(/\*/, $.symbolic_binary_operator)],
+                [PREC.DIVIDE, alias(/\//, $.symbolic_binary_operator)],
+                [PREC.MODULO, choice(alias(/%/, $.symbolic_binary_operator), $.mod_operator)],
+            ].map(([precedence, operator]) => prec.left(precedence, seq(
+                field("left", $.expression),
+                field("operator", operator),
+                field("right", $.expression),
+            ))),
+        ),
+        unary_expression: $ => prec.right(PREC.UNARY, seq(
+            field("operator", choice(alias(/-/, $.symbolic_unary_operator), alias(/!/, $.symbolic_unary_operator), $.not_operator)),
+            field("argument", $.expression),
+        )),
+        postfix_expression: $ => prec.left(PREC.POSTFIX, seq(
+            field("argument", $.reference),
+            field("operator", $.mutation_operator),
+        )),
+        call_expression: $ => prec(PREC.CALL, seq(
+            field("function", $.identifier),
+            field("arguments", $.call_arguments),
+        )),
+        divert_target_value: $ => seq(
+            $.arrow,
+            field("target", choice($.end_destination, $.done_destination, $.identifier_path)),
+        ),
+        end_destination: $ => /END/,
+        done_destination: $ => /DONE/,
+        reference: $ => $.identifier_path,
+        parenthesized_expression: $ => seq(
+            /\(/,
+            field("value", $.expression),
+            /\)/,
+        ),
+        list_value: $ => seq(
+            /\(/,
+            optional(seq(
+                field("item", $.identifier_path),
+                repeat(seq(
+                    /,/,
+                    field("item", $.identifier_path),
+                )),
+            )),
+            /\)/,
         ),
         boolean: $ => /(true|false)/,
         string: $ => seq(
             '"',
             repeat(choice(
-                /[^"\\\n\r]/,
-                /\\./
+                /[^"\\\n\r{]+/,
+                $.escaped_character,
+                $.inline_block,
+                /\{/,
             )),
             '"'
         ),
 
+        escaped_character: $ => seq(
+            /\\/,
+            alias(token.immediate(/[^\r\n]/), $.escaped_value),
+        ),
+
         ref: $ => /ref/,
+        and_operator: $ => token(/and[ \t]+/),
+        or_operator: $ => token(/or[ \t]+/),
+        has_operator: $ => token(/has[ \t]+/),
+        hasnt_operator: $ => token(/hasnt[ \t]+/),
+        mod_operator: $ => token(/mod[ \t]+/),
+        not_operator: $ => choice(token(/not[ \t]+/), /not/),
         number: $ => /\d+/,
+        float: $ => token(prec(1, /\d+\.\d*/)),
         assignment: $ => /=/,
+        compound_assignment: $ => /(\+=|-=)/,
+        mutation_operator: $ => /(\+\+|--)/,
         dot: $ => /\./,
+        include_path: $ => /[^\r\n]+/,
+        directive_remainder: $ => /[^\r\n]+/,
         block_remainder: $ => /[^\r\n\}\{]+/,
         vocabulary: $ => /[\p{N}\p{L}_-]+/,
-        identifier: $ => /[\p{N}\p{L}_]+/,
+        identifier: $ => token(new RegExp(`${ID_CHAR}*${ID_NON_DIGIT}${ID_CHAR}*`, "u")),
         // Single character catch-all in the form /[]+/ would be to
         // greedy, these are meant to catch punctionation. Therefore we use
         // prec.right(repeat1(/[]/)).
-        other: $ => prec.right(repeat1(/[^\s\n\r\p{N}\p{L}_]/)),
-        word_other: $ => prec.right(repeat1(/[^\s\n\r\p{N}\p{L}\[\]_]/))
+        other: $ => prec.right(repeat1(/[^\s\\\n\r\p{N}\p{L}_]/)),
 
     }
 })
