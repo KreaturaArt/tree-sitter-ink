@@ -70,13 +70,7 @@ fn appFrame() !dvui.App.Result {
 
 extern fn tree_sitter_ink() callconv(.c) *dvui.c.TSLanguage;
 
-const highlight_query = query: {
-    const query = @embedFile("ink-highlights");
-    const injection_tail = "; support injection\n(program) @ui.text";
-    const tail_start = std.mem.indexOf(u8, query, injection_tail) orelse
-        @compileError("expected injection capture in highlights query");
-    break :query query[0..tail_start];
-};
+const highlight_query = @embedFile("ink-highlights");
 
 const highlights = [_]dvui.TextEntryWidget.SyntaxHighlight{
     highlight("label", .{ .r = 0x7e, .g = 0xc7, .b = 0xc7 }),

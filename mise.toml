@@ -6,6 +6,7 @@ python = "3.12.14"
 rust = "1.85.0"
 swift = "6.4.0"
 tree-sitter = "0.24.7"
+zig = "0.16.0"
 
 [tasks.install-node]
 hide = true
@@ -51,8 +52,21 @@ run = "cargo test --locked"
 description = "Test the Swift binding"
 run = "swift test"
 
+[tasks.run-zig-dvui]
+description = "Run the Zig DVUI Ink editor with an optional Ink file"
+dir = "example/zig-dvui"
+run = "zig build run --"
+
+[tasks.test-zig-dvui]
+description = "Build and test the Zig DVUI Ink editor"
+dir = "example/zig-dvui"
+run = '''
+zig build
+zig build test
+'''
+
 [tasks.ci]
-description = "Run the corpus and all binding checks"
+description = "Run the corpus, bindings, and example checks"
 depends = [
   "test-corpus",
   "test-c",
@@ -61,4 +75,5 @@ depends = [
   "test-python",
   "test-rust",
   "test-swift",
+  "test-zig-dvui",
 ]

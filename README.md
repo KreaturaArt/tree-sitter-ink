@@ -36,6 +36,17 @@ Run the corpus and all language binding checks using the tool versions in
 mise run ci
 ```
 
+Run the Zig DVUI sample with its built-in Ink text or supply a file (paths are
+relative to `example/zig-dvui`):
+
+```shell
+mise run run-zig-dvui
+mise run run-zig-dvui ../../assets/demo.ink
+```
+
+From `example/zig-dvui`, the equivalent command is
+`zig build run -- ../../assets/demo.ink`.
+
 ## Install for helix
 
 Edit `hx ~/.config/helix/languages.toml` and replace `$long_revision`.
