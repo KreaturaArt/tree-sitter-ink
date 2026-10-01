@@ -45,6 +45,7 @@
 
 ; keywords and directives
 [
+  (function_start)
   (var_start)
   (const_start)
   (list_start)
